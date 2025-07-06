@@ -1,4 +1,5 @@
 import React from "react";
+import AnimatedImpact from "./AnimatedImpact";
 
 function ClimitraEngine() {
   return (
@@ -195,52 +196,9 @@ function ClimitraEngine() {
           <span className="text-neutral-500 text-xl font-normal font-['Montserrat'] leading-loose"> for waste biomass-driven industrial decarbonization and carbon dioxide removal (CDR) in India</span>
         </div>
       </div>
+      {/* IMPACT SECTION */}
 
-<div className="w-full bg-teal-50 px-4 md:px-10 py-12">
-  {/* Heading */}
-  <div className="max-w-6xl mx-auto text-center">
-    <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold font-montserrat text-neutral-950">
-      Projected Impact by <span className="text-teal-800">2025</span>
-    </h2>
-    <div className="mt-4 w-24 sm:w-32 mx-auto border-t-4 border-teal-800" />
-  </div>
-
-  {/* Cards */}
-  <div className="mt-12 flex flex-wrap justify-center gap-8 md:gap-12 lg:gap-16 max-w-6xl mx-auto">
-    {/* Card Template */}
-    {[
-      { title: "CO₂ Removed", value: "0M Ton" },
-      { title: "Rural Livelihoods Created", value: "0" },
-      { title: "Coal Replaced", value: "0M Ton" },
-      { title: "Waste-Biomass Repurposed", value: "0M Ton" },
-    ].map((card, i) => (
-      <div
-        key={i}
-        className="flex flex-col items-center flex-1 min-w-[140px] max-w-[180px]"
-      >
-        {/* Icon with white overlay */}
-        <div className="relative w-20 sm:w-24 h-20 sm:h-24 rounded-full bg-teal-800 flex items-center justify-center mb-4">
-          <div className="absolute w-14 sm:w-16 h-14 sm:h-16 bg-white rounded-full z-0" />
-          <img
-            src="https://placehold.co/42x42"
-            alt="Icon"
-            className="w-8 sm:w-10 h-8 sm:h-10 z-10"
-          />
-        </div>
-
-        {/* Value */}
-        <div className="text-teal-800 text-lg sm:text-xl md:text-2xl font-semibold font-montserrat">
-          {card.value}
-        </div>
-
-        {/* Label */}
-        <div className="text-zinc-600 text-sm sm:text-base md:text-lg text-center mt-2 font-montserrat">
-          {card.title}
-        </div>
-      </div>
-    ))}
-  </div>
-      </div>
+      <AnimatedImpact />
 
       {/* CURRENT PROJECTS SECTION */}
       <div className="text-[#0c0c0c] text-center self-center mt-16 md:mt-20 text-2xl md:text-4xl font-semibold leading-none font-montserrat">
@@ -332,21 +290,23 @@ function ClimitraEngine() {
 {/* CALL TO ACTION SECTION */}
 <div className="bg-[rgba(250,250,250,1)] flex mt-16 md:mt-20 w-full flex-col overflow-hidden items-center font-montserrat justify-center p-8 md:p-20 max-w-full">
   <div className="flex w-full max-w-7xl flex-col items-center">
+    {/* Heading */}
     <div className="text-[#0c0c0c] text-center text-2xl md:text-4xl font-semibold leading-none max-w-full">
       Start your
       <span className="text-climitra-green"> journey today</span> with us
     </div>
 
+    {/* Divider Image */}
     <img
       src="https://cdn.builder.io/api/v1/image/assets/fa40ec4c4f874f5487270f37d6db6a59/bc99fa55e9a65f96645eca3e7a24bba072bf1bb9?placeholderIfAbsent=true"
       alt="Divider"
       className="aspect-[34.48] object-contain object-center w-32 mt-4 max-w-full"
     />
 
-    {/* Cards Row */}
-    <div className="flex mt-12 md:mt-20 items-stretch gap-8 justify-center w-full overflow-x-auto flex-row">
+    {/* Cards Container */}
+    <div className="flex flex-wrap mt-12 md:mt-20 items-stretch gap-8 justify-center w-full">
       {/* CARD 1 */}
-      <div className="rounded-xl bg-climitra-bg-green flex flex-col justify-between h-full overflow-hidden items-stretch w-64 min-w-[240px] shadow-lg transition-transform hover:scale-105">
+      <div className="rounded-xl bg-climitra-bg-green flex flex-col justify-between overflow-hidden items-stretch w-64 shadow-lg transition-transform hover:scale-105">
         <img
           src="https://cdn.builder.io/api/v1/image/assets/fa40ec4c4f874f5487270f37d6db6a59/b377c6313c9e46f2b7081d0c0609c2a6ea51713b?placeholderIfAbsent=true"
           alt="Credit Buyers"
@@ -372,7 +332,7 @@ function ClimitraEngine() {
       </div>
 
       {/* CARD 2 */}
-      <div className="rounded-xl bg-climitra-bg-green flex flex-col justify-between h-full overflow-hidden items-stretch w-64 min-w-[240px] shadow-lg transition-transform hover:scale-105">
+      <div className="rounded-xl bg-climitra-bg-green flex flex-col justify-between overflow-hidden items-stretch w-64 shadow-lg transition-transform hover:scale-105">
         <img
           src="https://cdn.builder.io/api/v1/image/assets/fa40ec4c4f874f5487270f37d6db6a59/358ea4d139e39d6dba3446844d09388bd21cbc9a?placeholderIfAbsent=true"
           alt="Industrial Partners"
@@ -398,7 +358,7 @@ function ClimitraEngine() {
       </div>
 
       {/* CARD 3 */}
-      <div className="rounded-xl bg-climitra-bg-green flex flex-col justify-between h-full overflow-hidden items-stretch w-64 min-w-[240px] shadow-lg transition-transform hover:scale-105">
+      <div className="rounded-xl bg-climitra-bg-green flex flex-col justify-between overflow-hidden items-stretch w-64 shadow-lg transition-transform hover:scale-105">
         <img
           src="https://cdn.builder.io/api/v1/image/assets/fa40ec4c4f874f5487270f37d6db6a59/b0a09aeaf89bbfa497b83c19260926f8a4ff2d90?placeholderIfAbsent=true"
           alt="Researchers & NGOs"
@@ -425,7 +385,6 @@ function ClimitraEngine() {
     </div>
   </div>
 </div>
-
 
 {/* FOOTER */}
 <div className="bg-[rgba(243,243,243,1)] flex w-full flex-col items-stretch px-4 md:px-16 pt-8 md:pt-16 pb-12 md:pb-20 max-w-full">
