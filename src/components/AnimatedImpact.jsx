@@ -1,10 +1,34 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 const cardsData = [
-  { title: 'CO₂ Removed', from: 0, to: 7, unit: 'M Ton' },
-  { title: 'Rural Livelihoods Created', from: 0, to: 100000, unit: '' },
-  { title: 'Coal Replaced', from: 0, to: 3.5, unit: 'M Ton' },
-  { title: 'Waste-Biomass Repurposed', from: 0, to: 15, unit: 'M Ton' },
+  {
+    title: 'CO₂ Removed',
+    from: 0,
+    to: 7,
+    unit: 'M Ton',
+    image: 'images/CO2.png',
+  },
+  {
+    title: 'Rural Livelihoods Created',
+    from: 0,
+    to: 100000,
+    unit: '',
+    image: 'images/House.png',
+  },
+  {
+    title: 'Coal Replaced',
+    from: 0,
+    to: 3.8,
+    unit: 'M Ton',
+    image: 'images/screw.png',
+  },
+  {
+    title: 'Waste-Biomass Repurposed',
+    from: 0,
+    to: 15,
+    unit: 'M Ton',
+    image: 'images/Recycle.png',
+  },
 ];
 
 const AnimatedImpact = () => {
@@ -52,14 +76,11 @@ const AnimatedImpact = () => {
           animationStarted.current = true;
           const toValues = cardsData.map((c) => c.to);
 
-          // First scroll-in animation
           animateValues(cardsData.map((c) => c.from), toValues, 1200, true);
 
-          // Loop every 5s
           timerRef.current = setInterval(() => {
             setValues(cardsData.map((c) => c.from));
             setYear(2025);
-
             setTimeout(() => {
               animateValues(cardsData.map((c) => c.from), toValues, 1200, true);
             }, 500);
@@ -78,7 +99,7 @@ const AnimatedImpact = () => {
   }, []);
 
   return (
-    <div className="bg-white py-16 px-4" ref={containerRef}>
+    <div className="bg-[#F0FFF9] py-16 px-4" ref={containerRef}>
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold font-montserrat text-neutral-950">
           Projected Impact by <span className="text-teal-800">{year}</span>
@@ -86,18 +107,18 @@ const AnimatedImpact = () => {
         <div className="mt-4 w-24 sm:w-32 mx-auto border-t-4 border-teal-800" />
       </div>
 
-      <div className="mt-12 flex flex-wrap justify-center gap-8 md:gap-12 lg:gap-16 max-w-6xl mx-auto">
+      {/* Cards container with 183px left and right padding on large screens */}
+      <div className="mt-12 grid gap-8 md:gap-12 lg:gap-16 grid-cols-[repeat(auto-fit,minmax(140px,1fr))] px-4 sm:px-8 lg:px-[183px]">
         {cardsData.map((card, i) => (
           <div
             key={i}
-            className="flex flex-col items-center flex-1 min-w-[140px] max-w-[180px]"
+            className="flex flex-col items-center"
           >
-            <div className="relative w-20 sm:w-24 h-20 sm:h-24 rounded-full bg-teal-800 flex items-center justify-center mb-4">
-              <div className="absolute w-14 sm:w-16 h-14 sm:h-16 bg-white rounded-full z-0" />
+            <div className="w-20 sm:w-24 h-20 sm:h-24 rounded-full bg-[#1C6248] flex items-center justify-center mb-4 shadow-md">
               <img
-                src="https://placehold.co/42x42"
-                alt="Icon"
-                className="w-8 sm:w-10 h-8 sm:h-10 z-10"
+                src={card.image}
+                alt={card.title}
+                className="w-8 sm:w-10 h-8 sm:h-10"
               />
             </div>
 
