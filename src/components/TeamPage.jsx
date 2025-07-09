@@ -12,7 +12,7 @@ const TeamPage = () => {
       {/* HERO SECTION */}
       <div className="relative w-full h-[611px] overflow-hidden">
         <img
-          src="/images/contact.png"
+          src="/images/team.png"
           alt="Team Hero Background"
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
