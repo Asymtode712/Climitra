@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import AnimatedImpact from "./AnimatedImpact";
-import Navbar from "./Navbar";
+import ClimitraHeader from "./ClimitraHeader";
 import Footer from "./Footer";
 import { Menu } from "lucide-react";
 
@@ -22,67 +22,21 @@ function ClimitraEngine() {
         />
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-teal-800/80 to-black/0 z-0" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1C6248E5] to-[#00000000] z-0" />
 
-        {/* HEADER */}
-        <div className="absolute top-[70px] w-full px-4 sm:px-6 md:px-8 lg:px-[70px] xl:px-[100px] z-10">
-          <div className="flex items-center w-full">
-            {/* Logo */}
-            <img
-              src="/images/mask-group.svg"
-              alt="Climitra Logo"
-              className="w-16 sm:w-20 md:w-24 lg:w-28 h-auto object-contain"
-            />
-
-            {/* Navbar - spaced 140px from logo */}
-            <Navbar />
-
-            {/* Spacer */}
-            <div className="flex-grow" />
-
-            {/* Hamburger Menu for mobile */}
-            <button
-              className="block md:hidden text-white ml-2"
-              onClick={() => setMenuOpen(!menuOpen)}
-            >
-              <svg
-                className="w-7 h-7"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-
-            {/* Contact Button */}
-            <button className="ml-4 rounded-lg outline outline-2 outline-white px-3 py-1.5 text-white text-sm font-medium font-montserrat bg-transparent hover:bg-white hover:text-teal-800 transition duration-200">
-              Contact Us
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Dropdown Menu */}
-        {menuOpen && (
-          <div className="absolute top-[130px] left-0 w-full bg-teal-900 z-20 flex flex-col items-center gap-4 py-6 md:hidden">
-            <div className="text-white text-base font-bold font-montserrat cursor-pointer hover:text-teal-200 transition-colors">
-              Home
-            </div>
-            <div className="text-white text-base font-medium font-montserrat cursor-pointer hover:text-teal-200 transition-colors">
-              Industrial Decarbonization
-            </div>
-            <div className="text-white text-base font-medium font-montserrat cursor-pointer hover:text-teal-200 transition-colors">
-              CDR
-            </div>
-            <div className="text-white text-base font-medium font-montserrat cursor-pointer hover:text-teal-200 transition-colors">
-              Tech Suite
-            </div>
-            <div className="text-white text-base font-medium font-montserrat cursor-pointer hover:text-teal-200 transition-colors">
-              Our Team
-            </div>
-          </div>
-        )}
+        <ClimitraHeader 
+          menuOpen={menuOpen}
+          setMenuOpen={setMenuOpen}
+          menuItems={[
+            { label: "Home", route: "home" },
+            { label: "Industrial Decarbonization", route: "industrial" },
+            { label: "CDR", route: "cdr" },
+            { label: "Tech Suite", route: "tech" },
+            { label: "Our Team", route: "team" }
+          ]}
+          showContactButton={true}
+          zIndex={10}
+        />
 
         {/* Hero Text */}
         <div className="absolute w-full top-[236px] px-4 sm:px-6 md:px-8 flex flex-col items-center z-10">
@@ -107,64 +61,104 @@ function ClimitraEngine() {
         <div className="w-96 h-0 left-[640px] top-[376px] absolute origin-top-left rotate-90 outline outline-2 outline-offset-[-1px] outline-teal-800"></div>
         <div className="w-80 h-0 left-[695px] top-[1102px] absolute outline outline-2 outline-offset-[-1px] outline-zinc-100"></div>
         <div className="w-28 h-28 left-[1102px] top-[318px] absolute bg-white overflow-hidden flex items-center justify-center">
-          <img src="images/satellite.png" alt="Satellite" className="w-24 h-24 object-contain" />
+          <img
+            src="images/satellite.png"
+            alt="Satellite"
+            className="w-24 h-24 object-contain"
+          />
         </div>
 
         <div className="px-4 py-[5px] left-[722px] top-[448px] absolute bg-emerald-50 inline-flex justify-center items-center gap-2.5 overflow-hidden">
-          <div className="justify-start text-teal-800 text-2xl font-semibold font-['Montserrat'] leading-7">Biomass Mapping and Mobilisation</div>
+          <div className="justify-start text-teal-800 text-2xl font-semibold font-['Montserrat'] leading-7">
+            Biomass Mapping and Mobilisation
+          </div>
         </div>
         <div className="w-96 left-[745px] top-[517px] absolute inline-flex flex-col justify-start items-start gap-5">
           <div className="w-96 text-right justify-center text-neutral-500 text-lg font-normal font-['Source_Sans_Pro'] leading-snug tracking-wide">
-            We digitize biomass supply chains using AI-led satellite mapping and local intel,
-            mobilizing 1,000+ tons/day to meet industrial specs—solving visibility, quality,
-            and logistics at scale for steel decarbonization.
+            We digitize biomass supply chains using AI-led satellite mapping and
+            local intel, mobilizing 1,000+ tons/day to meet industrial
+            specs—solving visibility, quality, and logistics at scale for steel
+            decarbonization.
           </div>
         </div>
 
         <button className="w-40 h-10 px-5 py-3 left-[1065px] top-[657px] absolute bg-teal-800 rounded-lg outline outline-[1.20px] outline-offset-[-1.20px] outline-teal-800 inline-flex justify-center items-center gap-2.5 overflow-hidden">
-          <span className="text-center text-white text-base font-medium font-['Montserrat'] whitespace-nowrap">Know More</span>
+          <span className="text-center text-white text-base font-medium font-['Montserrat'] whitespace-nowrap">
+            Know More
+          </span>
         </button>
         <button className="w-40 h-10 px-5 py-3 left-[88px] top-[1039px] absolute bg-teal-800 rounded-lg outline outline-[1.20px] outline-offset-[-1.20px] outline-teal-800 inline-flex justify-center items-center gap-2.5 overflow-hidden">
-          <span className="text-center text-white text-base font-medium font-['Montserrat'] whitespace-nowrap">Know More</span>
+          <span className="text-center text-white text-base font-medium font-['Montserrat'] whitespace-nowrap">
+            Know More
+          </span>
         </button>
         <div className="px-4 py-[5px] left-[88px] top-[830px] absolute bg-emerald-50 inline-flex justify-center items-center gap-2.5 overflow-hidden">
-          <div className="justify-start text-teal-800 text-2xl font-semibold font-['Montserrat'] leading-7">Bespoke Conversion Technology</div>
+          <div className="justify-start text-teal-800 text-2xl font-semibold font-['Montserrat'] leading-7">
+            Bespoke Conversion Technology
+          </div>
         </div>
         <div className="w-96 left-[88px] top-[899px] absolute inline-flex flex-col justify-start items-start gap-5">
           <div className="self-stretch justify-center text-neutral-500 text-lg font-normal font-['Source_Sans_Pro'] leading-snug tracking-wide">
-            We build advanced pyrolysis systems tailored to local biomass, delivering consistent quality across 25+ industrial parameters including calorific value, volatile matter, ash, moisture, and fixed carbon.
+            We build advanced pyrolysis systems tailored to local biomass,
+            delivering consistent quality across 25+ industrial parameters
+            including calorific value, volatile matter, ash, moisture, and fixed
+            carbon.
           </div>
         </div>
-        <img className="w-24 h-24 left-[88px] top-[710px] absolute" src="images/fire.png" alt="" />
+        <img
+          className="w-24 h-24 left-[88px] top-[710px] absolute"
+          src="images/fire.png"
+          alt=""
+        />
         <div className="px-4 py-[5px] left-[828px] top-[1177px] absolute bg-emerald-50 inline-flex justify-center items-center gap-2.5 overflow-hidden">
-          <div className="justify-start text-teal-800 text-2xl font-semibold font-['Montserrat'] leading-7">Industrial Decarbonization</div>
+          <div className="justify-start text-teal-800 text-2xl font-semibold font-['Montserrat'] leading-7">
+            Industrial Decarbonization
+          </div>
         </div>
         <div className="w-96 left-[778px] top-[1246px] absolute inline-flex flex-col justify-start items-start gap-5">
           <div className="self-stretch text-right justify-center text-neutral-500 text-lg font-normal font-['Source_Sans_Pro'] leading-snug tracking-wide">
-            We integrate into steel plants with dynamic biochar blending, real-time emissions tracking, and ESG dashboards—fully aligned with CBAM, CCTS, and green steel compliance pathways.
+            We integrate into steel plants with dynamic biochar blending,
+            real-time emissions tracking, and ESG dashboards—fully aligned with
+            CBAM, CCTS, and green steel compliance pathways.
           </div>
         </div>
         <button className="w-40 h-10 px-5 py-3 left-[1065px] top-[1364px] absolute bg-teal-800 rounded-lg outline outline-[1.20px] outline-offset-[-1.20px] outline-teal-800 inline-flex justify-center items-center gap-2.5 overflow-hidden">
-          <span className="text-center text-white text-base font-medium font-['Montserrat'] whitespace-nowrap">Know More</span>
+          <span className="text-center text-white text-base font-medium font-['Montserrat'] whitespace-nowrap">
+            Know More
+          </span>
         </button>
-        <img className="w-24 h-24 left-[1102px] top-[1057px] absolute" src="images/smoke.png" alt="" />
+        <img
+          className="w-24 h-24 left-[1102px] top-[1057px] absolute"
+          src="images/smoke.png"
+          alt=""
+        />
         <img
           className="w-8 h-8 left-[241px] top-[742px] absolute"
           src="/images/ellipse-124.svg"
           alt="Ellipse"
         />
         <div className="px-4 py-[5px] left-[94px] top-[1501px] absolute bg-emerald-50 inline-flex justify-center items-center gap-2.5 overflow-hidden">
-          <div className="justify-start text-teal-800 text-2xl font-semibold font-['Montserrat'] leading-7">Carbon Market Integration</div>
+          <div className="justify-start text-teal-800 text-2xl font-semibold font-['Montserrat'] leading-7">
+            Carbon Market Integration
+          </div>
         </div>
         <div className="w-96 left-[94px] top-[1570px] absolute inline-flex flex-col justify-start items-start gap-5">
           <div className="self-stretch justify-center text-neutral-500 text-lg font-normal font-['Source_Sans_Pro'] leading-snug tracking-wide">
-            We generate high-integrity carbon removal credits through a digital MRV framework, enabling 100+ year carbon sequestration and access to both voluntary and compliance markets.
+            We generate high-integrity carbon removal credits through a digital
+            MRV framework, enabling 100+ year carbon sequestration and access to
+            both voluntary and compliance markets.
           </div>
         </div>
         <button className="w-32 h-10 px-5 py-3 left-[94px] top-[1710px] absolute bg-teal-800 rounded-lg outline outline-[1.20px] outline-offset-[-1.20px] outline-teal-800 inline-flex justify-center items-center gap-2.5 overflow-hidden">
-          <span className="text-center text-white text-base font-medium font-['Montserrat']">Know More</span>
+          <span className="text-center text-white text-base font-medium font-['Montserrat']">
+            Know More
+          </span>
         </button>
-        <img className="w-24 h-24 left-[94px] top-[1381px] absolute" src="images/tree.png" alt="" />
+        <img
+          className="w-24 h-24 left-[94px] top-[1381px] absolute"
+          src="images/tree.png"
+          alt=""
+        />
         <div className="w-28 h-28 left-[586px] top-[318px] absolute bg-white rounded-[85px] outline outline-2 outline-offset-[-2px] outline-zinc-100 overflow-hidden flex items-center justify-center">
           <img
             src="/images/timeline-item.svg"
@@ -172,15 +166,23 @@ function ClimitraEngine() {
             className="w-24 h-24 object-contain"
           />
         </div>
-        <div className="w-80 h-0 left-[695px] top-[373px] absolute border-t-2 border-dotted" style={{ borderColor: '#1C6248' }}></div>
+        <div
+          className="w-80 h-0 left-[695px] top-[373px] absolute border-t-2 border-dotted"
+          style={{ borderColor: "#1C6248" }}
+        ></div>
         <img
           className="w-8 h-8 left-[1007.28px] top-[357px] absolute"
           src="/images/ellipse-124.svg"
           alt="Ellipse"
         />
-        <div data-property-1="Component 35" className="w-80 h-6 left-[701px] top-[360px] absolute"></div>
+        <div
+          data-property-1="Component 35"
+          className="w-80 h-6 left-[701px] top-[360px] absolute"
+        ></div>
         <div className="w-24 h-8 left-[819px] top-[356px] absolute bg-teal-800 rounded-xl outline outline-2 outline-offset-[-2px] outline-teal-800 overflow-hidden">
-          <div className="left-[18px] top-[9px] absolute text-center justify-start text-white text-xs font-semibold font-['Montserrat'] leading-none">Biomass</div>
+          <div className="left-[18px] top-[9px] absolute text-center justify-start text-white text-xs font-semibold font-['Montserrat'] leading-none">
+            Biomass
+          </div>
         </div>
         <div className="w-96 h-0 left-[273px] top-[758px] absolute outline outline-2 outline-offset-[-1px] outline-teal-800"></div>
         <img
@@ -203,7 +205,9 @@ function ClimitraEngine() {
           />
         </div>
         <div className="w-24 h-8 left-[811px] top-[1085px] absolute bg-lime-500 rounded-xl overflow-hidden">
-          <div className="left-[21px] top-[9px] absolute text-center justify-start text-white text-xs font-semibold font-['Montserrat'] leading-none">Biochar</div>
+          <div className="left-[21px] top-[9px] absolute text-center justify-start text-white text-xs font-semibold font-['Montserrat'] leading-none">
+            Biochar
+          </div>
         </div>
         <div className="w-28 h-28 left-[586px] top-[1371px] absolute bg-white rounded-[85px] outline outline-2 outline-offset-[-2px] outline-zinc-100 overflow-hidden flex items-center justify-center">
           <img
@@ -213,7 +217,9 @@ function ClimitraEngine() {
           />
         </div>
         <div className="w-24 h-8 left-[407px] top-[1410px] absolute bg-lime-500 rounded-xl overflow-hidden">
-          <div className="left-[21px] top-[9px] absolute text-center justify-start text-white text-xs font-semibold font-['Montserrat'] leading-none">Biochar</div>
+          <div className="left-[21px] top-[9px] absolute text-center justify-start text-white text-xs font-semibold font-['Montserrat'] leading-none">
+            Biochar
+          </div>
         </div>
         <img
           className="w-8 h-8 left-[1007.28px] top-[1086px] absolute"
@@ -221,14 +227,26 @@ function ClimitraEngine() {
           alt="Ellipse"
         />
         <div className="w-[601px] left-[339px] top-[80px] absolute text-center justify-start">
-          <span className="text-neutral-950 text-4xl font-semibold font-['Montserrat'] leading-[50px]">Behind the </span>
-          <span className="text-teal-800 text-4xl font-semibold font-['Montserrat'] leading-[50px]">Climitra Engine</span>
+          <span className="text-neutral-950 text-4xl font-semibold font-['Montserrat'] leading-[50px]">
+            Behind the{" "}
+          </span>
+          <span className="text-teal-800 text-4xl font-semibold font-['Montserrat'] leading-[50px]">
+            Climitra Engine
+          </span>
         </div>
         <div className="w-32 h-0 left-[573px] top-[148px] absolute outline outline-4 outline-offset-[-2px] outline-teal-800"></div>
         <div className="w-[1016px] left-[132px] top-[178px] absolute text-center justify-center">
-          <span className="text-neutral-500 text-xl font-normal font-['Montserrat'] leading-loose">Building a </span>
-          <span className="text-teal-800 text-xl font-semibold font-['Montserrat'] leading-loose">vertically integrated ecosystem</span>
-          <span className="text-neutral-500 text-xl font-normal font-['Montserrat'] leading-loose"> for waste biomass-driven industrial decarbonization and carbon dioxide removal (CDR) in India</span>
+          <span className="text-neutral-500 text-xl font-normal font-['Montserrat'] leading-loose">
+            Building a{" "}
+          </span>
+          <span className="text-teal-800 text-xl font-semibold font-['Montserrat'] leading-loose">
+            vertically integrated ecosystem
+          </span>
+          <span className="text-neutral-500 text-xl font-normal font-['Montserrat'] leading-loose">
+            {" "}
+            for waste biomass-driven industrial decarbonization and carbon
+            dioxide removal (CDR) in India
+          </span>
         </div>
       </div>
       {/* IMPACT SECTION */}
@@ -245,7 +263,6 @@ function ClimitraEngine() {
         </div>
 
         <div className="max-w-[1024px] mx-auto mt-[80px] flex flex-col items-center lg:flex-row lg:justify-center lg:gap-[80px]">
-
           {/* Project 1 */}
           <div className="w-[284px] h-[307px] flex flex-col justify-between rounded-xl bg-climitra-bg-green overflow-hidden shadow-lg hover:shadow-xl transition-shadow mb-12 lg:mb-0">
             <div className="aspect-[1.775] relative overflow-hidden">
@@ -317,16 +334,15 @@ function ClimitraEngine() {
               </div>
             </div>
           </div>
-
         </div>
       </div>
-
 
       {/* START YOUR JOURNEY SECTION */}
       <div className="bg-[rgba(250,250,250,1)] px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-[#0c0c0c] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold leading-none font-montserrat">
-            Start your <span className="text-climitra-green">journey today</span> with us
+            Start your{" "}
+            <span className="text-climitra-green">journey today</span> with us
           </h2>
           <div className="w-20 sm:w-24 md:w-32 h-1 bg-climitra-green mx-auto mt-3 sm:mt-4 md:mt-6"></div>
 
@@ -337,21 +353,24 @@ function ClimitraEngine() {
                 title: "Credit Buyers",
                 desc: "Explore verified carbon credits",
                 cta: "Explore",
-                arrow: "https://cdn.builder.io/api/v1/image/assets/fa40ec4c4f874f5487270f37d6db6a59/422e4d2b95e4dc3d8c6b01042244c338355f67ac?placeholderIfAbsent=true",
+                arrow:
+                  "https://cdn.builder.io/api/v1/image/assets/fa40ec4c4f874f5487270f37d6db6a59/422e4d2b95e4dc3d8c6b01042244c338355f67ac?placeholderIfAbsent=true",
               },
               {
                 img: "https://cdn.builder.io/api/v1/image/assets/fa40ec4c4f874f5487270f37d6db6a59/358ea4d139e39d6dba3446844d09388bd21cbc9a?placeholderIfAbsent=true",
                 title: "Industrial Partners",
                 desc: "Discover fossil fuel replacement solutions",
                 cta: "Discover",
-                arrow: "https://cdn.builder.io/api/v1/image/assets/fa40ec4c4f874f5487270f37d6db6a59/60be63b5e06df429cad54f4c29ed758644c99cc5?placeholderIfAbsent=true",
+                arrow:
+                  "https://cdn.builder.io/api/v1/image/assets/fa40ec4c4f874f5487270f37d6db6a59/60be63b5e06df429cad54f4c29ed758644c99cc5?placeholderIfAbsent=true",
               },
               {
                 img: "https://cdn.builder.io/api/v1/image/assets/fa40ec4c4f874f5487270f37d6db6a59/b0a09aeaf89bbfa497b83c19260926f8a4ff2d90?placeholderIfAbsent=true",
                 title: "Researchers & NGOs",
                 desc: "Access our technology platform",
                 cta: "Our Technology",
-                arrow: "https://cdn.builder.io/api/v1/image/assets/fa40ec4c4f874f5487270f37d6db6a59/dc4ff0ac9a84b69ec6e0859e2dffadb2e4e94b87?placeholderIfAbsent=true",
+                arrow:
+                  "https://cdn.builder.io/api/v1/image/assets/fa40ec4c4f874f5487270f37d6db6a59/dc4ff0ac9a84b69ec6e0859e2dffadb2e4e94b87?placeholderIfAbsent=true",
               },
             ].map((card, index) => (
               <div
@@ -388,9 +407,8 @@ function ClimitraEngine() {
         </div>
       </div>
 
-
       {/* FOOTER */}
-     <Footer />
+      <Footer />
     </div>
   );
 }

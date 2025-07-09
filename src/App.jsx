@@ -1,6 +1,8 @@
 import { useState } from "react";
 import ClimitraEngine from "./components/ClimitraEngine";
 import CDRPage from "./components/CDRPage";
+import ContactUs from "./components/ContactUs";
+import TeamPage from "./components/TeamPage";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -9,6 +11,10 @@ function App() {
     switch (currentPage) {
       case "cdr":
         return <CDRPage />;
+      case "contact":
+        return <ContactUs />;
+      case "team":
+        return <TeamPage />;
       default:
         return <ClimitraEngine />;
     }

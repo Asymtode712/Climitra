@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import Navbar from "./Navbar";
+import ClimitraHeader from "./ClimitraHeader";
 import Footer from "./Footer";
 import { Menu, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -150,78 +150,21 @@ const scrollRight = () => {
         />
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-teal-800/80 to-black/0 z-0" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1C6248E5] to-[#00000000] z-0" />
 
-        {/* HEADER */}
-        <div className="absolute top-[70px] w-full px-4 sm:px-6 md:px-8 lg:px-[70px] xl:px-[100px] z-10">
-          <div className="flex items-center w-full">
-            {/* Logo */}
-            <img
-              src="/images/mask-group.svg"
-              alt="Climitra Logo"
-              className="w-16 sm:w-20 md:w-24 lg:w-28 h-auto object-contain"
-            />
-
-            {/* Navbar */}
-            <Navbar />
-
-            {/* Spacer */}
-            <div className="flex-grow" />
-
-            {/* Hamburger Menu for mobile */}
-            <button
-              className="block md:hidden text-white ml-2"
-              onClick={() => setMenuOpen(!menuOpen)}
-            >
-              <svg
-                className="w-7 h-7"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
-
-            {/* Contact Button */}
-            <button className="ml-4 rounded-lg outline outline-2 outline-white px-3 py-1.5 text-white text-sm font-medium font-montserrat bg-transparent hover:bg-white hover:text-teal-800 transition duration-200">
-              Contact Us
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Dropdown Menu */}
-        {menuOpen && (
-          <div className="absolute top-[130px] left-0 w-full bg-teal-900 z-20 flex flex-col items-center gap-4 py-6 md:hidden">
-            {[
-              "Home",
-              "Industrial Decarbonization",
-              "CDR",
-              "Tech Suite",
-              "Our Team",
-            ].map((item) => (
-              <div
-                key={item}
-                className="text-white text-base font-medium font-montserrat cursor-pointer hover:text-teal-200 transition-colors"
-                onClick={() => {
-                  if (item === "CDR" && window.navigateTo) {
-                    window.navigateTo("cdr");
-                  } else if (item === "Home" && window.navigateTo) {
-                    window.navigateTo("home");
-                  }
-                  setMenuOpen(false);
-                }}
-              >
-                {item}
-              </div>
-            ))}
-          </div>
-        )}
+        <ClimitraHeader 
+          menuOpen={menuOpen}
+          setMenuOpen={setMenuOpen}
+          menuItems={[
+            { label: "Home", route: "home" },
+            { label: "Industrial Decarbonization", route: "industrial" },
+            { label: "CDR", route: "cdr" },
+            { label: "Tech Suite", route: "tech" },
+            { label: "Our Team", route: "team" }
+          ]}
+          showContactButton={true}
+          zIndex={10}
+        />
 
         {/* Hero Text */}
         <div className="absolute w-full top-[236px] px-4 sm:px-6 md:px-8 flex flex-col items-center z-30">
