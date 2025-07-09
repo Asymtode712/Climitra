@@ -2,11 +2,11 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="bg-[#F3F3F3] w-full h-[331px] flex flex-col">
+    <div className="bg-[#F3F3F3] w-full h-[20.6875rem] flex flex-col">
       {/* Top Section with Logo and LinkedIn */}
-      <div className="flex items-center justify-center gap-[42.667px] pt-[43px] px-[69px]">
+      <div className="flex items-center justify-center gap-[2.666688rem] pt-[2.6875rem] px-[4.3125rem]">
         {/* Climitra Logo */}
-        <div className="w-[150.222px] h-[34.667px]">
+        <div className="w-[9.388875rem] h-[2.166688rem]">
           <svg
             width="151"
             height="36"
@@ -91,7 +91,7 @@ const Footer = () => {
       </div>
 
       {/* Location Section */}
-      <div className="flex items-center px-[69px] mt-6">
+      <div className="flex items-center px-[4.3125rem] mt-6">
         <svg
           width="20"
           height="21"
@@ -106,7 +106,7 @@ const Footer = () => {
             fill="#6C6C6C"
           />
         </svg>
-        <div className="ml-[25px] flex items-center">
+        <div className="ml-[1.5625rem] flex items-center">
           <span className="text-[#6C6C6C] text-base font-medium font-montserrat">
             Connect with us -
           </span>
@@ -117,10 +117,10 @@ const Footer = () => {
       </div>
 
       {/* Divider Line */}
-      <div className="w-[1067px] h-px bg-[#1C6248] mx-auto mt-8"></div>
+      <div className="w-[66.6875rem] h-px bg-[#1C6248] mx-auto mt-8"></div>
 
       {/* Bottom Section */}
-      <div className="flex items-center justify-between px-[69px] mt-11">
+      <div className="flex items-center justify-between px-[4.3125rem] mt-11">
         {/* Copyright */}
         <div className="text-[#0F161E] text-sm font-medium font-inter">
           Climitra@2025. All rights reserved.

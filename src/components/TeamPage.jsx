@@ -10,7 +10,7 @@ const TeamPage = () => {
   return (
     <div className="bg-[#FDFDFD] flex flex-col overflow-hidden">
       {/* HERO SECTION */}
-      <div className="relative w-full h-[611px] overflow-hidden">
+      <div className="relative w-full h-[38.1875rem] overflow-hidden">
         <img
           src="/images/team.png"
           alt="Team Hero Background"
@@ -32,14 +32,14 @@ const TeamPage = () => {
           zIndex={20}
         />
 
-        <div className="absolute w-full top-[242.21px] px-4 flex flex-col items-center z-20">
-          <div className="w-[302px] h-[72px] flex items-center justify-center">
-            <h1 className="text-white text-[60px] leading-[120%] font-semibold font-montserrat text-center">
+        <div className="absolute w-full top-[15.1381rem] px-4 flex flex-col items-center z-20">
+          <div className="w-[18.875rem] h-[4.5rem] flex items-center justify-center">
+            <h1 className="text-white text-[3.75rem] leading-[120%] font-semibold font-montserrat text-center">
               Our Team
             </h1>
           </div>
-          <div className="w-[468px] h-[29px] mt-[40px] flex items-center justify-center">
-            <p className="text-white text-[24px] leading-[100%] font-semibold font-montserrat text-center">
+          <div className="w-[29.25rem] h-[1.8125rem] mt-[2.5rem] flex items-center justify-center">
+            <p className="text-white text-[1.5rem] leading-[100%] font-semibold font-montserrat text-center">
               Driven by <span className="text-white">Purpose.</span> Defined by
               People
             </p>
@@ -52,16 +52,16 @@ const TeamPage = () => {
         <div className="max-w-6xl mx-auto px-8">
           {/* Section Header */}
           <div className="flex flex-col items-center mb-16">
-            <h2 className="text-[36px] font-bold font-montserrat leading-[44px] mb-4 text-center">
+            <h2 className="text-[2.25rem] font-bold font-montserrat leading-[2.75rem] mb-4 text-center">
               <span className="text-[#0C0C0C]">Meet the </span>
               <span className="text-[#1C6248]">Team</span>
             </h2>
-            <div className="w-[134px] h-1 bg-[#1C6248] rounded"></div>
+            <div className="w-[8.375rem] h-1 bg-[#1C6248] rounded"></div>
           </div>
 
           {/* Team Description */}
-          <div className="text-center mb-24 -mx-[13px]">
-            <p className="text-[#6C6C6C] text-xl font-montserrat font-normal leading-[30px]">
+          <div className="text-center mb-24 -mx-[0.8125rem]">
+            <p className="text-[#6C6C6C] text-xl font-montserrat font-normal leading-[1.875rem]">
               Climitra's founding team is a group of dynamic engineers
               passionate about climate solutions. With experience at firms like
               McKinsey, Schlumberger, and Bain, we bring deep technical and
@@ -73,8 +73,9 @@ const TeamPage = () => {
           </div>
 
           {/* Tab Navigation */}
-          <div className="flex items-center justify-center mb-16">
-            <div className="flex items-center bg-white rounded-lg">
+       <div className="flex items-center justify-center mb-16">
+  <div className="flex items-center bg-white rounded-lg gap-[80px]">
+
               <div className="relative">
                 <button
                   onClick={() => setActiveTab("team")}
@@ -85,7 +86,7 @@ const TeamPage = () => {
                   Team
                 </button>
                 {activeTab === "team" && (
-                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[27px] h-1 bg-[#1C6248]"></div>
+                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[1.6875rem] h-1 bg-[#1C6248]"></div>
                 )}
               </div>
               
@@ -99,7 +100,7 @@ const TeamPage = () => {
                   Advisors
                 </button>
                 {activeTab === "advisors" && (
-                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[27px] h-1 bg-[#1C6248]"></div>
+                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[1.6875rem] h-1 bg-[#1C6248]"></div>
                 )}
               </div>
             </div>
@@ -108,169 +109,122 @@ const TeamPage = () => {
           {/* Team Tab Content */}
           {activeTab === "team" && (
             <div>
-              {/* Founders Section */}
-              <div className="flex flex-col items-center mb-24">
-                <h3 className="text-[#1C6248] text-[24px] font-bold font-montserrat mb-2">
-                  Founders
-                </h3>
-                <div className="w-[27px] h-1 bg-[#1C6248] mb-16"></div>
+{/* Founders Section */}
+<div className="flex flex-col items-center mb-24">
+  <h3 className="text-[#1C6248] text-[1.5rem] font-bold font-montserrat mb-2">
+    Founders
+  </h3>
+  <div className="w-[1.6875rem] h-1 bg-[#1C6248] mb-16"></div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-20 max-w-6xl w-full justify-items-center">
-                  {/* Shubhankar Mihir Seth */}
-                  <div className="flex flex-col items-center">
-                    <div className="relative w-[180px] h-[180px] mb-6">
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-b from-[#1C6248] to-[#6BBD4E] p-1">
-                        <div className="w-full h-full rounded-full overflow-hidden bg-white">
-                          <img
-                            src="/images/Headshot 1.png"
-                            alt="Shubhankar Mihir Seth"
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2 mb-1">
-<div className="w-[28px] h-[28px] border-[1.5px] border-[#1C6248] rounded-[5px] px-[7px] pt-[7px] pb-[6px] pr-[6px] box-border flex items-center justify-center">
-  <img src="/images/linkedin_teams.png" alt="LinkedIn" className="w-full h-full object-contain" />
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-20 max-w-6xl w-full justify-items-center">
+    {[
+      {
+        name: "Shubhankar Mihir Seth",
+        img: "/images/Frame 1984078250 (1).png",
+      },
+      {
+        name: "Shaurya Sharma",
+        img: "/images/Frame 1984078251.png",
+      },
+      {
+        name: "Aryaman Mihir Seth",
+        img: "/images/Frame 1984078252.png",
+      },
+    ].map((member, index) => (
+      <div key={index} className="flex flex-col items-center">
+        <div
+          className={`relative flex-shrink-0 rounded-lg bg-white overflow-hidden ${
+            index === 0
+              ? "w-[250px] h-[320px] -mt-[35px] mb-6"
+              : "w-[250px] h-[285px] mb-6"
+          }`}
+        >
+          <img
+            src={member.img}
+            alt={member.name}
+            className={`absolute w-full h-full ${
+              index === 0
+                ? "object-contain -translate-y-[10px]"
+                : "object-contain p-2"
+            }`}
+          />
+        </div>
+        <div className="flex items-center gap-2 mb-1">
+          <div className="w-[1.75rem] h-[1.75rem] border-[1.5px] border-[#1C6248] rounded-[0.3125rem] p-[0.25rem] flex items-center justify-center">
+            <img
+              src="/images/linkedin_teams.png"
+              alt="LinkedIn"
+              className="w-full h-full object-contain"
+            />
+          </div>
+          <h4 className="text-[#1C6248] text-[1.125rem] font-medium font-montserrat">
+            {member.name}
+          </h4>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+{/* Core Team Section */}
+<div className="flex flex-col items-center mb-[115px]">
+
+  <h3 className="text-[#1C6248] text-[1.5rem] font-bold font-montserrat mb-2">
+    Core Team
+  </h3>
+  <div className="w-[1.6875rem] h-1 bg-[#1C6248] mb-16"></div>
+
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-20 max-w-6xl w-full justify-items-center">
+    {[
+      {
+        name: "Nandini Kaushik",
+        img: "/images/Frame 1984078251.png",
+        imageHeight: "h-[285px]",
+        imgClass: "object-contain p-2",
+        marginTop: "mt-0",
+      },
+      {
+        name: "Sanat Vohra",
+        img: "/images/Frame 1984078371.png",
+        imageHeight: "h-[295px]",
+        imgClass: "object-contain p-2",
+        marginTop: "-mt-2",
+      },
+      {
+        name: "Aman Agarwal",
+        img: "/images/Frame 1984078370.png",
+        imageHeight: "h-[285px]",
+        imgClass: "object-cover p-1 translate-y-[4px]", // Push image slightly down
+        marginTop: "mt-0", // Match Nandini
+      },
+    ].map((member, index) => (
+      <div key={index} className={`flex flex-col items-center ${member.marginTop}`}>
+        <div
+          className={`relative w-[250px] flex-shrink-0 rounded-lg bg-white overflow-hidden mb-6 ${member.imageHeight}`}
+        >
+          <img
+            src={member.img}
+            alt={member.name}
+            className={`absolute w-full h-full ${member.imgClass}`}
+          />
+        </div>
+        <div className="flex items-center gap-2 mb-1">
+          <div className="w-[1.75rem] h-[1.75rem] border-[1.5px] border-[#1C6248] rounded-[0.3125rem] p-[0.25rem] flex items-center justify-center">
+            <img
+              src="/images/linkedin_teams.png"
+              alt="LinkedIn"
+              className="w-full h-full object-contain"
+            />
+          </div>
+          <h4 className="text-[#1C6248] text-[1.125rem] font-medium font-montserrat">
+            {member.name}
+          </h4>
+        </div>
+      </div>
+    ))}
+  </div>
 </div>
 
-                      <h4 className="text-[#1C6248] text-[18px] font-medium font-montserrat">
-                        Shubhankar Mihir Seth
-                      </h4>
-                    </div>
-                  </div>
 
-                  {/* Shaurya Sharma */}
-                  <div className="flex flex-col items-center">
-                    <div className="relative w-[180px] h-[180px] mb-6">
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-b from-[#1C6248] to-[#4D9A4B] p-1">
-                        <div className="w-full h-full rounded-full overflow-hidden bg-white">
-                          <img
-                            src="/images/Shaurya 3.png"
-                            alt="Shaurya Sharma"
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2 mb-1">
-                     <div className="w-[28px] h-[28px] border-[1.5px] border-[#1C6248] rounded-[5px] px-[7px] pt-[7px] pb-[6px] pr-[6px] box-border flex items-center justify-center">
-  <img src="/images/linkedin_teams.png" alt="LinkedIn" className="w-full h-full object-contain" />
-</div>
-
-                      <h4 className="text-[#1C6248] text-[18px] font-medium font-montserrat">
-                        Shaurya Sharma
-                      </h4>
-                    </div>
-                  </div>
-
-                  {/* Aryaman Mihir Seth */}
-                  <div className="flex flex-col items-center">
-                    <div className="relative w-[180px] h-[180px] mb-6">
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-b from-[#1C6248] to-[#509E4C] p-1">
-                        <div className="w-full h-full rounded-full overflow-hidden bg-white">
-                          <img
-                            src="/images/Aryaman Photo 4.png"
-                            alt="Aryaman Mihir Seth"
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2 mb-1">
-<div className="w-[28px] h-[28px] border-[1.5px] border-[#1C6248] rounded-[5px] px-[7px] pt-[7px] pb-[6px] pr-[6px] box-border flex items-center justify-center">
-  <img src="/images/linkedin_teams.png" alt="LinkedIn" className="w-full h-full object-contain" />
-</div>
-
-                      <h4 className="text-[#1C6248] text-[18px] font-medium font-montserrat">
-                        Aryaman Mihir Seth
-                      </h4>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Core Team Section */}
-              <div className="flex flex-col items-center mb-24">
-                <h3 className="text-[#1C6248] text-[24px] font-bold font-montserrat mb-2">
-                  Core Team
-                </h3>
-                <div className="w-[27px] h-1 bg-[#1C6248] mb-16"></div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-20 max-w-6xl w-full justify-items-center">
-                  {/* Nandini Kaushik */}
-                  <div className="flex flex-col items-center">
-                    <div className="relative w-[180px] h-[180px] mb-6">
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-b from-[#1C6248] to-[#4D9A4B] p-1">
-                        <div className="w-full h-full rounded-full overflow-hidden bg-white">
-                          <img
-                            src="/images/Shaurya 3.png"
-                            alt="Nandini Kaushik"
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2 mb-1">
-                     <div className="w-[28px] h-[28px] border-[1.5px] border-[#1C6248] rounded-[5px] px-[7px] pt-[7px] pb-[6px] pr-[6px] box-border flex items-center justify-center">
-  <img src="/images/linkedin_teams.png" alt="LinkedIn" className="w-full h-full object-contain" />
-</div>
-
-                      <h4 className="text-[#1C6248] text-[18px] font-medium font-montserrat">
-                        Nandini Kaushik
-                      </h4>
-                    </div>
-                  </div>
-
-                  {/* Sanat Vohra */}
-                  <div className="flex flex-col items-center">
-                    <div className="relative w-[180px] h-[180px] mb-6">
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-b from-[#1E6448] to-[#6ABC4E] p-1">
-                        <div className="w-full h-full rounded-full overflow-hidden bg-white">
-                          <img
-                            src="/images/unnamed2.png"
-                            alt="Sanat Vohra"
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2 mb-1">
-                     <div className="w-[28px] h-[28px] border-[1.5px] border-[#1C6248] rounded-[5px] px-[7px] pt-[7px] pb-[6px] pr-[6px] box-border flex items-center justify-center">
-  <img src="/images/linkedin_teams.png" alt="LinkedIn" className="w-full h-full object-contain" />
-</div>
-
-                      <h4 className="text-[#1C6248] text-[18px] font-medium font-montserrat">
-                        Sanat Vohra
-                      </h4>
-                    </div>
-                  </div>
-
-                  {/* Aman Agarwal */}
-                  <div className="flex flex-col items-center">
-                    <div className="relative w-[180px] h-[180px] mb-6">
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-b from-[#1D6348] to-[#6BBD4E] p-1">
-                        <div className="w-full h-full rounded-full overflow-hidden bg-white">
-                          <img
-                            src="/images/unnamed3.png"
-                            alt="Aman Agarwal"
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <div className="w-[28px] h-[28px] border-[1.5px] border-[#1C6248] rounded-[5px] px-[7px] pt-[7px] pb-[6px] pr-[6px] box-border flex items-center justify-center">
-  <img src="/images/linkedin_teams.png" alt="LinkedIn" className="w-full h-full object-contain" />
-</div>
-
-                      <h4 className="text-[#1C6248] text-[18px] font-medium font-montserrat">
-                        Aman Agarwal
-                      </h4>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           )}
 
@@ -278,32 +232,38 @@ const TeamPage = () => {
           {activeTab === "advisors" && (
             <div>
               {/* Profile Card & Details Section */}
-              <div
-                className={`flex ${isExpanded ? "flex-col items-center" : "flex-row items-start justify-center gap-12"} mb-16`}
-              >
-                {/* Image */}
-                <div className="relative w-[201px] h-[257px] flex-shrink-0 mb-8 lg:mb-0">
-                  <img
-                    src="/images/prof.png"
-                    alt="Prof. Vikram Vishal"
-                    className="w-full h-full object-cover rounded-lg"
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 h-12 bg-white rounded-b-lg" />
-                </div>
+             <div className={`flex ${isExpanded ? "flex-col items-center" : "flex-row items-center justify-center gap-4"} mb-16`}>
 
-                {/* Info Block */}
+                {/* Image */}
+<div
+  style={{
+    width: isExpanded ? "322px" : "280px",
+    height: isExpanded ? "348.35px" : "330px",
+  }}
+  className="flex-shrink-0 mb-8 lg:mb-0 rounded-lg overflow-hidden bg-white"
+>
+  <img
+    src="/images/prof_im.png"
+    alt="Prof. Vikram Vishal"
+    className="w-full h-full object-contain"
+    draggable={false}
+  />
+</div>
+
+
+                {/* I_imnfo Block */}
                 <div
-                  className={`flex flex-col ${isExpanded ? "items-center" : "items-start justify-start mt-8"} text-left`}
+                  className={`flex flex-col ${isExpanded ? "items-center" : "items-start justify-center"} text-left`}
                 >
                   {/* LinkedIn + Name */}
                   <div
                     className={`flex items-center gap-2 mb-2 ${isExpanded ? "justify-center" : ""}`}
                   >
-                    <div className="w-6 h-6 border-[1.5px] border-[#1C6248] rounded flex items-center justify-center">
+                    <div className="w-[1.75rem] h-[1.75rem] border-[0.09375rem] border-[#1C6248] rounded-[0.3125rem] flex items-center justify-center">
                       <img
                         src="/images/linkedin_teams.png"
                         alt="LinkedIn"
-                        className="w-3 h-3"
+                        className="w-[0.75rem] h-[0.75rem]"
                       />
                     </div>
                     <h3 className="text-[#1C6248] text-xl font-medium font-montserrat">

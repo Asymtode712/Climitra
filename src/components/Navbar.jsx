@@ -9,7 +9,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="hidden md:flex items-center gap-[30px] ml-[265px]">
+    <div className="hidden md:flex items-center gap-[1.875rem] ml-[16.5625rem]">
       <div
         className="text-white text-lg font-bold font-montserrat cursor-pointer hover:text-teal-200 transition-colors"
         onClick={() => handleNavigation("home")}

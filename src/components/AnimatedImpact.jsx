@@ -107,8 +107,8 @@ const AnimatedImpact = () => {
         <div className="mt-4 w-24 sm:w-32 mx-auto border-t-4 border-teal-800" />
       </div>
 
-      {/* Cards container with 183px left and right padding on large screens */}
-      <div className="mt-12 grid gap-8 md:gap-12 lg:gap-16 grid-cols-[repeat(auto-fit,minmax(140px,1fr))] px-4 sm:px-8 lg:px-[183px]">
+      {/* Cards container with 11.4375rem left and right padding on large screens */}
+      <div className="mt-12 grid gap-8 md:gap-12 lg:gap-16 grid-cols-[repeat(auto-fit,minmax(8.75rem,1fr))] px-4 sm:px-8 lg:px-[11.4375rem]">
         {cardsData.map((card, i) => (
           <div
             key={i}

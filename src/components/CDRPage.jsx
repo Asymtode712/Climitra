@@ -138,7 +138,7 @@ const scrollRight = () => {
   return (
     <div className="bg-[#FDFDFD] flex flex-col overflow-hidden">
       {/* HERO SECTION */}
-      <div className="relative w-full h-[611px] overflow-hidden">
+      <div className="relative w-full h-[38.1875rem] overflow-hidden">
         {/* Background Video */}
         <video
           className="absolute inset-0 w-full h-full object-cover"
@@ -167,8 +167,8 @@ const scrollRight = () => {
         />
 
         {/* Hero Text */}
-        <div className="absolute w-full top-[236px] px-4 sm:px-6 md:px-8 flex flex-col items-center z-30">
-          <h1 className="text-white font-semibold font-montserrat leading-tight text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl max-w-[923px] text-center mx-auto">
+        <div className="absolute w-full top-[14.75rem] px-4 sm:px-6 md:px-8 flex flex-col items-center z-30">
+          <h1 className="text-white font-semibold font-montserrat leading-tight text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl max-w-[57.6875rem] text-center mx-auto">
             Permanent atmospheric CO₂ extraction for net zero commitments
           </h1>
         </div>
@@ -183,7 +183,7 @@ const scrollRight = () => {
             <span className="text-[#1C6248]">CDR</span>
             <span className="text-[#0C0C0C]"> Imperative</span>
           </h1>
-          <div className="w-[134px] h-1 bg-[#1C6248] mx-auto mb-6" />
+          <div className="w-[8.375rem] h-1 bg-[#1C6248] mx-auto mb-6" />
           <p className="text-xl text-[#6C6C6C] font-montserrat leading-8 max-w-4xl mx-auto">
             Carbon dioxide removal involves the deliberate extraction and long-term
             sequestration of atmospheric CO₂, serving as an indispensable pillar for
@@ -196,8 +196,8 @@ const scrollRight = () => {
         <div className="relative w-full overflow-x-clip pb-12">
           <div className="relative flex justify-center items-center w-full px-4 sm:px-6 lg:px-8">
             {/* LEFT CARD */}
-            <div className="hidden lg:block absolute left-0 top-[50px] translate-x-[-20%] scale-[0.95] opacity-40 transition-all duration-300">
-              <div className="w-[480px] h-[308px] bg-gradient-to-b from-[#F0FFF9] to-white rounded-lg shadow-lg p-6 flex flex-col items-center text-center">
+            <div className="hidden lg:block absolute left-0 top-[3.125rem] translate-x-[-20%] scale-[0.95] opacity-40 transition-all duration-300">
+              <div className="w-[30.0rem] h-[19.25rem] bg-gradient-to-b from-[#F0FFF9] to-white rounded-lg shadow-lg p-6 flex flex-col items-center text-center">
                 <div className="w-16 h-16 bg-[#1C6248] rounded-full flex items-center justify-center mb-4">
                   <img
                     src={carouselItems[(currentSlide + 2) % 3].icon}
@@ -217,7 +217,7 @@ const scrollRight = () => {
 
             {/* CENTER CARD */}
             <div className="z-10">
-              <div className="w-[630px] h-[403px] bg-gradient-to-b from-[#F0FFF9] to-white rounded-xl shadow-xl p-10 flex flex-col items-center text-center">
+              <div className="w-[39.375rem] h-[25.1875rem] bg-gradient-to-b from-[#F0FFF9] to-white rounded-xl shadow-xl p-10 flex flex-col items-center text-center">
                 <div className="w-20 h-20 bg-[#1C6248] rounded-full flex items-center justify-center mb-8">
                   <img
                     src={carouselItems[currentSlide].icon}
@@ -236,8 +236,8 @@ const scrollRight = () => {
             </div>
 
             {/* RIGHT CARD */}
-            <div className="hidden lg:block absolute right-0 top-[50px] translate-x-[20%] scale-[0.95] opacity-40 transition-all duration-300">
-              <div className="w-[480px] h-[308px] bg-gradient-to-b from-[#F0FFF9] to-white rounded-lg shadow-lg p-6 flex flex-col items-center text-center">
+            <div className="hidden lg:block absolute right-0 top-[3.125rem] translate-x-[20%] scale-[0.95] opacity-40 transition-all duration-300">
+              <div className="w-[30.0rem] h-[19.25rem] bg-gradient-to-b from-[#F0FFF9] to-white rounded-lg shadow-lg p-6 flex flex-col items-center text-center">
                 <div className="w-16 h-16 bg-[#1C6248] rounded-full flex items-center justify-center mb-4">
                   <img
                     src={carouselItems[(currentSlide + 1) % 3].icon}
@@ -256,7 +256,7 @@ const scrollRight = () => {
             </div>
 
             {/* Dots + Arrows */}
-            <div className="absolute top-[calc(100%+30px)] left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-4">
+            <div className="absolute top-[calc(100%+1.875rem)] left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-4">
               <div className="flex gap-3 mb-2">
                 {[0, 1, 2].map((index) => (
                   <button
@@ -300,7 +300,7 @@ const scrollRight = () => {
               <span className="text-[#1C6248]">Carbon Vault</span>
             </h2>
           </div>
-          <div className="w-[134px] h-1 bg-[#1C6248] mx-auto mb-8"></div>
+          <div className="w-[8.375rem] h-1 bg-[#1C6248] mx-auto mb-8"></div>
           <p className="text-xl text-[#6C6C6C] font-montserrat leading-8 max-w-4xl mx-auto">
             Biochar converts biomass into stable, carbon-rich material through
             pyrolysis, locking away atmospheric CO₂ in soil for centuries
@@ -310,10 +310,10 @@ const scrollRight = () => {
       </div>
 
       {/* Scrollable Benefits */}
-      <div className="relative px-[55px] overflow-hidden">
+      <div className="relative px-[3.4375rem] overflow-hidden">
         <div
           ref={scrollRef}
- className="flex overflow-x-auto gap-[58px] pl-[80px] scroll-smooth pb-6 cursor-grab active:cursor-grabbing scrollbar-hide"
+ className="flex overflow-x-auto gap-[3.625rem] pl-[5.0rem] scroll-smooth pb-6 cursor-grab active:cursor-grabbing scrollbar-hide"
 
           onMouseDown={handleMouseDown}
           onMouseLeave={handleMouseLeave}
@@ -323,7 +323,7 @@ const scrollRight = () => {
           {benefits.map((benefit, index) => (
             <div
               key={index}
-              className="min-w-[378px] h-[432px] bg-gradient-to-b from-[#F0FFF9] to-white rounded-xl shadow-lg overflow-hidden"
+              className="min-w-[23.625rem] h-[27.0rem] bg-gradient-to-b from-[#F0FFF9] to-white rounded-xl shadow-lg overflow-hidden"
             >
               <div className="p-9">
                 <div className="w-20 h-20 bg-[#1C6248] rounded-full flex items-center justify-center mb-8">
@@ -370,7 +370,7 @@ const scrollRight = () => {
                 <span className="text-[#0C0C0C]"> Standards</span>
               </h2>
             </div>
-            <div className="w-[134px] h-1 bg-[#1C6248] mx-auto mb-8"></div>
+            <div className="w-[8.375rem] h-1 bg-[#1C6248] mx-auto mb-8"></div>
             <p className="text-xl text-[#5D5D5D] font-montserrat leading-8 max-w-4xl mx-auto">
               Climitra delivers CDR solutions that meet the strictest standards,
               helping partners achieve net zero commitments with confidence.
