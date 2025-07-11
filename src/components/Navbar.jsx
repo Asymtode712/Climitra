@@ -16,7 +16,10 @@ const Navbar = () => {
       >
         Home
       </div>
-      <div className="text-white text-lg font-medium font-montserrat cursor-pointer hover:text-teal-200 transition-colors">
+      <div
+        className="text-white text-lg font-medium font-montserrat cursor-pointer hover:text-teal-200 transition-colors"
+        onClick={() => handleNavigation("industrial")}
+      >
         Industrial Decarbonization
       </div>
       <div

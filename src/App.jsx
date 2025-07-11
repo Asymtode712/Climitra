@@ -3,12 +3,15 @@ import ClimitraEngine from "./components/ClimitraEngine";
 import CDRPage from "./components/CDRPage";
 import ContactUs from "./components/ContactUs";
 import TeamPage from "./components/TeamPage";
+import IndustrialPage from "./components/IndustrialPage";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
 
   const renderPage = () => {
     switch (currentPage) {
+      case "industrial":
+        return <IndustrialPage />;
       case "cdr":
         return <CDRPage />;
       case "contact":
