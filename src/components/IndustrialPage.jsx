@@ -5,32 +5,58 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const IndustrialPage = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(1); // 0: left, 1: center, 2: right
+  const [currentSlide, setCurrentSlide] = useState(0); // 0-3: which card is in center
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const integrationItems = [
     {
-      icon: "/images/verify.png",
+      icon: "/images/Mask group (43).png",
       title: "Verified Decarbonization Impact",
       description: "1 ton of biochar saves up to 2.5 tons of CO₂ — with enhanced carbothermal efficiency over coal.",
     },
     {
-      icon: "/images/Recycle.png",
+      icon: "/images/Mask group (41).png",
       title: "Plug-and-Play Compatibility", 
       description: "Up to 40% PCI coal substitution in blast furnaces — no infrastructure modifications needed.",
     },
     {
-      icon: "/images/screw.png",
+      icon: "/images/Mask group (42).png",
       title: "Precision-Engineered Biochar",
       description: "Each batch is customized across 25+ parameters to meet plant-specific specs like ash content, volatile matter, and particle size.",
+    },
+     {
+      icon: "/images/Mask group (44).png",
+      title: "Commercially Competitive",
+      description: "Designed to compete with fossil fuels on both performance and reliability — without compromising industrial margins.",
     },
   ];
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % 3);
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrentSlide((prev) => (prev + 1) % 4);
+    setTimeout(() => setIsTransitioning(false), 400);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + 3) % 3);
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrentSlide((prev) => (prev - 1 + 4) % 4);
+    setTimeout(() => setIsTransitioning(false), 400);
+  };
+
+  // Get card positions - returns which position each card should be in
+  const getCardPosition = (cardIndex) => {
+    const centerIndex = currentSlide;
+    const leftIndex = (currentSlide - 1 + 4) % 4;
+    const rightIndex = (currentSlide + 1) % 4;
+    const hiddenIndex = (currentSlide + 2) % 4;
+
+    if (cardIndex === centerIndex) return 'center';
+    if (cardIndex === leftIndex) return 'left';
+    if (cardIndex === rightIndex) return 'right';
+    if (cardIndex === hiddenIndex) return 'hidden';
+    return 'hidden';
   };
 
   return (
@@ -558,102 +584,108 @@ const IndustrialPage = () => {
     </p>
   </div>
 
-  {/* === CAROUSEL OUTSIDE max-w CONTAINER === */}
-  <div className="relative w-full overflow-x-clip pb-12">
-    <div className="relative flex justify-center items-center w-full px-4 sm:px-6 lg:px-8" style={{ gap: '9.5rem' }}>
-      {/* LEFT CARD */}
-      <div className="hidden lg:block opacity-40 transition-all duration-300">
-        <div className="w-[28.69rem] h-[14.81rem] bg-white rounded-lg shadow-md border border-[#E5E5E5] flex flex-col justify-center items-start text-left pt-10 pr-7 pb-10 pl-[6.25rem] relative">
-          <div className="w-[6.37rem] h-[6.37rem] bg-[#1C6248] rounded-full flex items-center justify-center absolute left-[-3.185rem] top-1/2 transform -translate-y-1/2">
-            <img
-              src={integrationItems[(currentSlide + 2) % 3].icon}
-              alt=""
-              className="w-[3.18rem] h-[3.18rem] object-contain"
-            />
-          </div>
-          <div>
-            <h3 className="text-[#1C6248] font-montserrat text-[1.5rem] font-semibold mb-4 leading-tight ">
-              {integrationItems[(currentSlide + 2) % 3].title}
-            </h3>
-            <p className="text-[#6C6C6C] font-montserrat font-normal text-[1.05rem] leading-[1.72rem]">
-              {integrationItems[(currentSlide + 2) % 3].description}
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* CENTER CARD */}
-      <div className="z-10">
-        <div className="w-[37.06rem] h-[19.19rem] bg-white rounded-xl shadow-xl border border-[#E5E5E5] flex flex-col justify-center items-start text-left pt-12 pr-9 pb-12 pl-[7rem] relative">
-          <div className="w-[8.25rem] h-[8.25rem] bg-[#1C6248] rounded-full flex items-center justify-center absolute left-[-4.125rem] top-1/2 transform -translate-y-1/2">
-            <img
-              src={integrationItems[currentSlide].icon}
-              alt=""
-              className="w-[4.1rem] h-[4.1rem] object-contain"
-            />
-          </div>
-          <div>
-            <h3 className="text-[#1C6248] font-montserrat text-[1.75rem] font-bold mb-5 leading-tight">
-              {integrationItems[currentSlide].title}
-            </h3>
-            <p className="text-[#6C6C6C] font-montserrat font-normal text-[1.25rem] leading-[1.9rem]">
-              {integrationItems[currentSlide].description}
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* RIGHT CARD */}
-      <div className="hidden lg:block opacity-40 transition-all duration-300">
-        <div className="w-[28.69rem] h-[14.81rem] bg-white rounded-lg shadow-md border border-[#E5E5E5] flex flex-col justify-center items-start text-left pt-10 pr-7 pb-10 pl-[6.25rem] relative">
-          <div className="w-[6.37rem] h-[6.37rem] bg-[#1C6248] rounded-full flex items-center justify-center absolute left-[-3.185rem] top-1/2 transform -translate-y-1/2">
-            <img
-              src={integrationItems[(currentSlide + 1) % 3].icon}
-              alt=""
-              className="w-[3.18rem] h-[3.18rem] object-contain"
-            />
-          </div>
-          <div>
-            <h3 className="text-[#1C6248] font-montserrat text-[1.5rem] font-semibold mb-4 leading-tight">
-              {integrationItems[(currentSlide + 1) % 3].title}
-            </h3>
-            <p className="text-[#6C6C6C] font-montserrat font-normal text-[1.05rem] leading-[1.72rem]">
-              {integrationItems[(currentSlide + 1) % 3].description}
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Dots + Arrows */}
-      <div className="absolute top-[calc(100%+1.875rem)] left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-4">
-        <div className="flex gap-3 mb-2">
-          {[0, 1, 2].map((index) => (
-            <button
+  {/* === CAROUSEL WITH VISIBLE POSITION TRANSITIONS === */}
+  <div className="relative w-full pb-12">
+    {/* Main carousel container with controlled width to show partial cards */}
+    <div className="relative w-full h-[19.19rem] flex justify-center items-center">
+      {/* Carousel wrapper - constrains viewport to show only 3 cards with partial sides */}
+      <div className="relative  w-full h-full overflow-hidden" >
+        {/* Inner container for positioning cards */}
+        <div className="relative w-full h-full flex items-center justify-center">
+        
+        {/* Render all 4 cards with dynamic positioning */}
+        {integrationItems.map((item, index) => {
+          const position = getCardPosition(index);
+          
+          // Calculate transform and visibility for smooth transitions
+          let transformX = '0';
+          let opacity = '0';
+          let zIndex = 1;
+          let width = '28.69rem';
+          let leftPosition = '50%';
+          
+          if (position === 'left') {
+            transformX = '-10rem'; // Position left card further left so outer edge gets cut
+            opacity = '0.4';
+            zIndex = 1;
+            width = '28.69rem';
+            leftPosition = '0';
+          } else if (position === 'center') {
+            transformX = '0';
+            opacity = '1';
+            zIndex = 10;
+            width = '37.06rem';
+            leftPosition = '50%';
+            transformX = '-18.53rem'; // Center the larger card
+          } else if (position === 'right') {
+            transformX = '-18.69rem'; // Position right card further right so outer edge gets cut
+            opacity = '0.4';
+            zIndex = 1;
+            width = '28.69rem';
+            leftPosition = '100%';
+          } else if (position === 'hidden') {
+            // Position hidden card off-screen but ready to slide in
+            transformX = '0';
+            opacity = '0';
+            zIndex = 0;
+            width = '28.69rem';
+            leftPosition = '120%';
+          }
+          
+          const isCenter = position === 'center';
+          
+          return (
+            <div 
               key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`rounded-full transition-all ${
-                currentSlide === index
-                  ? "bg-[#1C6248] w-4 h-4"
-                  : "bg-[#D9D9D9] w-3 h-3"
-              }`}
-            />
-          ))}
-        </div>
-        <div className="flex gap-4">
-          <button
-            onClick={prevSlide}
-            className="w-10 h-10 bg-[#F0FFF9] rounded-full flex items-center justify-center hover:bg-[#E0F5E9] transition-colors"
-          >
-            <ChevronLeft className="w-5 h-5 text-[#1C6248]" />
-          </button>
-          <button
-            onClick={nextSlide}
-            className="w-10 h-10 bg-[#F0FFF9] rounded-full flex items-center justify-center hover:bg-[#E0F5E9] transition-colors"
-          >
-            <ChevronRight className="w-5 h-5 text-[#1C6248]" />
-          </button>
+              className="absolute transition-all duration-500 ease-in-out"
+              style={{ 
+                transform: `translateX(${transformX})`,
+                opacity,
+                zIndex,
+                width,
+                left: leftPosition
+              }}
+            >
+              <div className={`bg-white ${isCenter ? 'rounded-xl shadow-xl' : 'rounded-lg shadow-md'} border border-[#E5E5E5] flex flex-col justify-center items-start text-left ${isCenter ? 'pt-12 pr-9 pb-12 pl-[7rem] h-[19.19rem]' : 'pt-10 pr-7 pb-10 pl-[6.25rem] h-[14.81rem]'} relative`}>
+                <div className={`${isCenter ? 'w-[8.25rem] h-[8.25rem]' : 'w-[6.37rem] h-[6.37rem]'} bg-[#1C6248] rounded-full flex items-center justify-center absolute ${isCenter ? 'left-[-4.125rem]' : 'left-[-3.185rem]'} top-1/2 transform -translate-y-1/2`}>
+                  <img
+                    src={item.icon}
+                    alt=""
+                    className={`${isCenter ? 'w-[4.1rem] h-[4.1rem]' : 'w-[3.18rem] h-[3.18rem]'} object-contain`}
+                  />
+                </div>
+                <div>
+                  <h3 className={`text-[#1C6248] font-montserrat ${isCenter ? 'text-[1.75rem] font-bold mb-5' : 'text-[1.5rem] font-semibold mb-4'} leading-tight`}>
+                    {item.title}
+                  </h3>
+                  <p className={`text-[#6C6C6C] font-montserrat font-normal ${isCenter ? 'text-[1.25rem] leading-[1.9rem]' : 'text-[1.05rem] leading-[1.72rem]'}`}>
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
         </div>
       </div>
+    </div>
+
+    {/* Navigation Arrows */}
+    <div className="absolute top-[calc(100%+1.875rem)] left-1/2 transform -translate-x-1/2 flex gap-4">
+      <button
+        onClick={prevSlide}
+        disabled={isTransitioning}
+        className="w-10 h-10 bg-[#F0FFF9] rounded-full flex items-center justify-center hover:bg-[#E0F5E9] transition-colors disabled:opacity-50"
+      >
+        <ChevronLeft className="w-5 h-5 text-[#1C6248]" />
+      </button>
+      <button
+        onClick={nextSlide}
+        disabled={isTransitioning}
+        className="w-10 h-10 bg-[#F0FFF9] rounded-full flex items-center justify-center hover:bg-[#E0F5E9] transition-colors disabled:opacity-50"
+      >
+        <ChevronRight className="w-5 h-5 text-[#1C6248]" />
+      </button>
     </div>
   </div>
 </div>
