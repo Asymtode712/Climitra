@@ -35,14 +35,14 @@ const IndustrialPage = () => {
     if (isTransitioning) return;
     setIsTransitioning(true);
     setCurrentSlide((prev) => (prev + 1) % 4);
-    setTimeout(() => setIsTransitioning(false), 400);
+    setTimeout(() => setIsTransitioning(false), 700); // Match animation duration
   };
 
   const prevSlide = () => {
     if (isTransitioning) return;
     setIsTransitioning(true);
     setCurrentSlide((prev) => (prev - 1 + 4) % 4);
-    setTimeout(() => setIsTransitioning(false), 400);
+    setTimeout(() => setIsTransitioning(false), 700); // Match animation duration
   };
 
   // Get card positions - returns which position each card should be in
@@ -587,15 +587,16 @@ const IndustrialPage = () => {
   {/* === CAROUSEL WITH VISIBLE POSITION TRANSITIONS === */}
   <div className="relative w-full pb-12">
     {/* Main carousel container with controlled width to show partial cards */}
-    <div className="relative w-full h-[19.19rem] flex justify-center items-center">
+    <div className="relative w-full h-[19.19rem] flex justify-center items-center overflow-hidden">
       {/* Carousel wrapper - constrains viewport to show only 3 cards with partial sides */}
-      <div className="relative  w-full h-full overflow-hidden" >
+      <div className="relative w-full h-full" style={{ overflow: 'visible' }}>
         {/* Inner container for positioning cards */}
         <div className="relative w-full h-full flex items-center justify-center">
         
         {/* Render all 4 cards with dynamic positioning */}
-        {integrationItems.map((item, index) => {
-          const position = getCardPosition(index);
+        {[0, 1, 2, 3].map((cardIndex) => {
+          const item = integrationItems[cardIndex];
+          const position = getCardPosition(cardIndex);
           
           // Calculate transform and visibility for smooth transitions
           let transformX = '0';
@@ -605,20 +606,19 @@ const IndustrialPage = () => {
           let leftPosition = '50%';
           
           if (position === 'left') {
-            transformX = '-10rem'; // Position left card further left so outer edge gets cut
+            transformX = '-12.5rem'; // Position left card further left so outer edge gets cut
             opacity = '0.4';
             zIndex = 1;
             width = '28.69rem';
             leftPosition = '0';
           } else if (position === 'center') {
-            transformX = '0';
+            transformX = '-18.53rem'; // Center the larger card
             opacity = '1';
             zIndex = 10;
             width = '37.06rem';
             leftPosition = '50%';
-            transformX = '-18.53rem'; // Center the larger card
           } else if (position === 'right') {
-            transformX = '-18.69rem'; // Position right card further right so outer edge gets cut
+            transformX = '-17.69rem'; // Position right card further right so outer edge gets cut
             opacity = '0.4';
             zIndex = 1;
             width = '28.69rem';
@@ -636,8 +636,8 @@ const IndustrialPage = () => {
           
           return (
             <div 
-              key={index}
-              className="absolute transition-all duration-500 ease-in-out"
+              key={`static-card-${cardIndex}`}
+              className="absolute transition-all duration-700 ease-out"
               style={{ 
                 transform: `translateX(${transformX})`,
                 opacity,
@@ -646,19 +646,19 @@ const IndustrialPage = () => {
                 left: leftPosition
               }}
             >
-              <div className={`bg-white ${isCenter ? 'rounded-xl shadow-xl' : 'rounded-lg shadow-md'} border border-[#E5E5E5] flex flex-col justify-center items-start text-left ${isCenter ? 'pt-12 pr-9 pb-12 pl-[7rem] h-[19.19rem]' : 'pt-10 pr-7 pb-10 pl-[6.25rem] h-[14.81rem]'} relative`}>
-                <div className={`${isCenter ? 'w-[8.25rem] h-[8.25rem]' : 'w-[6.37rem] h-[6.37rem]'} bg-[#1C6248] rounded-full flex items-center justify-center absolute ${isCenter ? 'left-[-4.125rem]' : 'left-[-3.185rem]'} top-1/2 transform -translate-y-1/2`}>
+              <div className={`bg-white ${isCenter ? 'rounded-xl shadow-xl' : 'rounded-lg shadow-md'} border border-[#E5E5E5] flex flex-col justify-center items-start text-left ${isCenter ? 'pt-12 pr-9 pb-12 pl-[7rem] h-[19.19rem]' : 'pt-10 pr-7 pb-10 pl-[6.25rem] h-[14.81rem]'} relative transition-all duration-700 ease-out`}>
+                <div className={`${isCenter ? 'w-[8.25rem] h-[8.25rem]' : 'w-[6.37rem] h-[6.37rem]'} bg-[#1C6248] rounded-full flex items-center justify-center absolute ${isCenter ? 'left-[-4.125rem]' : 'left-[-3.185rem]'} top-1/2 transform -translate-y-1/2 transition-all duration-700 ease-out z-10`}>
                   <img
                     src={item.icon}
                     alt=""
-                    className={`${isCenter ? 'w-[4.1rem] h-[4.1rem]' : 'w-[3.18rem] h-[3.18rem]'} object-contain`}
+                    className={`${isCenter ? 'w-[4.1rem] h-[4.1rem]' : 'w-[3.18rem] h-[3.18rem]'} object-contain transition-all duration-700 ease-out`}
                   />
                 </div>
-                <div>
-                  <h3 className={`text-[#1C6248] font-montserrat ${isCenter ? 'text-[1.75rem] font-bold mb-5' : 'text-[1.5rem] font-semibold mb-4'} leading-tight`}>
+                <div className="transition-all duration-700 ease-out " style={{ transform: `scale(${isCenter ? 1 : 0.85})`, transformOrigin: 'top left', fontSize: `${isCenter ? '1rem' : '0.85rem'}`, marginTop: `${isCenter ? '0' : '1.5rem'}` }}>
+                  <h3 className="text-[#1C6248] font-montserrat font-bold leading-tight transition-all duration-700 ease-out" style={{ marginBottom: '1.25rem', fontSize: `${isCenter ? '1.75rem' : '1.31rem'}` }}>
                     {item.title}
                   </h3>
-                  <p className={`text-[#6C6C6C] font-montserrat font-normal ${isCenter ? 'text-[1.25rem] leading-[1.9rem]' : 'text-[1.05rem] leading-[1.72rem]'}`}>
+                  <p className="text-[#6C6C6C] font-montserrat font-normal transition-all duration-700 ease-out" style={{ fontSize: `${isCenter ? '1.33rem' : '1.0rem'}`, lineHeight: `${isCenter ? '1.9rem' : '1.465rem'}` }}>
                     {item.description}
                   </p>
                 </div>
