@@ -4,6 +4,7 @@ import CDRPage from "./components/CDRPage";
 import ContactUs from "./components/ContactUs";
 import TeamPage from "./components/TeamPage";
 import IndustrialPage from "./components/IndustrialPage";
+import TechPage from "./components/TechPage";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -18,6 +19,8 @@ function App() {
         return <ContactUs />;
       case "team":
         return <TeamPage />;
+      case "tech":
+        return <TechPage />;
       default:
         return <ClimitraEngine />;
     }

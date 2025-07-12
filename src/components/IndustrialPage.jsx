@@ -142,7 +142,7 @@ const IndustrialPage = () => {
                   className="font-montserrat"
                   style={{
                     color: '#1C6248',
-                    fontFamily: 'Montserrat, sans-serif',
+                    fontFamily: 'Montserrat',
                     fontWeight: 600,
                     fontStyle: 'normal',
                     fontSize: '27.78px',
@@ -173,7 +173,7 @@ const IndustrialPage = () => {
                     className="font-source-sans-pro"
                     style={{
                       color: '#1C6248',
-                      fontFamily: 'Source Sans Pro, sans-serif',
+                      fontFamily: 'Source Sans Pro',
                       fontWeight: 600,
                       fontStyle: 'normal',
                       fontSize: '21.37px',
@@ -185,10 +185,10 @@ const IndustrialPage = () => {
                     High Emissions, Heavy Growth
                   </h4>
                   <p
-                    className="font-sofia"
+                    className="font-source-sans-pro"
                     style={{
                       color: '#6C6C6C',
-                      fontFamily: 'Sofia Pro, sans-serif',
+                      fontFamily: 'Source Sans Pro',
                       fontWeight: 400,
                       fontStyle: 'normal',
                       letterSpacing: '5%',
@@ -214,7 +214,7 @@ const IndustrialPage = () => {
                     className="font-source-sans-pro"
                     style={{
                       color: '#1C6248',
-                      fontFamily: 'Source Sans Pro, sans-serif',
+                      fontFamily: 'Source Sans Pro',
                       fontWeight: 600,
                       fontStyle: 'normal',
                       fontSize: '21.37px',
@@ -226,10 +226,10 @@ const IndustrialPage = () => {
                     Policy Pressure Builds
                   </h4>
                   <p
-                    className="font-sofia"
+                    className="font-source-sans-pro"
                     style={{
                       color: '#6C6C6C',
-                      fontFamily: 'Sofia Pro, sans-serif',
+                      fontFamily: 'Source Sans Pro',
                       fontWeight: 400,
                       fontStyle: 'normal',
                       letterSpacing: '5%',
@@ -254,7 +254,7 @@ const IndustrialPage = () => {
                     className="font-source-sans-pro"
                     style={{
                       color: '#1C6248',
-                      fontFamily: 'Source Sans Pro, sans-serif',
+                      fontFamily: 'Source Sans Pro',
                       fontWeight: 600,
                       fontStyle: 'normal',
                       fontSize: '21.37px',
@@ -266,10 +266,10 @@ const IndustrialPage = () => {
                     Fuel Volatility
                   </h4>
                   <p
-                    className="font-sofia"
+                    className="font-source-sans-pro"
                     style={{
                       color: '#6C6C6C',
-                      fontFamily: 'Sofia Pro, sans-serif',
+                      fontFamily: 'Source Sans Pro',
                       fontWeight: 400,
                       fontStyle: 'normal',
                       letterSpacing: '5%',

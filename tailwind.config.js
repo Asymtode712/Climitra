@@ -22,9 +22,31 @@ export default {
         1.775: "1.775",
         1.78: "1.78",
       },
+      spacing: {
+        "0.75rem": "0.75rem",
+        "1rem": "1rem",
+        "1.176rem": "1.176rem",
+        "1.375rem": "1.375rem",
+        "2.125rem": "2.125rem",
+        "2.25rem": "2.25rem",
+        "2.25rem": "2.25rem",
+        "3.1875rem": "3.1875rem",
+        "4.625rem": "4.625rem",
+        "8.375rem": "8.375rem",
+        "9.4375rem": "9.4375rem",
+        "52.75rem": "52.75rem",
+      },
+      fontSize: {
+        "0.75rem": "0.75rem",
+        "1rem": "1rem",
+        "1.375rem": "1.375rem",
+        "2.25rem": "2.25rem",
+      },
+      borderRadius: {
+        "0.785rem": "0.785rem",
+        "1.176rem": "1.176rem",
+      },
     },
   },
-  plugins: [
-    require('tailwind-scrollbar-hide')
-  ],
+  plugins: [require("tailwind-scrollbar-hide")],
 };

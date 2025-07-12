@@ -28,7 +28,10 @@ const Navbar = () => {
       >
         CDR
       </div>
-      <div className="text-white text-lg font-medium font-montserrat cursor-pointer hover:text-teal-200 transition-colors">
+      <div
+        className="text-white text-lg font-medium font-montserrat cursor-pointer hover:text-teal-200 transition-colors"
+        onClick={() => handleNavigation("tech")}
+      >
         Tech Suite
       </div>
       <div

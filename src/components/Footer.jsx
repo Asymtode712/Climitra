@@ -147,6 +147,13 @@ const Footer = () => {
                   window.navigateTo("contact");
                 } else if (item === "Our Team" && window.navigateTo) {
                   window.navigateTo("team");
+                } else if (item === "Tech Suite" && window.navigateTo) {
+                  window.navigateTo("tech");
+                } else if (
+                  item === "Industrial Decarbonization" &&
+                  window.navigateTo
+                ) {
+                  window.navigateTo("industrial");
                 }
               }}
               className="text-[#0F161E] text-base font-medium font-inter hover:underline transition-colors"
