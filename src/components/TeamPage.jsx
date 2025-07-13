@@ -52,7 +52,7 @@ const TeamPage = () => {
         <div className="max-w-6xl mx-auto px-8">
           {/* Section Header */}
           <div className="flex flex-col items-center mb-16">
-            <h2 className="text-[2.25rem] font-bold font-montserrat leading-[2.75rem] mb-4 text-center">
+            <h2 className="text-[2.25rem] font-semibold font-montserrat leading-[2.75rem] mb-4 text-center">
               <span className="text-[#0C0C0C]">Meet the </span>
               <span className="text-[#1C6248]">Team</span>
             </h2>
@@ -79,7 +79,7 @@ const TeamPage = () => {
               <div className="relative">
                 <button
                   onClick={() => setActiveTab("team")}
-                  className={`px-6 py-3 text-2xl font-bold font-montserrat transition-colors ${
+                  className={`px-6 py-3 text-2xl font-semibold font-montserrat transition-colors ${
                     activeTab === "team" ? "text-[#1C6248]" : "text-[#C9C9C8]"
                   }`}
                 >
@@ -93,7 +93,7 @@ const TeamPage = () => {
               <div className="relative">
                 <button
                   onClick={() => setActiveTab("advisors")}
-                  className={`px-6 py-3 text-2xl font-bold font-montserrat transition-colors ${
+                  className={`px-6 py-3 text-2xl font-semibold font-montserrat transition-colors ${
                     activeTab === "advisors" ? "text-[#1C6248]" : "text-[#C9C9C8]"
                   }`}
                 >
@@ -111,7 +111,7 @@ const TeamPage = () => {
             <div>
 {/* Founders Section */}
 <div className="flex flex-col items-center mb-24">
-  <h3 className="text-[#1C6248] text-[1.5rem] font-bold font-montserrat mb-2">
+  <h3 className="text-[#1C6248] text-[1.5rem] font-semibold font-montserrat mb-2">
     Founders
   </h3>
   <div className="w-[1.6875rem] h-1 bg-[#1C6248] mb-16"></div>
@@ -168,7 +168,7 @@ const TeamPage = () => {
 {/* Core Team Section */}
 <div className="flex flex-col items-center mb-[115px]">
 
-  <h3 className="text-[#1C6248] text-[1.5rem] font-bold font-montserrat mb-2">
+  <h3 className="text-[#1C6248] text-[1.5rem] font-semibold font-montserrat mb-2">
     Core Team
   </h3>
   <div className="w-[1.6875rem] h-1 bg-[#1C6248] mb-16"></div>
@@ -288,7 +288,7 @@ const TeamPage = () => {
                     <div className="mt-4">
                       <button
                         onClick={() => setIsExpanded(!isExpanded)}
-                        className="flex items-center gap-3 bg-[#1C6248] text-white px-6 py-2 rounded-lg font-bold font-montserrat transition-all hover:bg-[#0F4D36]"
+                        className="flex items-center gap-3 bg-[#1C6248] text-white px-6 py-2 rounded-lg font-semibold font-montserrat transition-all hover:bg-[#0F4D36]"
                       >
                         <span>Read More</span>
                         <svg
@@ -345,7 +345,7 @@ const TeamPage = () => {
                   <div className="flex justify-center mt-12">
                     <button
                       onClick={() => setIsExpanded(!isExpanded)}
-                      className="flex items-center gap-3 bg-[#1C6248] text-white px-6 py-2 rounded-lg font-bold font-montserrat transition-all hover:bg-[#0F4D36]"
+                      className="flex items-center gap-3 bg-[#1C6248] text-white px-6 py-2 rounded-lg font-semibold font-montserrat transition-all hover:bg-[#0F4D36]"
                     >
                       <span>Close</span>
                       <svg

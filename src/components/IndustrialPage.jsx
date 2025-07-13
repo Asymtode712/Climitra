@@ -7,6 +7,7 @@ const IndustrialPage = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0); // 0-3: which card is in center
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [lastDirection, setLastDirection] = useState('next'); // Track navigation direction
 
   const integrationItems = [
     {
@@ -34,6 +35,7 @@ const IndustrialPage = () => {
   const nextSlide = () => {
     if (isTransitioning) return;
     setIsTransitioning(true);
+    setLastDirection('next');
     setCurrentSlide((prev) => (prev + 1) % 4);
     setTimeout(() => setIsTransitioning(false), 700); // Match animation duration
   };
@@ -41,6 +43,7 @@ const IndustrialPage = () => {
   const prevSlide = () => {
     if (isTransitioning) return;
     setIsTransitioning(true);
+    setLastDirection('prev');
     setCurrentSlide((prev) => (prev - 1 + 4) % 4);
     setTimeout(() => setIsTransitioning(false), 700); // Match animation duration
   };
@@ -589,7 +592,7 @@ const IndustrialPage = () => {
     {/* Main carousel container with controlled width to show partial cards */}
     <div className="relative w-full h-[19.19rem] flex justify-center items-center overflow-hidden">
       {/* Carousel wrapper - constrains viewport to show only 3 cards with partial sides */}
-      <div className="relative w-full h-full" style={{ overflow: 'visible' }}>
+      <div className="relative w-full h-full overflow-hidden">
         {/* Inner container for positioning cards */}
         <div className="relative w-full h-full flex items-center justify-center">
         
@@ -604,6 +607,17 @@ const IndustrialPage = () => {
           let zIndex = 1;
           let width = '28.69rem';
           let leftPosition = '50%';
+          
+          // Determine which cards need to slide in from which direction
+          const leftIndex = (currentSlide - 1 + 4) % 4;
+          const rightIndex = (currentSlide + 1) % 4;
+          const hiddenIndex = (currentSlide + 2) % 4;
+          
+          // When we navigate:
+          // - Next (right arrow): hidden card becomes new left card (slides from left)
+          // - Prev (left arrow): hidden card becomes new right card (slides from right)
+          const shouldSlideFromLeft = cardIndex === hiddenIndex && lastDirection === 'next';
+          const shouldSlideFromRight = cardIndex === hiddenIndex && lastDirection === 'prev';
           
           if (position === 'left') {
             transformX = '-12.5rem'; // Position left card further left so outer edge gets cut
@@ -624,12 +638,20 @@ const IndustrialPage = () => {
             width = '28.69rem';
             leftPosition = '100%';
           } else if (position === 'hidden') {
-            // Position hidden card off-screen but ready to slide in
+            // Position hidden card off-screen based on where it will slide to
             transformX = '0';
             opacity = '0';
             zIndex = 0;
             width = '28.69rem';
-            leftPosition = '120%';
+            
+            // Position cards off-screen on the side they'll slide in from
+            if (shouldSlideFromLeft) {
+              leftPosition = '-100%'; // Off-screen left for cards sliding in from left
+            } else if (shouldSlideFromRight) {
+              leftPosition = '200%'; // Off-screen right for cards sliding in from right
+            } else {
+              leftPosition = '-200%'; // Default off-screen left for other hidden cards
+            }
           }
           
           const isCenter = position === 'center';
@@ -671,7 +693,7 @@ const IndustrialPage = () => {
     </div>
 
     {/* Navigation Arrows */}
-    <div className="absolute top-[calc(100%+1.875rem)] left-1/2 transform -translate-x-1/2 flex gap-4">
+    <div className="absolute top-[calc(100%+0.5rem)] left-1/2 transform -translate-x-1/2 flex gap-4">
       <button
         onClick={prevSlide}
         disabled={isTransitioning}

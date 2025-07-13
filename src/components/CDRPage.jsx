@@ -178,7 +178,7 @@ const scrollRight = () => {
       <div className="w-full bg-[#FDFDFD] py-20">
         {/* TEXT SECTION */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-20">
-          <h1 className="text-4xl md:text-5xl font-bold font-montserrat mb-4">
+          <h1 className="text-4xl md:text-5xl font-semibold font-montserrat mb-4">
             <span className="text-[#0C0C0C]">The </span>
             <span className="text-[#1C6248]">CDR</span>
             <span className="text-[#0C0C0C]"> Imperative</span>
@@ -193,97 +193,148 @@ const scrollRight = () => {
         </div>
 
         {/* === CAROUSEL OUTSIDE max-w CONTAINER === */}
-        <div className="relative w-full overflow-x-clip pb-12">
-          <div className="relative flex justify-center items-center w-full px-4 sm:px-6 lg:px-8">
-            {/* LEFT CARD */}
-            <div className="hidden lg:block absolute left-0 top-[3.125rem] translate-x-[-20%] scale-[0.95] opacity-40 transition-all duration-300">
-              <div className="w-[30.0rem] h-[19.25rem] bg-gradient-to-b from-[#F0FFF9] to-white rounded-lg shadow-lg p-6 flex flex-col items-center text-center">
-                <div className="w-16 h-16 bg-[#1C6248] rounded-full flex items-center justify-center mb-4">
-                  <img
-                    src={carouselItems[(currentSlide + 2) % 3].icon}
-                    alt=""
-                    className="w-8 h-8"
-                  />
-                </div>
-                <h3 className="text-lg font-bold text-[#1C6248] font-montserrat mb-1">
-                  {carouselItems[(currentSlide + 2) % 3].title}
-                </h3>
-                <div className="w-12 h-0.5 bg-[#1C6248] mb-2" />
-                <p className="text-sm text-[#6C6C6C] font-montserrat leading-5 px-2">
-                  {carouselItems[(currentSlide + 2) % 3].description}
-                </p>
+        <div className="relative w-full pb-12">
+          <div className="relative w-full h-[25.2rem] flex justify-center items-center overflow-hidden">
+            <div className="relative w-full h-full overflow-hidden">
+              <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+                {[0, 1, 2].map((cardIndex) => {
+                  const item = carouselItems[cardIndex];
+                  // Compute indexes for animation
+                  const leftIndex = (currentSlide - 1 + 3) % 3;
+                  const rightIndex = (currentSlide + 1) % 3;
+                  const hiddenIndex = (currentSlide + 2) % 3;
+
+                  // Animation logic (only logic, not style/size)
+                  let transformX = '0';
+                  let opacity = '0';
+                  let zIndex = 1;
+                  let leftPosition = '50%';
+                  let visibility = 'hidden';
+
+                  if (cardIndex === leftIndex) {
+                    transformX = '-12.9rem';
+                    opacity = '0.4';
+                    zIndex = 1;
+                    leftPosition = '0';
+                    visibility = 'visible';
+                  } else if (cardIndex === currentSlide) {
+                    transformX = '-19.7rem';
+                    opacity = '1';
+                    zIndex = 10;
+                    leftPosition = '50%';
+                    visibility = 'visible';
+                  } else if (cardIndex === rightIndex) {
+                    transformX = '-17.5rem';
+                    opacity = '0.4';
+                    zIndex = 1;
+                    leftPosition = '100%';
+                    visibility = 'visible';
+                  } else if (cardIndex === hiddenIndex) {
+                    // Only the correct hidden card is visible and animating in
+                    if (currentSlide === (cardIndex + 1) % 3) {
+                      // Slide in from right
+                      leftPosition = '150%';
+                      visibility = 'visible';
+                      zIndex = 1;
+                    } else if (currentSlide === (cardIndex + 2) % 3) {
+                      // Slide in from left
+                      leftPosition = '-150%';
+                      visibility = 'visible';
+                      zIndex = 1;
+                    } else {
+                      leftPosition = '-300%';
+                      visibility = 'hidden';
+                      zIndex = -1;
+                    }
+                    transformX = '0';
+                    opacity = '0';
+                  } else {
+                    leftPosition = '-300%';
+                    visibility = 'hidden';
+                    zIndex = -1;
+                    transformX = '0';
+                    opacity = '0';
+                  }
+
+                  const isCenter = cardIndex === currentSlide;
+
+                  return (
+                    <div
+                      key={`cdr-card-${cardIndex}`}
+                      className="absolute transition-all duration-700 ease-out"
+                      style={{
+                        transform: `translateX(${transformX})`,
+                        opacity,
+                        zIndex,
+                        left: leftPosition,
+                        visibility,
+                      }}
+                    >
+                      
+                      {cardIndex === leftIndex && (
+                        <div className="w-[30.0rem] h-[19.25rem] bg-gradient-to-b from-[#F0FFF9] to-white rounded-lg shadow-lg p-6 flex flex-col items-center text-center border border-[#E5E5E5]">
+                          <div className="w-16 h-16 bg-[#1C6248] rounded-full flex items-center justify-center mb-4">
+                            <img src={item.icon} alt="" className="w-8 h-8" />
+                          </div>
+                          <h3 className="text-lg font-bold text-[#1C6248] font-montserrat mb-1">{item.title}</h3>
+                          <div className="w-12 h-0.5 bg-[#1C6248] mb-2" />
+                          <p className="text-sm text-[#6C6C6C] font-montserrat leading-5 px-2">{item.description}</p>
+                        </div>
+                      )}
+                      {cardIndex === currentSlide && (
+                        <div className="w-[39.375rem] h-[25.1875rem] bg-gradient-to-b from-[#F0FFF9] to-white rounded-xl shadow-xl p-10 flex flex-col items-center text-center border border-[#E5E5E5]">
+                          <div className="w-20 h-20 bg-[#1C6248] rounded-full flex items-center justify-center mb-8">
+                            <img src={item.icon} alt="" className="w-10 h-10 object-contain" />
+                          </div>
+                          <h3 className="text-2xl font-bold text-[#1C6248] font-montserrat mb-4">{item.title}</h3>
+                          <div className="w-20 h-0.5 bg-[#1C6248] mb-6" />
+                          <p className="text-lg text-[#0C0C0C] font-montserrat leading-6 px-4">{item.description}</p>
+                        </div>
+                      )}
+                      {cardIndex === rightIndex && (
+                        <div className="w-[30.0rem] h-[19.25rem] bg-gradient-to-b from-[#F0FFF9] to-white rounded-lg shadow-lg p-6 flex flex-col items-center text-center border border-[#E5E5E5]">
+                          <div className="w-16 h-16 bg-[#1C6248] rounded-full flex items-center justify-center mb-4">
+                            <img src={item.icon} alt="" className="w-8 h-8" />
+                          </div>
+                          <h3 className="text-lg font-bold text-[#1C6248] font-montserrat mb-1">{item.title}</h3>
+                          <div className="w-12 h-0.5 bg-[#1C6248] mb-2" />
+                          <p className="text-sm text-[#6C6C6C] font-montserrat leading-5 px-2">{item.description}</p>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </div>
-
-            {/* CENTER CARD */}
-            <div className="z-10">
-              <div className="w-[39.375rem] h-[25.1875rem] bg-gradient-to-b from-[#F0FFF9] to-white rounded-xl shadow-xl p-10 flex flex-col items-center text-center">
-                <div className="w-20 h-20 bg-[#1C6248] rounded-full flex items-center justify-center mb-8">
-                  <img
-                    src={carouselItems[currentSlide].icon}
-                    alt=""
-                    className="w-10 h-10 object-contain"
-                  />
-                </div>
-                <h3 className="text-2xl font-bold text-[#1C6248] font-montserrat mb-4">
-                  {carouselItems[currentSlide].title}
-                </h3>
-                <div className="w-20 h-0.5 bg-[#1C6248] mb-6" />
-                <p className="text-lg text-[#0C0C0C] font-montserrat leading-6 px-4">
-                  {carouselItems[currentSlide].description}
-                </p>
-              </div>
-            </div>
-
-            {/* RIGHT CARD */}
-            <div className="hidden lg:block absolute right-0 top-[3.125rem] translate-x-[20%] scale-[0.95] opacity-40 transition-all duration-300">
-              <div className="w-[30.0rem] h-[19.25rem] bg-gradient-to-b from-[#F0FFF9] to-white rounded-lg shadow-lg p-6 flex flex-col items-center text-center">
-                <div className="w-16 h-16 bg-[#1C6248] rounded-full flex items-center justify-center mb-4">
-                  <img
-                    src={carouselItems[(currentSlide + 1) % 3].icon}
-                    alt=""
-                    className="w-8 h-8"
-                  />
-                </div>
-                <h3 className="text-lg font-bold text-[#1C6248] font-montserrat mb-1">
-                  {carouselItems[(currentSlide + 1) % 3].title}
-                </h3>
-                <div className="w-12 h-0.5 bg-[#1C6248] mb-2" />
-                <p className="text-sm text-[#6C6C6C] font-montserrat leading-5 px-2">
-                  {carouselItems[(currentSlide + 1) % 3].description}
-                </p>
-              </div>
-            </div>
-
-            {/* Dots + Arrows */}
-            <div className="absolute top-[calc(100%+1.875rem)] left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-4">
-              <div className="flex gap-3 mb-2">
-                {[0, 1, 2].map((index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentSlide(index)}
-                    className={`rounded-full transition-all ${
-                      currentSlide === index
-                        ? "bg-[#1C6248] w-4 h-4"
-                        : "bg-[#D9D9D9] w-3 h-3"
-                    }`}
-                  />
-                ))}
-              </div>
-              <div className="flex gap-4">
+          </div>
+          {/* Dots + Arrows */}
+          <div className="absolute top-[calc(99%)] left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-4">
+            <div className="flex gap-3 mb-2">
+              {[0, 1, 2].map((index) => (
                 <button
-                  onClick={prevSlide}
-                  className="w-10 h-10 bg-[#F0FFF9] rounded-full flex items-center justify-center hover:bg-[#E0F5E9] transition-colors"
-                >
-                  <ChevronLeft className="w-5 h-5 text-[#1C6248]" />
-                </button>
-                <button
-                  onClick={nextSlide}
-                  className="w-10 h-10 bg-[#F0FFF9] rounded-full flex items-center justify-center hover:bg-[#E0F5E9] transition-colors"
-                >
-                  <ChevronRight className="w-5 h-5 text-[#1C6248]" />
-                </button>
-              </div>
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`rounded-full transition-all ${
+                    currentSlide === index
+                      ? "bg-[#1C6248] w-4 h-4"
+                      : "bg-[#D9D9D9] w-3 h-3"
+                  }`}
+                />
+              ))}
+            </div>
+            <div className="flex gap-4">
+              <button
+                onClick={prevSlide}
+                className="w-10 h-10 bg-[#F0FFF9] rounded-full flex items-center justify-center hover:bg-[#E0F5E9] transition-colors"
+              >
+                <ChevronLeft className="w-5 h-5 text-[#1C6248]" />
+              </button>
+              <button
+                onClick={nextSlide}
+                className="w-10 h-10 bg-[#F0FFF9] rounded-full flex items-center justify-center hover:bg-[#E0F5E9] transition-colors"
+              >
+                <ChevronRight className="w-5 h-5 text-[#1C6248]" />
+              </button>
             </div>
           </div>
         </div>
@@ -295,7 +346,7 @@ const scrollRight = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <div className="flex items-center justify-center mb-4">
-            <h2 className="text-4xl font-bold font-montserrat">
+            <h2 className="text-4xl font-semibold font-montserrat">
               <span className="text-[#0C0C0C]">Biochar: Nature's </span>
               <span className="text-[#1C6248]">Carbon Vault</span>
             </h2>
@@ -329,7 +380,7 @@ const scrollRight = () => {
                 <div className="w-20 h-20 bg-[#1C6248] rounded-full flex items-center justify-center mb-8">
                   <img src={benefit.icon} alt="" className="w-11 h-11" />
                 </div>
-                <h3 className="text-2xl font-bold text-[#1C6248] font-montserrat mb-4">
+                <h3 className="text-2xl font-semibold text-[#1C6248] font-montserrat mb-4">
                   {benefit.title}
                 </h3>
                 <div className="w-11 h-0.5 bg-[#1C6248] mb-6"></div>
@@ -364,7 +415,7 @@ const scrollRight = () => {
           {/* Section Title */}
           <div className="text-center mb-12">
             <div className="flex items-center justify-center mb-4">
-              <h2 className="text-4xl font-bold font-montserrat">
+              <h2 className="text-4xl font-semibold font-montserrat">
                 <span className="text-[#0C0C0C]">Rigorous </span>
                 <span className="text-[#1C6248]">Digital MRV</span>
                 <span className="text-[#0C0C0C]"> Standards</span>
@@ -394,7 +445,7 @@ const scrollRight = () => {
                   <img src={feature.icon} alt="" className="w-9 h-9" />
                 </div>
                 <h3
-                  className={`text-xl font-bold font-montserrat mb-6 ${
+                  className={`text-xl font-semibold font-montserrat mb-6 ${
                     feature.isHighlighted ? "text-[#1C6248]" : "text-[#0C0C0C]"
                   }`}
                 >
@@ -424,16 +475,16 @@ const scrollRight = () => {
         {/* Content */}
         <div className="relative z-10 flex items-center justify-center h-full">
           <div className="text-center max-w-4xl mx-auto px-4">
-            <h2 className="text-4xl font-bold text-white font-montserrat mb-4 leading-tight">
+            <h2 className="text-4xl font-semibold text-white font-montserrat mb-4 leading-tight">
               Ready for High-Integrity Carbon Credits?
             </h2>
             <p className="text-xl text-white font-sofia mb-2">
               Premium biochar-based CDR with full technological validation.
             </p>
-            <p className="text-xl text-white font-sofia font-bold mb-12">
+            <p className="text-xl text-white font-sofia font-semibold mb-12">
               Measurable. Permanent. Independently verified.
             </p>
-            <button className="bg-[#1C6248] text-white px-6 py-3 rounded-lg text-lg font-bold font-montserrat hover:bg-[#155238] transition-colors">
+            <button className="bg-[#1C6248] text-white px-6 py-3 rounded-lg text-lg font-semibold font-montserrat hover:bg-[#155238] transition-colors">
               Secure your Carbon Credits Today
             </button>
           </div>
