@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      screens: {
+        'mobile': {'max': '430px'}, // iPhone 16 Pro Max and similar
+      },
       colors: {
         "climitra-green": "#1C6248",
         "climitra-light-green": "#6BBD4E",

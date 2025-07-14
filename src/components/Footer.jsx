@@ -2,14 +2,14 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="bg-[#F3F3F3] w-full h-[20.6875rem] flex flex-col">
+    <div className="bg-[#F3F3F3] w-full min-h-[20.6875rem] flex flex-col">
       {/* Top Section with Logo and LinkedIn */}
-      <div className="flex items-center justify-center gap-[2.666688rem] pt-[2.6875rem] px-[4.3125rem]">
+      <div className="flex items-center justify-between gap-4 pt-8 sm:pt-10 lg:pt-[2.6875rem] px-4 sm:px-6 md:px-8 lg:px-[4.3125rem]">
         {/* Climitra Logo */}
-        <div className="w-[9.388875rem] h-[2.166688rem]">
+        <div className="w-[6rem] h-[1.5rem] sm:w-[7rem] sm:h-[1.7rem] md:w-[8rem] md:h-[1.9rem] lg:w-[9.388875rem] lg:h-[2.166688rem] flex-shrink-0">
           <svg
-            width="151"
-            height="36"
+            width="100%"
+            height="100%"
             viewBox="0 0 151 36"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -72,12 +72,11 @@ const Footer = () => {
           </svg>
         </div>
 
-        {/* Right side content - spacing for balance */}
-        <div className="flex-1 flex justify-end">
-          {/* LinkedIn Icon */}
+        {/* LinkedIn Icon */}
+        <div className="w-[20px] h-[20px] sm:w-[24px] sm:h-[24px] lg:w-[30px] lg:h-[30px] flex-shrink-0">
           <svg
-            width="30"
-            height="30"
+            width="100%"
+            height="100%"
             viewBox="0 0 30 30"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -91,77 +90,119 @@ const Footer = () => {
       </div>
 
       {/* Location Section */}
-      <div className="flex items-center px-[4.3125rem] mt-6">
-        <svg
-          width="20"
-          height="21"
-          viewBox="0 0 20 21"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M10 2.31104C11.9891 2.31104 13.8968 3.10121 15.3033 4.50773C16.7098 5.91426 17.5 7.82191 17.5 9.81104C17.5 12.3727 16.1033 14.4694 14.6317 15.9735C13.8964 16.7169 13.0941 17.3909 12.235 17.9869L11.88 18.2285L11.7133 18.3394L11.3992 18.5394L11.1192 18.7102L10.7725 18.9119C10.5372 19.0462 10.2709 19.1168 10 19.1168C9.72906 19.1168 9.4628 19.0462 9.2275 18.9119L8.88083 18.7102L8.4475 18.4435L8.2875 18.3394L7.94583 18.1119C7.01903 17.4848 6.15575 16.7686 5.36833 15.9735C3.89667 14.4685 2.5 12.3727 2.5 9.81104C2.5 7.82191 3.29018 5.91426 4.6967 4.50773C6.10322 3.10121 8.01088 2.31104 10 2.31104ZM10 3.9777C8.4529 3.9777 6.96917 4.59228 5.87521 5.68625C4.78125 6.78021 4.16667 8.26394 4.16667 9.81104C4.16667 11.746 5.22667 13.4444 6.55917 14.8077C7.13211 15.3877 7.75138 15.92 8.41083 16.3994L8.7925 16.671C8.91583 16.7571 9.03444 16.8371 9.14833 16.911L9.47333 17.1194L9.75917 17.2935L10 17.4344L10.3792 17.2102L10.685 17.0185C10.8478 16.9152 11.0219 16.7994 11.2075 16.671L11.5892 16.3994C12.2486 15.92 12.8679 15.3877 13.4408 14.8077C14.7733 13.4452 15.8333 11.746 15.8333 9.81104C15.8333 8.26394 15.2188 6.78021 14.1248 5.68625C13.0308 4.59228 11.5471 3.9777 10 3.9777ZM10 6.4777C10.8841 6.4777 11.7319 6.82889 12.357 7.45401C12.9821 8.07913 13.3333 8.92698 13.3333 9.81104C13.3333 10.6951 12.9821 11.5429 12.357 12.1681C11.7319 12.7932 10.8841 13.1444 10 13.1444C9.11594 13.1444 8.2681 12.7932 7.64298 12.1681C7.01786 11.5429 6.66667 10.6951 6.66667 9.81104C6.66667 8.92698 7.01786 8.07913 7.64298 7.45401C8.2681 6.82889 9.11594 6.4777 10 6.4777ZM10 8.14437C9.55797 8.14437 9.13405 8.31996 8.82149 8.63252C8.50893 8.94509 8.33333 9.36901 8.33333 9.81104C8.33333 10.2531 8.50893 10.677 8.82149 10.9895C9.13405 11.3021 9.55797 11.4777 10 11.4777C10.442 11.4777 10.866 11.3021 11.1785 10.9895C11.4911 10.677 11.6667 10.2531 11.6667 9.81104C11.6667 9.36901 11.4911 8.94509 11.1785 8.63252C10.866 8.31996 10.442 8.14437 10 8.14437Z"
-            fill="#6C6C6C"
-          />
-        </svg>
-        <div className="ml-[1.5625rem] flex items-center">
-          <span className="text-[#6C6C6C] text-base font-medium font-montserrat">
+      <div className="flex items-start px-4 sm:px-6 md:px-8 lg:px-[4.3125rem] mt-4 sm:mt-5 lg:mt-6">
+        <div className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 mt-1">
+          <svg
+            width="100%"
+            height="100%"
+            viewBox="0 0 20 21"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M10 2.31104C11.9891 2.31104 13.8968 3.10121 15.3033 4.50773C16.7098 5.91426 17.5 7.82191 17.5 9.81104C17.5 12.3727 16.1033 14.4694 14.6317 15.9735C13.8964 16.7169 13.0941 17.3909 12.235 17.9869L11.88 18.2285L11.7133 18.3394L11.3992 18.5394L11.1192 18.7102L10.7725 18.9119C10.5372 19.0462 10.2709 19.1168 10 19.1168C9.72906 19.1168 9.4628 19.0462 9.2275 18.9119L8.88083 18.7102L8.4475 18.4435L8.2875 18.3394L7.94583 18.1119C7.01903 17.4848 6.15575 16.7686 5.36833 15.9735C3.89667 14.4685 2.5 12.3727 2.5 9.81104C2.5 7.82191 3.29018 5.91426 4.6967 4.50773C6.10322 3.10121 8.01088 2.31104 10 2.31104ZM10 3.9777C8.4529 3.9777 6.96917 4.59228 5.87521 5.68625C4.78125 6.78021 4.16667 8.26394 4.16667 9.81104C4.16667 11.746 5.22667 13.4444 6.55917 14.8077C7.13211 15.3877 7.75138 15.92 8.41083 16.3994L8.7925 16.671C8.91583 16.7571 9.03444 16.8371 9.14833 16.911L9.47333 17.1194L9.75917 17.2935L10 17.4344L10.3792 17.2102L10.685 17.0185C10.8478 16.9152 11.0219 16.7994 11.2075 16.671L11.5892 16.3994C12.2486 15.92 12.8679 15.3877 13.4408 14.8077C14.7733 13.4452 15.8333 11.746 15.8333 9.81104C15.8333 8.26394 15.2188 6.78021 14.1248 5.68625C13.0308 4.59228 11.5471 3.9777 10 3.9777ZM10 6.4777C10.8841 6.4777 11.7319 6.82889 12.357 7.45401C12.9821 8.07913 13.3333 8.92698 13.3333 9.81104C13.3333 10.6951 12.9821 11.5429 12.357 12.1681C11.7319 12.7932 10.8841 13.1444 10 13.1444C9.11594 13.1444 8.2681 12.7932 7.64298 12.1681C7.01786 11.5429 6.66667 10.6951 6.66667 9.81104C6.66667 8.92698 7.01786 8.07913 7.64298 7.45401C8.2681 6.82889 9.11594 6.4777 10 6.4777ZM10 8.14437C9.55797 8.14437 9.13405 8.31996 8.82149 8.63252C8.50893 8.94509 8.33333 9.36901 8.33333 9.81104C8.33333 10.2531 8.50893 10.677 8.82149 10.9895C9.13405 11.3021 9.55797 11.4777 10 11.4777C10.442 11.4777 10.866 11.3021 11.1785 10.9895C11.4911 10.677 11.6667 10.2531 11.6667 9.81104C11.6667 9.36901 11.4911 8.94509 11.1785 8.63252C10.866 8.31996 10.442 8.14437 10 8.14437Z"
+              fill="#6C6C6C"
+            />
+          </svg>
+        </div>
+        <div className="ml-4 sm:ml-5 lg:ml-[1.5625rem] flex flex-col sm:flex-row sm:items-center">
+          <span className="text-[#6C6C6C] text-xs sm:text-sm lg:text-base font-medium font-montserrat whitespace-nowrap">
             Connect with us -
           </span>
-          <span className="text-[#6C6C6C] text-base font-normal font-montserrat ml-1">
+          <span className="text-[#6C6C6C] text-xs sm:text-sm lg:text-base font-normal font-montserrat sm:ml-1 whitespace-nowrap">
             2/4, Sarvpriya Vihar, Hauz Khas, Delhi 110016
           </span>
         </div>
       </div>
 
       {/* Divider Line */}
-      <div className="w-[66.6875rem] h-px bg-[#1C6248] mx-auto mt-8"></div>
+      <div className="w-full max-w-[66.6875rem] h-px bg-[#1C6248] mx-auto mt-6 sm:mt-7 lg:mt-8"></div>
 
       {/* Bottom Section */}
-      <div className="flex items-center justify-between px-[4.3125rem] mt-11">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between px-4 sm:px-6 md:px-8 lg:px-[4.3125rem] mt-6 sm:mt-8 lg:mt-11 gap-4 lg:gap-0">
         {/* Copyright */}
-        <div className="text-[#0F161E] text-sm font-medium font-inter">
+        <div className="text-[#0F161E] text-xs sm:text-sm font-medium font-inter whitespace-nowrap">
           Climitra@2025. All rights reserved.
         </div>
 
         {/* Navigation Menu */}
-        <div className="flex items-center gap-5">
-          {[
-            "Home",
-            "Industrial Decarbonization",
-            "CDR",
-            "Tech Suite",
-            "Our Team",
-            "Contact Us",
-          ].map((item, index) => (
-            <button
-              key={index}
-              onClick={() => {
-                if (item === "CDR" && window.navigateTo) {
-                  window.navigateTo("cdr");
-                } else if (item === "Home" && window.navigateTo) {
-                  window.navigateTo("home");
-                } else if (item === "Contact Us" && window.navigateTo) {
-                  window.navigateTo("contact");
-                } else if (item === "Our Team" && window.navigateTo) {
-                  window.navigateTo("team");
-                } else if (item === "Tech Suite" && window.navigateTo) {
-                  window.navigateTo("tech");
-                } else if (
-                  item === "Industrial Decarbonization" &&
-                  window.navigateTo
-                ) {
-                  window.navigateTo("industrial");
-                }
-              }}
-              className="text-[#0F161E] text-base font-medium font-inter hover:underline transition-colors"
-            >
-              {item}
-            </button>
-          ))}
-        </div>
+<div className="flex flex-wrap lg:flex-nowrap items-center gap-2 sm:gap-3 lg:gap-5">
+  {/* Desktop: Single row layout */}
+  <div className="hidden lg:flex items-center gap-5">
+    {[
+      "Home",
+      "Industrial Decarbonization",
+      "CDR",
+      "Tech Suite",
+      "Our Team",
+      "Contact Us",
+    ].map((item, index) => (
+      <button
+        key={index}
+        onClick={() => {
+          if (item === "CDR" && window.navigateTo) {
+            window.navigateTo("cdr");
+          } else if (item === "Home" && window.navigateTo) {
+            window.navigateTo("home");
+          } else if (item === "Contact Us" && window.navigateTo) {
+            window.navigateTo("contact");
+          } else if (item === "Our Team" && window.navigateTo) {
+            window.navigateTo("team");
+          } else if (item === "Tech Suite" && window.navigateTo) {
+            window.navigateTo("tech");
+          } else if (
+            item === "Industrial Decarbonization" &&
+            window.navigateTo
+          ) {
+            window.navigateTo("industrial");
+          }
+        }}
+        className="text-[#0F161E] text-base font-medium font-inter hover:underline transition-colors whitespace-nowrap"
+      >
+        {item}
+      </button>
+    ))}
+  </div>
+
+  {/* Mobile/Tablet: 2-column layout (3 items each) */}
+  <div className="lg:hidden grid grid-cols-2 gap-x-4 gap-y-2 w-full">
+    {[
+      "Home",
+      "Industrial Decarbonization",
+      "CDR",
+      "Tech Suite",
+      "Our Team",
+      "Contact Us",
+    ].map((item, index) => (
+      <button
+        key={index}
+        onClick={() => {
+          if (item === "CDR" && window.navigateTo) {
+            window.navigateTo("cdr");
+          } else if (item === "Home" && window.navigateTo) {
+            window.navigateTo("home");
+          } else if (item === "Contact Us" && window.navigateTo) {
+            window.navigateTo("contact");
+          } else if (item === "Our Team" && window.navigateTo) {
+            window.navigateTo("team");
+          } else if (item === "Tech Suite" && window.navigateTo) {
+            window.navigateTo("tech");
+          } else if (
+            item === "Industrial Decarbonization" &&
+            window.navigateTo
+          ) {
+            window.navigateTo("industrial");
+          }
+        }}
+        className="text-[#0F161E] text-xs sm:text-sm font-medium font-inter hover:underline transition-colors text-left"
+      >
+        {item}
+      </button>
+    ))}
+  </div>
+</div>
       </div>
     </div>
   );

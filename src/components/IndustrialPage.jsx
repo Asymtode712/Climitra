@@ -97,132 +97,76 @@ const IndustrialPage = () => {
         />
 
         {/* Hero Content - Custom Text */}
-        <div className="absolute w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 px-[1rem]">
-          <div className="w-[50.125rem] h-[7.25rem] flex items-center justify-center mx-auto">
-            <h1 className="text-white text-[3rem] leading-[1.2] font-semibold font-montserrat text-center" style={{ width: '822px', height: '44px', textAlign: 'center' }}>
-              Transforming Building Materials for a Net Zero India
-            </h1>
-          </div>
-        </div>
+        <div className="absolute w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 px-[1rem] sm:px-[1.5rem]">
+  <div className="w-full sm:w-[90%] md:w-[40rem] lg:w-[50.125rem] h-auto lg:h-[7.25rem] flex items-center justify-center mx-auto">
+    <h1 className="text-white text-[1.5rem] sm:text-[2rem] md:text-[2.5rem] lg:text-[3rem] leading-[1.2] font-semibold font-montserrat text-center lg:w-[822px]">
+      Transforming Building Materials for a Net Zero India
+    </h1>
+  </div>
+</div>
+
       </div>
 
       {/* THE PERFECT STORM SECTION */}
-      <div className="bg-[#F0FFF9] w-full h-[47.375rem] flex items-center justify-center px-4">
-        <div className="max-w-[80rem] w-full mx-auto px-8">
-          {/* Section Title */}
-          <div className="text-center mb-12">
-            <h2
-              className="font-montserrat"
-              style={{
-                color: '#0C0C0C',
-                width: '962px',
-                height: '44px',
-                fontWeight: 600,
-                fontStyle: 'normal',
-                fontSize: '36px',
-                lineHeight: '44px',
-                letterSpacing: '0',
-                marginBottom: '1rem',
-                marginLeft: 'auto',
-                marginRight: 'auto',
-                textAlign: 'center',
-                display: 'block',
-              }}
-            >
-              <span style={{ color: '#0C0C0C' }}>The Perfect Storm: Why </span>
-              <span style={{ color: '#1C6248' }}>Decarbonization</span>
-              <span style={{ color: '#0C0C0C' }}>
-                {" "}Can't Wait
-              </span>
-            </h2>
-            <div className="w-[12.4375rem] h-[0.25rem] bg-[#1C6248] mx-auto"></div>
-          </div>
+      <div className="bg-[#F0FFF9] w-full min-h-[47.375rem] flex items-center justify-center px-4 py-8 md:py-16">
+      <div className="max-w-[80rem] w-full mx-auto px-4 md:px-8">
+        {/* Section Title */}
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="font-montserrat text-2xl md:text-3xl lg:text-4xl font-semibold text-[#0C0C0C] leading-tight mb-4 max-w-4xl mx-auto">
+            <span className="text-[#0C0C0C]">The Perfect Storm: Why </span>
+            <span className="text-[#1C6248]">Decarbonization</span>
+            <span className="text-[#0C0C0C]"> Can't Wait</span>
+          </h2>
+          <div className="w-[12.4375rem] h-[0.25rem] bg-[#1C6248] mx-auto"></div>
+        </div>
 
-          {/* Main Content Container */}
-          <div className="flex gap-16 items-start justify-center mx-auto">
-            {/* Left Side - Industrial Image */}
-            <div className="flex-shrink-0 w-[23.75rem] relative">
-              {" "}
-              {/* 380px = 23.75rem */}
-              <div className="relative w-full h-full">
-                <img
-                  src="/images/Frame 1984078282.png"
-                  alt="Industrial emissions visualization"
-                  className="w-full h-auto object-contain rounded-lg"
-                />
-                <div className="absolute bottom-6 left-0 bg-[#1C6248] text-white px-4 py-3 rounded-lg shadow-lg">
-                  <div className="text-center">
-                    <div className="text-[#E6FFF6] font-montserrat text-sm font-semibold">
-                      Industrial
-                    </div>
-                    <div className="text-[#E6FFF6] font-montserrat text-sm font-semibold">
-                      Emissions in Focus
-                    </div>
+        {/* Main Content Container */}
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start justify-center mx-auto">
+          {/* Left Side - Industrial Image */}
+          <div className="w-full lg:w-[23.75rem] lg:flex-shrink-0 relative order-1 lg:order-1">
+            <div className="relative w-full h-full">
+              <img
+                src="/images/Frame 1984078282.png"
+                alt="Industrial emissions visualization"
+                className="w-full h-auto object-contain rounded-lg"
+              />
+              <div className="absolute bottom-4 md:bottom-6 left-4 md:left-0 bg-[#1C6248] text-white px-3 md:px-4 py-2 md:py-3 rounded-lg shadow-lg">
+                <div className="text-center">
+                  <div className="text-[#E6FFF6] font-montserrat text-xs md:text-sm font-semibold">
+                    Industrial
+                  </div>
+                  <div className="text-[#E6FFF6] font-montserrat text-xs md:text-sm font-semibold">
+                    Emissions in Focus
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* Right Side - Match Height to Image */}
-            <div className="flex-1 max-w-[30rem] h-[27.984375rem] flex flex-col justify-between">
-              {/* Main Title */}
-              <h3 className="text-[#1C6248] font-montserrat text-[1.75rem] font-semibold leading-[2.2rem]">
-                <span
-                  className="font-montserrat"
-                  style={{
-                    color: '#1C6248',
-                    fontFamily: 'Montserrat',
-                    fontWeight: 600,
-                    fontStyle: 'normal',
-                    fontSize: '27.78px',
-                    lineHeight: '120%',
-                    letterSpacing: '0',
-                    display: 'block',
-                    width: '962px',
-                    height: '66px',
-                    textAlign: 'left',
-                  }}
-                >
-                  India's Heavy Industry Faces a<br />
-                  Carbon Reckoning
-                </span>
-              </h3>
+          {/* Right Side - Content */}
+          <div className="flex-1 max-w-full lg:max-w-[30rem] order-2 lg:order-2">
+            {/* Main Title */}
+            <h3 className="text-[#1C6248] font-montserrat text-xl md:text-2xl lg:text-[1.75rem] font-semibold leading-tight mb-6 md:mb-8">
+              India's Heavy Industry Faces a<br className="hidden md:block" />
+              <span className="md:hidden"> </span>Carbon Reckoning
+            </h3>
 
+            {/* Content Blocks Container */}
+            <div className="space-y-6 md:space-y-8">
               {/* Content Block 1 */}
-              <div className="flex items-start gap-4">
-                <div className="w-8 h-8 flex-shrink-0 mt-1">
+              <div className="flex items-start gap-3 md:gap-4">
+                <div className="w-6 h-6 md:w-8 md:h-8 flex-shrink-0 mt-1">
                   <img
                     src="/images/Mask group (25).png"
                     alt="Fire icon"
                     className="w-full h-full object-contain"
                   />
                 </div>
-                <div>
-                  <h4
-                    className="font-source-sans-pro"
-                    style={{
-                      color: '#1C6248',
-                      fontFamily: 'Source Sans Pro',
-                      fontWeight: 600,
-                      fontStyle: 'normal',
-                      fontSize: '21.37px',
-                      lineHeight: '120%',
-                      letterSpacing: '5%',
-                      marginBottom: '0.25rem',
-                    }}
-                  >
+                <div className="flex-1">
+                  <h4 className="font-source-sans-pro text-[#1C6248] font-semibold text-lg md:text-xl mb-2 leading-tight">
                     High Emissions, Heavy Growth
                   </h4>
-                  <p
-                    className="font-source-sans-pro"
-                    style={{
-                      color: '#6C6C6C',
-                      fontFamily: 'Source Sans Pro',
-                      fontWeight: 400,
-                      fontStyle: 'normal',
-                      letterSpacing: '5%',
-                    }}
-                  >
+                  <p className="font-source-sans-pro text-[#6C6C6C] text-sm md:text-base leading-relaxed">
                     India's steel sector contributes 12% to national emissions.
                     With 100 MTPA capacity addition planned by 2030—90% of which will be coal-based—emissions are set to grow faster than decarbonization solutions.
                   </p>
@@ -230,80 +174,38 @@ const IndustrialPage = () => {
               </div>
 
               {/* Content Block 2 */}
-              <div className="flex items-start gap-4">
-                <div className="w-8 h-8 flex-shrink-0 mt-1">
+              <div className="flex items-start gap-3 md:gap-4">
+                <div className="w-6 h-6 md:w-8 md:h-8 flex-shrink-0 mt-1">
                   <img
                     src="/images/Mask group (19).png"
                     alt="Policy icon"
                     className="w-full h-full object-contain"
                   />
                 </div>
-                <div>
-                  <h4
-                    className="font-source-sans-pro"
-                    style={{
-                      color: '#1C6248',
-                      fontFamily: 'Source Sans Pro',
-                      fontWeight: 600,
-                      fontStyle: 'normal',
-                      fontSize: '21.37px',
-                      lineHeight: '120%',
-                      letterSpacing: '5%',
-                      marginBottom: '0.25rem',
-                    }}
-                  >
+                <div className="flex-1">
+                  <h4 className="font-source-sans-pro text-[#1C6248] font-semibold text-lg md:text-xl mb-2 leading-tight">
                     Policy Pressure Builds
                   </h4>
-                  <p
-                    className="font-source-sans-pro"
-                    style={{
-                      color: '#6C6C6C',
-                      fontFamily: 'Source Sans Pro',
-                      fontWeight: 400,
-                      fontStyle: 'normal',
-                      letterSpacing: '5%',
-                    }}
-                  >
+                  <p className="font-source-sans-pro text-[#6C6C6C] text-sm md:text-base leading-relaxed">
                     From 2026, the EU's CBAM will affect $8.6B of Indian exports, while India's CCTS mandates emissions cuts in 9 heavy industries.
                   </p>
                 </div>
               </div>
 
               {/* Content Block 3 */}
-              <div className="flex items-start gap-4">
-                <div className="w-8 h-8 flex-shrink-0 mt-1">
+              <div className="flex items-start gap-3 md:gap-4">
+                <div className="w-6 h-6 md:w-8 md:h-8 flex-shrink-0 mt-1">
                   <img
                     src="/images/Mask group (20).png"
                     alt="Fuel volatility icon"
                     className="w-full h-full object-contain"
                   />
                 </div>
-                <div>
-                  <h4
-                    className="font-source-sans-pro"
-                    style={{
-                      color: '#1C6248',
-                      fontFamily: 'Source Sans Pro',
-                      fontWeight: 600,
-                      fontStyle: 'normal',
-                      fontSize: '21.37px',
-                      lineHeight: '120%',
-                      letterSpacing: '5%',
-                      marginBottom: '0.25rem',
-                    }}
-                  >
+                <div className="flex-1">
+                  <h4 className="font-source-sans-pro text-[#1C6248] font-semibold text-lg md:text-xl mb-2 leading-tight">
                     Fuel Volatility
                   </h4>
-                  <p
-                    className="font-source-sans-pro"
-                    style={{
-                      color: '#6C6C6C',
-                      fontFamily: 'Source Sans Pro',
-                      fontWeight: 400,
-                      fontStyle: 'normal',
-                      letterSpacing: '5%',
-                    }}
-                  >
+                  <p className="font-source-sans-pro text-[#6C6C6C] text-sm md:text-base leading-relaxed">
                     With 85% import dependency for coking coal, Indian steelmakers face extreme price volatility, creating unpredictable operating expenses and profit erosion.
                   </p>
                 </div>
@@ -312,6 +214,7 @@ const IndustrialPage = () => {
           </div>
         </div>
       </div>
+    </div>
 
       {/* CRITICAL REGULATORY TIMELINE SECTION */}
       <div className="bg-white w-full h-[51.25rem] flex flex-col items-center justify-center px-[1rem]">
@@ -566,249 +469,344 @@ const IndustrialPage = () => {
         </div>
       </div>
 
-{/* SEAMLESS INTEGRATION SECTION */}
-<div className="w-full bg-[#FDFDFD] py-20">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-20">
+  {/* SEAMLESS INTEGRATION SECTION */}
+  <div className="w-full bg-[#FDFDFD] py-12 sm:py-16 md:py-20">
+   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12 sm:mb-16 md:mb-20">
     <h1
-      className="text-4xl md:text-5xl font-montserrat font-semibold text-center mx-auto mb-4"
-      style={{ width: '822px', height: '44px', fontSize: '36px', lineHeight: '44px', letterSpacing: '0%' }}
+      className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-montserrat font-semibold text-center mx-auto mb-4 px-4"
+      style={{ 
+        maxWidth: '822px', 
+        fontSize: 'clamp(24px, 4vw, 36px)', 
+        lineHeight: 'clamp(32px, 5vw, 44px)', 
+        letterSpacing: '0%' 
+      }}
     >
       <span className="text-[#0C0C0C]">Seamless </span>
       <span className="text-[#1C6248]">Integration</span>
       <span className="text-[#0C0C0C]">, Engineered </span>
       <span className="text-[#1C6248]">Backward</span>
     </h1>
-    <div className="w-[8.375rem] h-1 bg-[#1C6248] mx-auto mb-6" />
+    <div className="w-20 sm:w-24 md:w-[8.375rem] h-1 bg-[#1C6248] mx-auto mb-4 sm:mb-6" />
     <p
-      className="font-montserrat font-normal text-[1.25rem] leading-[1.875rem] text-[#6C6C6C] mx-auto text-center"
-      style={{ width: '1016px' }}
+      className="font-montserrat font-normal text-sm sm:text-base md:text-lg lg:text-[1.25rem] leading-relaxed sm:leading-[1.6rem] md:leading-[1.875rem] text-[#6C6C6C] mx-auto text-center px-4"
+      style={{ maxWidth: '1016px' }}
     >
       We don't expect industry to adapt to us — we build to fit them. Climitra's systems are reverse-engineered from each steel plant's unique process requirements, enabling frictionless onboarding and fast adoption.
     </p>
   </div>
 
-  {/* === CAROUSEL WITH VISIBLE POSITION TRANSITIONS === */}
-  <div className="relative w-full pb-12">
-    {/* Main carousel container with controlled width to show partial cards */}
-    <div className="relative w-full h-[19.19rem] flex justify-center items-center overflow-hidden">
-      {/* Carousel wrapper - constrains viewport to show only 3 cards with partial sides */}
-      <div className="relative w-full h-full overflow-hidden">
-        {/* Inner container for positioning cards */}
-        <div className="relative w-full h-full flex items-center justify-center">
-        
-        {/* Render all 4 cards with dynamic positioning */}
-        {[0, 1, 2, 3].map((cardIndex) => {
-          const item = integrationItems[cardIndex];
-          const position = getCardPosition(cardIndex);
-          
-          // Calculate transform and visibility for smooth transitions
-          let transformX = '0';
-          let opacity = '0';
-          let zIndex = 1;
-          let width = '28.69rem';
-          let leftPosition = '50%';
-          
-          // Determine which cards need to slide in from which direction
-          const leftIndex = (currentSlide - 1 + 4) % 4;
-          const rightIndex = (currentSlide + 1) % 4;
-          const hiddenIndex = (currentSlide + 2) % 4;
-          
-          // When we navigate:
-          // - Next (right arrow): hidden card becomes new left card (slides from left)
-          // - Prev (left arrow): hidden card becomes new right card (slides from right)
-          const shouldSlideFromLeft = cardIndex === hiddenIndex && lastDirection === 'next';
-          const shouldSlideFromRight = cardIndex === hiddenIndex && lastDirection === 'prev';
-          
-          if (position === 'left') {
-            transformX = '-12.5rem'; // Position left card further left so outer edge gets cut
-            opacity = '0.4';
-            zIndex = 1;
-            width = '28.69rem';
-            leftPosition = '0';
-          } else if (position === 'center') {
-            transformX = '-18.53rem'; // Center the larger card
-            opacity = '1';
-            zIndex = 10;
-            width = '37.06rem';
-            leftPosition = '50%';
-          } else if (position === 'right') {
-            transformX = '-17.69rem'; // Position right card further right so outer edge gets cut
-            opacity = '0.4';
-            zIndex = 1;
-            width = '28.69rem';
-            leftPosition = '100%';
-          } else if (position === 'hidden') {
-            // Position hidden card off-screen based on where it will slide to
-            transformX = '0';
-            opacity = '0';
-            zIndex = 0;
-            width = '28.69rem';
-            
-            // Position cards off-screen on the side they'll slide in from
-            if (shouldSlideFromLeft) {
-              leftPosition = '-100%'; // Off-screen left for cards sliding in from left
-            } else if (shouldSlideFromRight) {
-              leftPosition = '200%'; // Off-screen right for cards sliding in from right
-            } else {
-              leftPosition = '-200%'; // Default off-screen left for other hidden cards
-            }
-          }
-          
-          const isCenter = position === 'center';
-          
-          return (
-            <div 
-              key={`static-card-${cardIndex}`}
-              className="absolute transition-all duration-700 ease-out"
-              style={{ 
-                transform: `translateX(${transformX})`,
-                opacity,
-                zIndex,
-                width,
-                left: leftPosition
-              }}
-            >
-              <div className={`bg-white ${isCenter ? 'rounded-xl shadow-xl' : 'rounded-lg shadow-md'} border border-[#E5E5E5] flex flex-col justify-center items-start text-left ${isCenter ? 'pt-12 pr-9 pb-12 pl-[7rem] h-[19.19rem]' : 'pt-10 pr-7 pb-10 pl-[6.25rem] h-[14.81rem]'} relative transition-all duration-700 ease-out`}>
-                <div className={`${isCenter ? 'w-[8.25rem] h-[8.25rem]' : 'w-[6.37rem] h-[6.37rem]'} bg-[#1C6248] rounded-full flex items-center justify-center absolute ${isCenter ? 'left-[-4.125rem]' : 'left-[-3.185rem]'} top-1/2 transform -translate-y-1/2 transition-all duration-700 ease-out z-10`}>
-                  <img
-                    src={item.icon}
-                    alt=""
-                    className={`${isCenter ? 'w-[4.1rem] h-[4.1rem]' : 'w-[3.18rem] h-[3.18rem]'} object-contain transition-all duration-700 ease-out`}
-                  />
-                </div>
-                <div className="transition-all duration-700 ease-out " style={{ transform: `scale(${isCenter ? 1 : 0.85})`, transformOrigin: 'top left', fontSize: `${isCenter ? '1rem' : '0.85rem'}`, marginTop: `${isCenter ? '0' : '1.5rem'}` }}>
-                  <h3 className="text-[#1C6248] font-montserrat font-bold leading-tight transition-all duration-700 ease-out" style={{ marginBottom: '1.25rem', fontSize: `${isCenter ? '1.75rem' : '1.31rem'}` }}>
-                    {item.title}
-                  </h3>
-                  <p className="text-[#6C6C6C] font-montserrat font-normal transition-all duration-700 ease-out" style={{ fontSize: `${isCenter ? '1.33rem' : '1.0rem'}`, lineHeight: `${isCenter ? '1.9rem' : '1.465rem'}` }}>
-                    {item.description}
-                  </p>
-                </div>
-              </div>
-            </div>
-          );
-        })}
+  {/* MOBILE: Vertical Stack (sm and below) */}
+<div className="block lg:hidden">
+  <div className="max-w-2xl mx-auto px-4 space-y-10 sm:space-y-12 py-6">
+    {integrationItems.map((item, index) => (
+      <div 
+        key={`mobile-card-${index}`}
+        className="bg-white rounded-xl shadow-xl border border-[#E5E5E5] relative mx-4 pt-6 pb-6 pl-6 pr-4 sm:pt-8 sm:pb-8 sm:pl-8 sm:pr-6"
+      >
+        <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#1C6248] rounded-full flex items-center justify-center absolute -left-7 sm:-left-8 top-1/2 transform -translate-y-1/2 z-10 shadow-md">
+          <img
+            src={item.icon}
+            alt=""
+            className="w-6 h-6 sm:w-8 sm:h-8 object-contain"
+          />
+        </div>
+        <div className="pl-12 sm:pl-16">
+          <h3 className="text-[#1C6248] font-montserrat font-bold text-lg sm:text-xl leading-snug mb-2 sm:mb-3">
+            {item.title}
+          </h3>
+          <p className="text-[#6C6C6C] font-montserrat font-normal text-sm sm:text-base leading-relaxed">
+            {item.description}
+          </p>
         </div>
       </div>
-    </div>
+    ))}
+  </div>
+</div>
 
-    {/* Navigation Arrows */}
-    <div className="absolute top-[calc(100%+0.5rem)] left-1/2 transform -translate-x-1/2 flex gap-4">
-      <button
-        onClick={prevSlide}
-        disabled={isTransitioning}
-        className="w-10 h-10 bg-[#F0FFF9] rounded-full flex items-center justify-center hover:bg-[#E0F5E9] transition-colors disabled:opacity-50"
-      >
-        <ChevronLeft className="w-5 h-5 text-[#1C6248]" />
-      </button>
-      <button
-        onClick={nextSlide}
-        disabled={isTransitioning}
-        className="w-10 h-10 bg-[#F0FFF9] rounded-full flex items-center justify-center hover:bg-[#E0F5E9] transition-colors disabled:opacity-50"
-      >
-        <ChevronRight className="w-5 h-5 text-[#1C6248]" />
-      </button>
+
+  {/* DESKTOP: Carousel (lg and above) */}
+  <div className="hidden lg:block">
+    {/* === CAROUSEL WITH VISIBLE POSITION TRANSITIONS === */}
+    <div className="relative w-full pb-12">
+      {/* Main carousel container with controlled width to show partial cards */}
+      <div className="relative w-full h-[19.19rem] flex justify-center items-center overflow-hidden">
+        {/* Carousel wrapper - constrains viewport to show only 3 cards with partial sides */}
+        <div className="relative w-full h-full overflow-hidden">
+          {/* Inner container for positioning cards */}
+          <div className="relative w-full h-full flex items-center justify-center">
+          
+          {/* Render all 4 cards with dynamic positioning */}
+          {[0, 1, 2, 3].map((cardIndex) => {
+            const item = integrationItems[cardIndex];
+            const position = getCardPosition(cardIndex);
+            
+            // Calculate transform and visibility for smooth transitions
+            let transformX = '0';
+            let opacity = '0';
+            let zIndex = 1;
+            let width = '28.69rem';
+            let leftPosition = '50%';
+            
+            // Determine which cards need to slide in from which direction
+            const leftIndex = (currentSlide - 1 + 4) % 4;
+            const rightIndex = (currentSlide + 1) % 4;
+            const hiddenIndex = (currentSlide + 2) % 4;
+            
+            // When we navigate:
+            // - Next (right arrow): hidden card becomes new left card (slides from left)
+            // - Prev (left arrow): hidden card becomes new right card (slides from right)
+            const shouldSlideFromLeft = cardIndex === hiddenIndex && lastDirection === 'next';
+            const shouldSlideFromRight = cardIndex === hiddenIndex && lastDirection === 'prev';
+            
+            if (position === 'left') {
+              transformX = '-12.5rem'; // Position left card further left so outer edge gets cut
+              opacity = '0.4';
+              zIndex = 1;
+              width = '28.69rem';
+              leftPosition = '0';
+            } else if (position === 'center') {
+              transformX = '-18.53rem'; // Center the larger card
+              opacity = '1';
+              zIndex = 10;
+              width = '37.06rem';
+              leftPosition = '50%';
+            } else if (position === 'right') {
+              transformX = '-17.69rem'; // Position right card further right so outer edge gets cut
+              opacity = '0.4';
+              zIndex = 1;
+              width = '28.69rem';
+              leftPosition = '100%';
+            } else if (position === 'hidden') {
+              // Position hidden card off-screen based on where it will slide to
+              transformX = '0';
+              opacity = '0';
+              zIndex = 0;
+              width = '28.69rem';
+              
+              // Position cards off-screen on the side they'll slide in from
+              if (shouldSlideFromLeft) {
+                leftPosition = '-100%'; // Off-screen left for cards sliding in from left
+              } else if (shouldSlideFromRight) {
+                leftPosition = '200%'; // Off-screen right for cards sliding in from right
+              } else {
+                leftPosition = '-200%'; // Default off-screen left for other hidden cards
+              }
+            }
+            
+            const isCenter = position === 'center';
+            
+            return (
+              <div 
+                key={`static-card-${cardIndex}`}
+                className="absolute transition-all duration-700 ease-out"
+                style={{ 
+                  transform: `translateX(${transformX})`,
+                  opacity,
+                  zIndex,
+                  width,
+                  left: leftPosition
+                }}
+              >
+                <div className={`bg-white ${isCenter ? 'rounded-xl shadow-xl' : 'rounded-lg shadow-md'} border border-[#E5E5E5] flex flex-col justify-center items-start text-left ${isCenter ? 'pt-12 pr-9 pb-12 pl-[7rem] h-[19.19rem]' : 'pt-10 pr-7 pb-10 pl-[6.25rem] h-[14.81rem]'} relative transition-all duration-700 ease-out`}>
+                  <div className={`${isCenter ? 'w-[8.25rem] h-[8.25rem]' : 'w-[6.37rem] h-[6.37rem]'} bg-[#1C6248] rounded-full flex items-center justify-center absolute ${isCenter ? 'left-[-4.125rem]' : 'left-[-3.185rem]'} top-1/2 transform -translate-y-1/2 transition-all duration-700 ease-out z-10`}>
+                    <img
+                      src={item.icon}
+                      alt=""
+                      className={`${isCenter ? 'w-[4.1rem] h-[4.1rem]' : 'w-[3.18rem] h-[3.18rem]'} object-contain transition-all duration-700 ease-out`}
+                    />
+                  </div>
+                  <div className="transition-all duration-700 ease-out " style={{ transform: `scale(${isCenter ? 1 : 0.85})`, transformOrigin: 'top left', fontSize: `${isCenter ? '1rem' : '0.85rem'}`, marginTop: `${isCenter ? '0' : '1.5rem'}` }}>
+                    <h3 className="text-[#1C6248] font-montserrat font-bold leading-tight transition-all duration-700 ease-out" style={{ marginBottom: '1.25rem', fontSize: `${isCenter ? '1.75rem' : '1.31rem'}` }}>
+                      {item.title}
+                    </h3>
+                    <p className="text-[#6C6C6C] font-montserrat font-normal transition-all duration-700 ease-out" style={{ fontSize: `${isCenter ? '1.33rem' : '1.0rem'}`, lineHeight: `${isCenter ? '1.9rem' : '1.465rem'}` }}>
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+          </div>
+        </div>
+      </div>
+
+      {/* Navigation Arrows */}
+      <div className="absolute top-[calc(100%+0.5rem)] left-1/2 transform -translate-x-1/2 flex gap-4">
+        <button
+          onClick={prevSlide}
+          disabled={isTransitioning}
+          className="w-10 h-10 bg-[#F0FFF9] rounded-full flex items-center justify-center hover:bg-[#E0F5E9] transition-colors disabled:opacity-50"
+        >
+          <ChevronLeft className="w-5 h-5 text-[#1C6248]" />
+        </button>
+        <button
+          onClick={nextSlide}
+          disabled={isTransitioning}
+          className="w-10 h-10 bg-[#F0FFF9] rounded-full flex items-center justify-center hover:bg-[#E0F5E9] transition-colors disabled:opacity-50"
+        >
+          <ChevronRight className="w-5 h-5 text-[#1C6248]" />
+        </button>
+      </div>
     </div>
   </div>
 </div>
 
       {/* PILOTING AND SCALING SECTION */}
-      <div className="w-full bg-[#F0FFF9] py-[5rem] px-[6.375rem]" style={{ height: '681px' }}>
-        <div className="max-w-[67.25rem] mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-[4.5rem]">
-            <h2 className="font-montserrat text-[2.25rem] font-semibold leading-[2.75rem] mb-[1.125rem]">
-              <span className="text-[#0C0C0C]">Piloting and Scaling with </span>
-              <span className="text-[#1C6248]">Industry Leaders</span>
-            </h2>
-            <div className="w-[8.375rem] h-1 bg-[#1C6248] mx-auto"></div>
+<div className="w-full bg-[#F0FFF9] py-8 px-4 sm:py-12 sm:px-6 md:py-16 md:px-8 lg:py-[5rem] lg:px-[6.375rem]" style={{ minHeight: '681px' }}>
+  <div className="max-w-[67.25rem] mx-auto">
+    {/* Section Header */}
+    <div className="text-center mb-8 sm:mb-12 md:mb-16 lg:mb-[4.5rem]">
+      <h2 className="font-montserrat text-xl sm:text-2xl md:text-3xl lg:text-[2.25rem] font-semibold leading-tight sm:leading-relaxed md:leading-[2.5rem] lg:leading-[2.75rem] mb-4 sm:mb-6 lg:mb-[1.125rem] px-4">
+        <span className="text-[#0C0C0C]">Piloting and Scaling with </span>
+        <span className="text-[#1C6248]">Industry Leaders</span>
+      </h2>
+      <div className="w-20 sm:w-24 md:w-32 lg:w-[8.375rem] h-1 bg-[#1C6248] mx-auto"></div>
+    </div>
+
+    {/* MOBILE: Vertical Stack (below lg) */}
+    <div className="block lg:hidden">
+      <div className="space-y-6 sm:space-y-8">
+        {/* Lab-Validated Card */}
+        <div className="flex flex-col">
+          <img
+            src="/images/image 44.png"
+            alt="Lab Validated"
+            className="w-full max-w-md mx-auto h-48 sm:h-56 md:h-64 rounded-[0.375rem] mb-4 sm:mb-6 object-cover"
+          />
+          <div className="text-center sm:text-left px-4 sm:px-0">
+            <h3 className="text-[#1C6248] font-montserrat text-lg sm:text-xl md:text-[1.5rem] font-semibold leading-tight mb-3 sm:mb-4">
+              Lab-Validated
+            </h3>
+            <p className="text-[#6C6C6C] font-montserrat text-sm sm:text-base leading-relaxed">
+              Demonstrated performance across key industrial parameters in collaboration with leading steel producers.
+            </p>
           </div>
+        </div>
 
-          {/* Three Column Cards */}
-          <div className="grid grid-cols-3 gap-[2.875rem]">
-            {/* Lab-Validated Card */}
-            <div className="flex flex-col">
-              <img
-                src="/images/image 44.png"
-                alt="Lab Validated"
-                className="w-[20.5625rem] h-[13.6875rem] rounded-[0.375rem] mb-[1.875rem] object-cover"
-              />
-              <div>
-                <h3 className="text-[#1C6248] font-montserrat text-[1.5rem] font-semibold leading-[1.5rem] mb-[0.875rem]">
-                  Lab-Validated
-                </h3>
-                <p
-                  className="text-[#6C6C6C] font-montserrat"
-                  style={{
-                    fontFamily: 'Montserrat, sans-serif',
-                    fontWeight: 400,
-                    fontStyle: 'normal',
-                    fontSize: '16px',
-                    lineHeight: '24px',
-                    letterSpacing: '0',
-                  }}
-                >
-                  Demonstrated performance across key industrial parameters in collaboration with leading steel producers.
-                </p>
-              </div>
-            </div>
+        {/* Pilots Underway Card */}
+        <div className="flex flex-col">
+          <img
+            src="/images/image 46.png"
+            alt="Pilots Underway"
+            className="w-full max-w-md mx-auto h-48 sm:h-56 md:h-64 rounded-[0.375rem] mb-4 sm:mb-6 object-cover"
+          />
+          <div className="text-center sm:text-left px-4 sm:px-0">
+            <h3 className="text-[#1C6248] font-montserrat text-lg sm:text-xl md:text-[1.5rem] font-semibold leading-tight mb-3 sm:mb-4">
+              Pilots Underway
+            </h3>
+            <p className="text-[#6C6C6C] font-montserrat text-sm sm:text-base leading-relaxed">
+              On-ground biochar trials initiated at multiple sites to validate field-to-furnace integration.
+            </p>
+          </div>
+        </div>
 
-            {/* Pilots Underway Card */}
-            <div className="flex flex-col">
-              <img
-                src="/images/image 46.png"
-                alt="Pilots Underway"
-                className="w-[20.5rem] h-[13.6875rem] rounded-[0.375rem] mb-[1.875rem] object-cover"
-              />
-              <div>
-                <h3 className="text-[#1C6248] font-montserrat text-[1.5rem] font-semibold leading-[1.5rem] mb-[0.875rem]">
-                  Pilots Underway
-                </h3>
-                <p
-                  className="text-[#6C6C6C] font-montserrat"
-                  style={{
-                    fontFamily: 'Montserrat, sans-serif',
-                    fontWeight: 400,
-                    fontStyle: 'normal',
-                    fontSize: '16px',
-                    lineHeight: '24px',
-                    letterSpacing: '0',
-                  }}
-                >
-                  On-ground biochar trials initiated at multiple sites to validate field-to-furnace integration.
-                </p>
-              </div>
-            </div>
-
-            {/* Built to Scale Card */}
-            <div className="flex flex-col">
-              <img
-                src="/images/image 47.png"
-                alt="Built to Scale"
-                className="w-[20.5rem] h-[13.6875rem] rounded-[0.375rem] mb-[1.875rem] object-cover"
-              />
-              <div>
-                <h3 className="text-[#1C6248] font-montserrat text-[1.5rem] font-semibold leading-[1.5rem] mb-[0.875rem]">
-                  Built to Scale
-                </h3>
-                <p
-                  className="text-[#6C6C6C] font-montserrat"
-                  style={{
-                    fontFamily: 'Montserrat, sans-serif',
-                    fontWeight: 400,
-                    fontStyle: 'normal',
-                    fontSize: '16px',
-                    lineHeight: '24px',
-                    letterSpacing: '0',
-                  }}
-                >
-                  Designed for rapid deployment across large and mid-sized steel producers with minimal adaptation required.
-                </p>
-              </div>
-            </div>
+        {/* Built to Scale Card */}
+        <div className="flex flex-col">
+          <img
+            src="/images/image 47.png"
+            alt="Built to Scale"
+            className="w-full max-w-md mx-auto h-48 sm:h-56 md:h-64 rounded-[0.375rem] mb-4 sm:mb-6 object-cover"
+          />
+          <div className="text-center sm:text-left px-4 sm:px-0">
+            <h3 className="text-[#1C6248] font-montserrat text-lg sm:text-xl md:text-[1.5rem] font-semibold leading-tight mb-3 sm:mb-4">
+              Built to Scale
+            </h3>
+            <p className="text-[#6C6C6C] font-montserrat text-sm sm:text-base leading-relaxed">
+              Designed for rapid deployment across large and mid-sized steel producers with minimal adaptation required.
+            </p>
           </div>
         </div>
       </div>
+    </div>
+
+    {/* DESKTOP: Three Column Cards (lg and above) */}
+    <div className="hidden lg:block">
+      <div className="grid grid-cols-3 gap-[2.875rem]">
+        {/* Lab-Validated Card */}
+        <div className="flex flex-col">
+          <img
+            src="/images/image 44.png"
+            alt="Lab Validated"
+            className="w-[20.5625rem] h-[13.6875rem] rounded-[0.375rem] mb-[1.875rem] object-cover"
+          />
+          <div>
+            <h3 className="text-[#1C6248] font-montserrat text-[1.5rem] font-semibold leading-[1.5rem] mb-[0.875rem]">
+              Lab-Validated
+            </h3>
+            <p
+              className="text-[#6C6C6C] font-montserrat"
+              style={{
+                fontFamily: 'Montserrat, sans-serif',
+                fontWeight: 400,
+                fontStyle: 'normal',
+                fontSize: '16px',
+                lineHeight: '24px',
+                letterSpacing: '0',
+              }}
+            >
+              Demonstrated performance across key industrial parameters in collaboration with leading steel producers.
+            </p>
+          </div>
+        </div>
+
+        {/* Pilots Underway Card */}
+        <div className="flex flex-col">
+          <img
+            src="/images/image 46.png"
+            alt="Pilots Underway"
+            className="w-[20.5rem] h-[13.6875rem] rounded-[0.375rem] mb-[1.875rem] object-cover"
+          />
+          <div>
+            <h3 className="text-[#1C6248] font-montserrat text-[1.5rem] font-semibold leading-[1.5rem] mb-[0.875rem]">
+              Pilots Underway
+            </h3>
+            <p
+              className="text-[#6C6C6C] font-montserrat"
+              style={{
+                fontFamily: 'Montserrat, sans-serif',
+                fontWeight: 400,
+                fontStyle: 'normal',
+                fontSize: '16px',
+                lineHeight: '24px',
+                letterSpacing: '0',
+              }}
+            >
+              On-ground biochar trials initiated at multiple sites to validate field-to-furnace integration.
+            </p>
+          </div>
+        </div>
+
+        {/* Built to Scale Card */}
+        <div className="flex flex-col">
+          <img
+            src="/images/image 47.png"
+            alt="Built to Scale"
+            className="w-[20.5rem] h-[13.6875rem] rounded-[0.375rem] mb-[1.875rem] object-cover"
+          />
+          <div>
+            <h3 className="text-[#1C6248] font-montserrat text-[1.5rem] font-semibold leading-[1.5rem] mb-[0.875rem]">
+              Built to Scale
+            </h3>
+            <p
+              className="text-[#6C6C6C] font-montserrat"
+              style={{
+                fontFamily: 'Montserrat, sans-serif',
+                fontWeight: 400,
+                fontStyle: 'normal',
+                fontSize: '16px',
+                lineHeight: '24px',
+                letterSpacing: '0',
+              }}
+            >
+              Designed for rapid deployment across large and mid-sized steel producers with minimal adaptation required.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
       {/* WHY CLIMITRA SECTION */}
       <div className="relative w-full h-[24.0625rem] overflow-hidden">
