@@ -98,12 +98,12 @@ const IndustrialPage = () => {
 
         {/* Hero Content - Custom Text */}
         <div className="absolute w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 px-[1rem] sm:px-[1.5rem]">
-  <div className="w-full sm:w-[90%] md:w-[40rem] lg:w-[50.125rem] h-auto lg:h-[7.25rem] flex items-center justify-center mx-auto">
-    <h1 className="text-white text-[1.5rem] sm:text-[2rem] md:text-[2.5rem] lg:text-[3rem] leading-[1.2] font-semibold font-montserrat text-center lg:w-[822px]">
-      Transforming Building Materials for a Net Zero India
-    </h1>
-  </div>
-</div>
+          <div className="w-full sm:w-[90%] md:w-[40rem] lg:w-[50.125rem] h-auto lg:h-[7.25rem] flex items-center justify-center mx-auto">
+            <h1 className="text-white text-[1.5rem] sm:text-[2rem] md:text-[2.5rem] lg:text-[3rem] leading-[1.2] font-semibold font-montserrat text-center lg:w-[822px]">
+              Transforming Building Materials for a Net Zero India
+            </h1>
+          </div>
+        </div>
 
       </div>
 
@@ -496,32 +496,32 @@ const IndustrialPage = () => {
   </div>
 
   {/* MOBILE: Vertical Stack (sm and below) */}
-<div className="block lg:hidden">
-  <div className="max-w-2xl mx-auto px-4 space-y-10 sm:space-y-12 py-6">
-    {integrationItems.map((item, index) => (
-      <div 
-        key={`mobile-card-${index}`}
+  <div className="block lg:hidden">
+    <div className="max-w-2xl mx-auto px-4 space-y-10 sm:space-y-12 py-6">
+      {integrationItems.map((item, index) => (
+        <div 
+          key={`mobile-card-${index}`}
         className="bg-white rounded-xl shadow-xl border border-[#E5E5E5] relative mx-4 pt-6 pb-6 pl-6 pr-4 sm:pt-8 sm:pb-8 sm:pl-8 sm:pr-6"
-      >
-        <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#1C6248] rounded-full flex items-center justify-center absolute -left-7 sm:-left-8 top-1/2 transform -translate-y-1/2 z-10 shadow-md">
-          <img
-            src={item.icon}
-            alt=""
-            className="w-6 h-6 sm:w-8 sm:h-8 object-contain"
-          />
+        >
+          <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#1C6248] rounded-full flex items-center justify-center absolute -left-7 sm:-left-8 top-1/2 transform -translate-y-1/2 z-10 shadow-md">
+            <img
+              src={item.icon}
+              alt=""
+              className="w-6 h-6 sm:w-8 sm:h-8 object-contain"
+            />
+          </div>
+          <div className="pl-12 sm:pl-16">
+            <h3 className="text-[#1C6248] font-montserrat font-bold text-lg sm:text-xl leading-snug mb-2 sm:mb-3">
+              {item.title}
+            </h3>
+            <p className="text-[#6C6C6C] font-montserrat font-normal text-sm sm:text-base leading-relaxed">
+              {item.description}
+            </p>
+          </div>
         </div>
-        <div className="pl-12 sm:pl-16">
-          <h3 className="text-[#1C6248] font-montserrat font-bold text-lg sm:text-xl leading-snug mb-2 sm:mb-3">
-            {item.title}
-          </h3>
-          <p className="text-[#6C6C6C] font-montserrat font-normal text-sm sm:text-base leading-relaxed">
-            {item.description}
-          </p>
-        </div>
-      </div>
-    ))}
+      ))}
+    </div>
   </div>
-</div>
 
 
   {/* DESKTOP: Carousel (lg and above) */}

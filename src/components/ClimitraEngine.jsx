@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import AnimatedImpact from "./AnimatedImpact";
 import ClimitraHeader from "./ClimitraHeader";
 import Footer from "./Footer";
@@ -6,6 +6,75 @@ import { Menu } from "lucide-react";
 
 function ClimitraEngine() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [timelineAnimationStarted, setTimelineAnimationStarted] = useState(false);
+  const [animationPhase, setAnimationPhase] = useState(0);
+  const [showBiomassText, setShowBiomassText] = useState(true);
+  const [startShrinking, setStartShrinking] = useState(false);
+  const [showBiocharBox, setShowBiocharBox] = useState(false);
+  const [biocharPhase, setBiocharPhase] = useState(0);
+  const [verticalLineProgress, setVerticalLineProgress] = useState(0);
+  const timelineRef = useRef(null);
+
+  // Intersection Observer for timeline animation trigger
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !timelineAnimationStarted) {
+            setTimelineAnimationStarted(true);
+            startTimelineAnimation();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (timelineRef.current) {
+      observer.observe(timelineRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [timelineAnimationStarted]);
+
+  const startTimelineAnimation = () => {
+    setAnimationPhase(0);
+    setShowBiomassText(true);
+    setStartShrinking(false);
+    setShowBiocharBox(false);
+    setBiocharPhase(0);
+    setVerticalLineProgress(0);
+    
+    setTimeout(() => setAnimationPhase(1), 1000);
+    setTimeout(() => setAnimationPhase(2), 4000);
+    setTimeout(() => setAnimationPhase(3), 6000);
+    setTimeout(() => setAnimationPhase(4), 8000);
+    setTimeout(() => setAnimationPhase(4.5), 9000);
+    
+    setTimeout(() => {
+      setStartShrinking(true);
+      setShowBiomassText(false);
+    }, 14000);
+    
+    setTimeout(() => setAnimationPhase(5), 16000);
+    
+    // Start biochar animation after biomass disappears
+    setTimeout(() => {
+      setShowBiocharBox(true);
+      setBiocharPhase(1); // Emerge as sphere
+    }, 16500);
+    
+    setTimeout(() => setBiocharPhase(2), 17000); // Unmould to box
+    setTimeout(() => setBiocharPhase(3), 17500); // Start translation to second circular
+    setTimeout(() => setBiocharPhase(4), 19500); // Reach second circular, start vertical line
+    
+    // Vertical line animation and third element appearance
+    setTimeout(() => setVerticalLineProgress(1), 20000); // Start vertical line translation
+    setTimeout(() => setBiocharPhase(5), 22000); // Third element and card appear
+    
+    // Continue vertical line to fourth element
+    setTimeout(() => setVerticalLineProgress(2), 22500); // Continue line to fourth
+    setTimeout(() => setBiocharPhase(6), 24500); // Fourth element and card appear
+  };
 
   return (
     <div className="bg-[rgba(253,253,253,1)] flex flex-col overflow-hidden">
@@ -56,13 +125,29 @@ function ClimitraEngine() {
       {/* TIMELINE SECTION - Desktop and Mobile */}
       <div className="w-full bg-white">
         {/* Desktop Layout */}
-        <div className="hidden md:block w-full max-w-[80.0rem] h-[115.625rem] relative bg-white overflow-hidden mx-auto my-12">
-          {/* Desktop connecting lines */}
-          <div className="w-96 h-0 left-[16.75rem] top-[89.125rem] absolute outline outline-2 outline-offset-[-0.0625rem] outline-zinc-100"></div>
-          <div className="w-80 h-0 left-[40.0rem] top-[47.1875rem] absolute origin-top-left rotate-90 outline outline-2 outline-offset-[-0.0625rem] outline-lime-500"></div>
-          <div className="w-80 h-0 left-[40.0rem] top-[68.875rem] absolute origin-top-left rotate-90 outline outline-2 outline-offset-[-0.0625rem] outline-lime-500"></div>
-          <div className="w-96 h-0 left-[40.0rem] top-[23.5rem] absolute origin-top-left rotate-90 outline outline-2 outline-offset-[-0.0625rem] outline-teal-800"></div>
-          <div className="w-80 h-0 left-[43.4375rem] top-[68.875rem] absolute outline outline-2 outline-offset-[-0.0625rem] outline-zinc-100"></div>
+        <div ref={timelineRef} className="hidden md:block w-full max-w-[80.0rem] h-[115.625rem] relative bg-white overflow-hidden mx-auto my-12">
+          <style jsx>{`
+            .biomass-box {
+              transition: all 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .biomass-box-shrink {
+              transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .fade-in {
+              animation: fadeIn 2s ease-in-out forwards;
+            }
+            .fade-out {
+              animation: fadeOut 2s ease-in-out forwards;
+            }
+            @keyframes fadeIn {
+              from { opacity: 0; }
+              to { opacity: 1; }
+            }
+            @keyframes fadeOut {
+              from { opacity: 1; }
+              to { opacity: 0.3; }
+            }
+          `}</style>
           
           {/* Desktop Header */}
           <div className="w-[37.5625rem] left-[21.1875rem] top-[5.0rem] absolute text-center justify-start">
@@ -76,90 +161,228 @@ function ClimitraEngine() {
             <span className="text-neutral-500 text-xl font-normal font-['Montserrat'] leading-loose"> for waste biomass-driven industrial decarbonization and carbon dioxide removal (CDR) in India</span>
           </div>
 
-          {/* Desktop Timeline Items and all other existing desktop elements */}
-          <div className="w-28 h-28 left-[68.875rem] top-[19.875rem] absolute bg-white overflow-hidden flex items-center justify-center">
+          {/* FIRST TIMELINE ITEM - Biomass Mapping */}
+          <div className="w-80 h-0 left-[43.4375rem] top-[23.3125rem] absolute border-t-2 border-dotted border-teal-800 z-1"></div>
+          <div className="w-80 h-0 left-[40.0rem] top-[23.5rem] absolute origin-top-left rotate-90 outline outline-2 outline-offset-[-0.0625rem] outline-teal-800 z-1"></div>
+          
+          <div className="w-28 h-28 left-[36.625rem] top-[19.875rem] absolute bg-white rounded-[5.3125rem] outline outline-2 outline-offset-[-0.125rem] outline-zinc-100 overflow-hidden flex items-center justify-center z-50">
+            <img src="/images/timeline-item.svg" alt="Timeline Item" className="w-24 h-24 object-contain" />
+          </div>
+
+          <img className="w-8 h-8 left-[62.955rem] top-[22.3125rem] absolute z-15" src="/images/ellipse-124.svg" alt="Ellipse" />
+
+          {/* First card and its elements */}
+          <div className="w-28 h-28 left-[68.875rem] top-[19.875rem] absolute bg-white overflow-hidden flex items-center justify-center z-5">
             <img src="images/satellite.png" alt="Satellite" className="w-24 h-24 object-contain" />
           </div>
-          <div className="px-4 py-[0.3125rem] left-[45.125rem] top-[28.0rem] absolute bg-teal-50 inline-flex justify-center items-center gap-2.5 overflow-hidden">
+          <div className="px-4 py-[0.3125rem] left-[45.125rem] top-[28.0rem] absolute bg-teal-50 inline-flex justify-center items-center gap-2.5 overflow-hidden z-5">
             <div className="justify-start text-teal-800 text-2xl font-semibold font-['Montserrat'] leading-7">Biomass Mapping and Mobilisation</div>
           </div>
-          <div className="w-96 left-[46.5625rem] top-[32.3125rem] absolute inline-flex flex-col justify-start items-start gap-5">
+          <div className="w-96 left-[46.5625rem] top-[32.3125rem] absolute inline-flex flex-col justify-start items-start gap-5 z-5">
             <div className="w-96 text-right justify-center text-neutral-500 text-lg font-normal font-['Source_Sans_Pro'] leading-snug tracking-wide">
               We digitize biomass supply chains using AI-led satellite mapping and local intel, mobilizing 1,000+ tons/day to meet industrial specs—solving visibility, quality, and logistics at scale for steel decarbonization.
             </div>
           </div>
-          <button className="w-40 h-10 px-5 py-3 left-[66.5625rem] top-[41.0625rem] absolute bg-teal-800 rounded-lg outline outline-[0.075rem] outline-offset-[-0.075rem] outline-teal-800 inline-flex justify-center items-center gap-2.5 overflow-hidden">
+          <button className="w-40 h-10 px-5 py-3 left-[66.5625rem] top-[41.0625rem] absolute bg-teal-800 rounded-lg outline outline-[0.075rem] outline-offset-[-0.075rem] outline-teal-800 inline-flex justify-center items-center gap-2.5 overflow-hidden z-5">
             <span className="text-center text-white text-base font-medium font-['Montserrat'] whitespace-nowrap">Know More</span>
           </button>
 
-          <img className="w-24 h-24 left-[5.5rem] top-[44.375rem] absolute" src="images/fire.png" alt="" />
-          <div className="px-4 py-[0.3125rem] left-[5.5rem] top-[51.875rem] absolute bg-teal-50 inline-flex justify-center items-center gap-2.5 overflow-hidden">
-            <div className="justify-start text-teal-800 text-2xl font-semibold font-['Montserrat'] leading-7">Bespoke Conversion Technology</div>
-          </div>
-          <div className="w-96 left-[5.5rem] top-[56.1875rem] absolute inline-flex flex-col justify-start items-start gap-5">
-            <div className="self-stretch justify-center text-neutral-500 text-lg font-normal font-['Source_Sans_Pro'] leading-snug tracking-wide">
-              We build advanced pyrolysis systems tailored to local biomass, delivering consistent quality across 25+ industrial parameters including calorific value, volatile matter, ash, moisture, and fixed carbon.
+          {/* ANIMATED BIOMASS BOX */}
+          <div 
+            className={`biomass-box absolute bg-teal-800 rounded-xl outline outline-2 outline-offset-[-0.125rem] outline-teal-800 overflow-hidden z-20`}
+            style={{
+              left: animationPhase === 0 ? '62.955rem' : 
+                    animationPhase === 1 ? '36.625rem' :
+                    animationPhase === 2 ? '36.625rem' :
+                    animationPhase === 3 ? '36.625rem' :
+                    animationPhase === 4 ? '15.0625rem' : '15.0625rem',
+              top: animationPhase === 0 ? '22.3125rem' : 
+                   animationPhase === 1 ? '22.25rem' :
+                   animationPhase === 2 ? '46.375rem' :
+                   animationPhase === 3 ? '46.375rem' :
+                   animationPhase === 4 ? '46.375rem' : '46.375rem',
+              width: startShrinking ? '0.5rem' : '6rem',
+              height: startShrinking ? '0.5rem' : '2rem',
+              borderRadius: startShrinking ? '50%' : '0.75rem',
+              opacity: animationPhase === 2 ? 0.3 : 
+                       animationPhase === 3 ? 1 :
+                       animationPhase === 4 ? 0.1 :
+                       animationPhase >= 4.5 && !startShrinking ? 1 :
+                       startShrinking ? 0 : 1,
+              transition: startShrinking ? 'all 2s cubic-bezier(0.4, 0, 0.2, 1)' : 
+                         animationPhase === 4 ? 'left 6s cubic-bezier(0.4, 0, 0.2, 1), top 6s cubic-bezier(0.4, 0, 0.2, 1), opacity 1s ease-out' : 
+                         'all 2.5s cubic-bezier(0.4, 0, 0.2, 1)'
+            }}
+          >
+            <div className="left-[1.125rem] top-[0.5625rem] absolute text-center justify-start text-white text-xs font-semibold font-['Montserrat'] leading-none">
+              {showBiomassText ? 'Biomass' : ''}
             </div>
           </div>
-          <button className="w-40 h-10 px-5 py-3 left-[5.5rem] top-[64.9375rem] absolute bg-teal-800 rounded-lg outline outline-[0.075rem] outline-offset-[-0.075rem] outline-teal-800 inline-flex justify-center items-center gap-2.5 overflow-hidden">
-            <span className="text-center text-white text-base font-medium font-['Montserrat'] whitespace-nowrap">Know More</span>
-          </button>
 
-          <img className="w-24 h-24 left-[68.875rem] top-[66.0625rem] absolute" src="images/smoke.png" alt="" />
-          <div className="px-4 py-[0.3125rem] left-[51.75rem] top-[73.5625rem] absolute bg-teal-50 inline-flex justify-center items-center gap-2.5 overflow-hidden">
-            <div className="justify-start text-teal-800 text-2xl font-semibold font-['Montserrat'] leading-7">Industrial Decarbonization</div>
+          {/* SECOND TIMELINE ITEM - Bespoke Conversion Technology */}
+          <div 
+            className={`w-28 h-28 left-[36.625rem] top-[43.8125rem] absolute bg-white rounded-[5.3125rem] outline outline-2 outline-offset-[-0.125rem] outline-zinc-100 overflow-hidden flex items-center justify-center transition-opacity duration-2000 z-50 ${
+              animationPhase >= 3 ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <img src="/images/timeline-item.svg" alt="Timeline Item" className="w-24 h-24 object-contain" />
           </div>
-          <div className="w-96 left-[48.625rem] top-[77.875rem] absolute inline-flex flex-col justify-start items-start gap-5">
-            <div className="self-stretch text-right justify-center text-neutral-500 text-lg font-normal font-['Source_Sans_Pro'] leading-snug tracking-wide">
-              We integrate into steel plants with dynamic biochar blending, real-time emissions tracking, and ESG dashboards—fully aligned with CBAM, CCTS, and green steel compliance pathways.
+
+          {/* Second card and connecting elements */}
+          <div className={`transition-opacity duration-2000 z-5 ${animationPhase >= 5 ? 'opacity-100' : 'opacity-0'}`}>
+            <img className="w-24 h-24 left-[5.5rem] top-[44.375rem] absolute" src="images/fire.png" alt="" />
+            <div className="px-4 py-[0.3125rem] left-[5.5rem] top-[51.875rem] absolute bg-teal-50 inline-flex justify-center items-center gap-2.5 overflow-hidden">
+              <div className="justify-start text-teal-800 text-2xl font-semibold font-['Montserrat'] leading-7">Bespoke Conversion Technology</div>
             </div>
-          </div>
-          <button className="w-40 h-10 px-5 py-3 left-[66.5625rem] top-[85.25rem] absolute bg-teal-800 rounded-lg outline outline-[0.075rem] outline-offset-[-0.075rem] outline-teal-800 inline-flex justify-center items-center gap-2.5 overflow-hidden">
-            <span className="text-center text-white text-base font-medium font-['Montserrat'] whitespace-nowrap">Know More</span>
-          </button>
-
-          <img className="w-24 h-24 left-[5.875rem] top-[86.3125rem] absolute" src="images/tree.png" alt="" />
-          <div className="px-4 py-[0.3125rem] left-[5.875rem] top-[93.8125rem] absolute bg-teal-50 inline-flex justify-center items-center gap-2.5 overflow-hidden">
-            <div className="justify-start text-teal-800 text-2xl font-semibold font-['Montserrat'] leading-7">Carbon Market Integration</div>
-          </div>
-          <div className="w-96 left-[5.875rem] top-[98.125rem] absolute inline-flex flex-col justify-start items-start gap-5">
-            <div className="self-stretch justify-center text-neutral-500 text-lg font-normal font-['Source_Sans_Pro'] leading-snug tracking-wide">
-              We generate high-integrity carbon removal credits through a digital MRV framework, enabling 100+ year carbon sequestration and access to both voluntary and compliance markets.
+            <div className="w-96 left-[5.5rem] top-[56.1875rem] absolute inline-flex flex-col justify-start items-start gap-5">
+              <div className="self-stretch justify-center text-neutral-500 text-lg font-normal font-['Source_Sans_Pro'] leading-snug tracking-wide">
+                We build advanced pyrolysis systems tailored to local biomass, delivering consistent quality across 25+ industrial parameters including calorific value, volatile matter, ash, moisture, and fixed carbon.
+              </div>
             </div>
+            <button className="w-40 h-10 px-5 py-3 left-[5.5rem] top-[64.9375rem] absolute bg-teal-800 rounded-lg outline outline-[0.075rem] outline-offset-[-0.075rem] outline-teal-800 inline-flex justify-center items-center gap-2.5 overflow-hidden">
+              <span className="text-center text-white text-base font-medium font-['Montserrat'] whitespace-nowrap">Know More</span>
+            </button>
           </div>
-          <button className="w-32 h-10 px-5 py-3 left-[5.875rem] top-[106.875rem] absolute bg-teal-800 rounded-lg outline outline-[0.075rem] outline-offset-[-0.075rem] outline-teal-800 inline-flex justify-center items-center gap-2.5 overflow-hidden">
-            <span className="text-center text-white text-base font-medium font-['Montserrat']">Know More</span>
-          </button>
 
-          {/* All other desktop elements */}
-          <img className="w-8 h-8 left-[15.0625rem] top-[46.375rem] absolute" src="/images/ellipse-124.svg" alt="Ellipse" />
-          <div className="w-28 h-28 left-[36.625rem] top-[19.875rem] absolute bg-white rounded-[5.3125rem] outline outline-2 outline-offset-[-0.125rem] outline-zinc-100 overflow-hidden flex items-center justify-center">
-            <img src="/images/timeline-item.svg" alt="Timeline Item" className="w-24 h-24 object-contain" />
+          {/* Connecting line from second circular element to second card */}
+          <div className={`w-96 h-0 left-[17.0625rem] top-[47.375rem] absolute outline outline-2 outline-offset-[-0.0625rem] outline-teal-800 z-1 transition-opacity duration-1000 ${
+            animationPhase >= 4 ? 'opacity-100' : 'opacity-0'
+          }`}></div>
+
+          {/* Green dot near second card */}
+          <img className={`w-8 h-8 left-[15.0625rem] top-[46.375rem] absolute z-15 transition-opacity duration-1000 ${
+            animationPhase >= 4 ? 'opacity-100' : 'opacity-0'
+          }`} src="/images/ellipse-124.svg" alt="Ellipse" />
+
+          {/* ANIMATED BIOCHAR BOX */}
+          {showBiocharBox && (
+            <div 
+              className={`absolute bg-lime-500 rounded-xl outline outline-2 outline-offset-[-0.125rem] outline-lime-500 overflow-hidden z-15`}
+              style={{
+                left: biocharPhase === 1 || biocharPhase === 2 ? '15.0625rem' : 
+                      biocharPhase >= 3 ? '36.625rem' : '15.0625rem',
+                top: biocharPhase === 1 || biocharPhase === 2 ? '46.375rem' :
+                     biocharPhase >= 3 ? '46.375rem' : '46.375rem',
+                width: biocharPhase === 1 ? '0.5rem' : '6rem',
+                height: biocharPhase === 1 ? '0.5rem' : '2rem',
+                borderRadius: biocharPhase === 1 ? '50%' : '0.75rem',
+                transition: biocharPhase === 1 ? 'all 0.5s ease-out' :
+                           biocharPhase === 2 ? 'all 0.5s ease-out' :
+                           biocharPhase === 3 ? 'left 2s cubic-bezier(0.4, 0, 0.2, 1), top 2s cubic-bezier(0.4, 0, 0.2, 1)' :
+                           'all 0.3s ease-out'
+              }}
+            >
+              <div className="left-[1.3125rem] top-[0.5625rem] absolute text-center justify-start text-white text-xs font-semibold font-['Montserrat'] leading-none">
+                {biocharPhase >= 2 ? 'Biochar' : ''}
+              </div>
+            </div>
+          )}
+
+          {/* REMAINING TIMELINE ITEMS */}
+          <div className={`transition-opacity duration-2000 ${animationPhase >= 5 ? 'opacity-100' : 'opacity-0'}`}>
+            {/* Vertical connecting lines with animation */}
+            <div 
+              className="absolute outline outline-2 outline-offset-[-0.0625rem] outline-lime-500 z-1"
+              style={{
+                left: '40.0rem',
+                top: '47.1875rem',
+                width: '0',
+                height: '21.6875rem',
+                transformOrigin: 'top',
+                transform: `scaleY(${verticalLineProgress >= 1 ? 1 : 0})`,
+                transition: verticalLineProgress >= 1 ? 'transform 2s ease-out' : 'none'
+              }}
+            ></div>
+            
+            <div 
+              className="absolute outline outline-2 outline-offset-[-0.0625rem] outline-lime-500 z-1"
+              style={{
+                left: '40.0rem',
+                top: '68.875rem',
+                width: '0',
+                height: '17.6875rem',
+                transformOrigin: 'top',
+                transform: `scaleY(${verticalLineProgress >= 2 ? 1 : 0})`,
+                transition: verticalLineProgress >= 2 ? 'transform 2s ease-out' : 'none'
+              }}
+            ></div>
+
+            {/* Third circular element - appears when biochar reaches it */}
+            <div className={`w-28 h-28 left-[36.625rem] top-[65.4375rem] absolute bg-white rounded-[5.3125rem] outline outline-2 outline-offset-[-0.125rem] outline-zinc-100 overflow-hidden flex items-center justify-center z-50 transition-opacity duration-1000 ${
+              biocharPhase >= 5 ? 'opacity-100' : 'opacity-0'
+            }`}>
+              <img src="/images/timeline-item.svg" alt="Timeline Item" className="w-24 h-24 object-contain" />
+            </div>
+
+            {/* Third card - Industrial Decarbonization */}
+            <div className={`transition-opacity duration-1000 ${biocharPhase >= 5 ? 'opacity-100' : 'opacity-0'}`}>
+              <img className="w-24 h-24 left-[68.875rem] top-[66.0625rem] absolute z-5" src="images/smoke.png" alt="" />
+              <div className="px-4 py-[0.3125rem] left-[51.75rem] top-[73.5625rem] absolute bg-teal-50 inline-flex justify-center items-center gap-2.5 overflow-hidden z-5">
+                <div className="justify-start text-teal-800 text-2xl font-semibold font-['Montserrat'] leading-7">Industrial Decarbonization</div>
+              </div>
+              <div className="w-96 left-[48.625rem] top-[77.875rem] absolute inline-flex flex-col justify-start items-start gap-5 z-5">
+                <div className="self-stretch text-right justify-center text-neutral-500 text-lg font-normal font-['Source_Sans_Pro'] leading-snug tracking-wide">
+                  We integrate into steel plants with dynamic biochar blending, real-time emissions tracking, and ESG dashboards—fully aligned with CBAM, CCTS, and green steel compliance pathways.
+                </div>
+              </div>
+              <button className="w-40 h-10 px-5 py-3 left-[66.5625rem] top-[85.25rem] absolute bg-teal-800 rounded-lg outline outline-[0.075rem] outline-offset-[-0.075rem] outline-teal-800 inline-flex justify-center items-center gap-2.5 overflow-hidden z-5">
+                <span className="text-center text-white text-base font-medium font-['Montserrat'] whitespace-nowrap">Know More</span>
+              </button>
+            </div>
+
+            {/* Biochar box for third item */}
+            <div className={`w-24 h-8 left-[50.6875rem] top-[67.8125rem] absolute bg-lime-500 rounded-xl overflow-hidden z-20 transition-opacity duration-1000 ${
+              biocharPhase >= 5 ? 'opacity-100' : 'opacity-0'
+            }`}>
+              <div className="left-[1.3125rem] top-[0.5625rem] absolute text-center justify-start text-white text-xs font-semibold font-['Montserrat'] leading-none">Biochar</div>
+            </div>
+
+            {/* Connecting line for third item */}
+            <div className={`w-80 h-0 left-[43.4375rem] top-[68.875rem] absolute outline outline-2 outline-offset-[-0.0625rem] outline-zinc-100 z-1 transition-opacity duration-1000 ${
+              biocharPhase >= 5 ? 'opacity-100' : 'opacity-0'
+            }`}></div>
+            <img className={`w-8 h-8 left-[62.955rem] top-[67.875rem] absolute z-15 transition-opacity duration-1000 ${
+              biocharPhase >= 5 ? 'opacity-100' : 'opacity-0'
+            }`} src="/images/ellipse-124.svg" alt="Ellipse" />
+
+            {/* Fourth circular element - appears when vertical line reaches it */}
+            <div className={`w-28 h-28 left-[36.625rem] top-[85.6875rem] absolute bg-white rounded-[5.3125rem] outline outline-2 outline-offset-[-0.125rem] outline-zinc-100 overflow-hidden flex items-center justify-center z-50 transition-opacity duration-1000 ${
+              biocharPhase >= 6 ? 'opacity-100' : 'opacity-0'
+            }`}>
+              <img src="/images/timeline-item.svg" alt="Timeline Item" className="w-24 h-24 object-contain" />
+            </div>
+
+            {/* Fourth card - Carbon Market Integration */}
+            <div className={`transition-opacity duration-1000 ${biocharPhase >= 6 ? 'opacity-100' : 'opacity-0'}`}>
+              <img className="w-24 h-24 left-[5.875rem] top-[86.3125rem] absolute z-5" src="images/tree.png" alt="" />
+              <div className="px-4 py-[0.3125rem] left-[5.875rem] top-[93.8125rem] absolute bg-teal-50 inline-flex justify-center items-center gap-2.5 overflow-hidden z-5">
+                <div className="justify-start text-teal-800 text-2xl font-semibold font-['Montserrat'] leading-7">Carbon Market Integration</div>
+              </div>
+              <div className="w-96 left-[5.875rem] top-[98.125rem] absolute inline-flex flex-col justify-start items-start gap-5 z-5">
+                <div className="self-stretch justify-center text-neutral-500 text-lg font-normal font-['Source_Sans_Pro'] leading-snug tracking-wide">
+                  We generate high-integrity carbon removal credits through a digital MRV framework, enabling 100+ year carbon sequestration and access to both voluntary and compliance markets.
+                </div>
+              </div>
+              <button className="w-32 h-10 px-5 py-3 left-[5.875rem] top-[106.875rem] absolute bg-teal-800 rounded-lg outline outline-[0.075rem] outline-offset-[-0.075rem] outline-teal-800 inline-flex justify-center items-center gap-2.5 overflow-hidden z-5">
+                <span className="text-center text-white text-base font-medium font-['Montserrat']">Know More</span>
+              </button>
+            </div>
+
+            {/* Biochar box for fourth item */}
+            <div className={`w-24 h-8 left-[25.4375rem] top-[88.125rem] absolute bg-lime-500 rounded-xl overflow-hidden z-20 transition-opacity duration-1000 ${
+              biocharPhase >= 6 ? 'opacity-100' : 'opacity-0'
+            }`}>
+              <div className="left-[1.3125rem] top-[0.5625rem] absolute text-center justify-start text-white text-xs font-semibold font-['Montserrat'] leading-none">Biochar</div>
+            </div>
+
+            {/* Connecting line for fourth item */}
+            <div className={`w-96 h-0 left-[16.75rem] top-[89.125rem] absolute outline outline-2 outline-offset-[-0.0625rem] outline-zinc-100 z-1 transition-opacity duration-1000 ${
+              biocharPhase >= 6 ? 'opacity-100' : 'opacity-0'
+            }`}></div>
+            <img className={`w-8 h-8 left-[15.375rem] top-[88.125rem] absolute z-15 transition-opacity duration-1000 ${
+              biocharPhase >= 6 ? 'opacity-100' : 'opacity-0'
+            }`} src="/images/ellipse-124.svg" alt="Ellipse" />
           </div>
-          <div className="w-80 h-0 left-[43.4375rem] top-[23.3125rem] absolute border-t-2 border-dotted" style={{ borderColor: "#1C6248" }}></div>
-          <img className="w-8 h-8 left-[62.955rem] top-[22.3125rem] absolute" src="/images/ellipse-124.svg" alt="Ellipse" />
-          <div data-property-1="Component 35" className="w-80 h-6 left-[43.8125rem] top-[22.5rem] absolute"></div>
-          <div className="w-24 h-8 left-[51.1875rem] top-[22.25rem] absolute bg-teal-800 rounded-xl outline outline-2 outline-offset-[-0.125rem] outline-teal-800 overflow-hidden">
-            <div className="left-[1.125rem] top-[0.5625rem] absolute text-center justify-start text-white text-xs font-semibold font-['Montserrat'] leading-none">Biomass</div>
-          </div>
-          <div className="w-96 h-0 left-[17.0625rem] top-[47.375rem] absolute outline outline-2 outline-offset-[-0.0625rem] outline-teal-800"></div>
-          <img className="w-8 h-8 left-[15.375rem] top-[88.125rem] absolute" src="/images/ellipse-124.svg" alt="Ellipse" />
-          <div className="w-28 h-28 left-[36.625rem] top-[43.8125rem] absolute bg-white rounded-[5.3125rem] outline outline-2 outline-offset-[-0.125rem] outline-zinc-100 overflow-hidden flex items-center justify-center">
-            <img src="/images/timeline-item.svg" alt="Timeline Item" className="w-24 h-24 object-contain" />
-          </div>
-          <div className="w-28 h-28 left-[36.625rem] top-[65.4375rem] absolute bg-white rounded-[5.3125rem] outline outline-2 outline-offset-[-0.125rem] outline-zinc-100 overflow-hidden flex items-center justify-center">
-            <img src="/images/timeline-item.svg" alt="Timeline Item" className="w-24 h-24 object-contain" />
-          </div>
-          <div className="w-24 h-8 left-[50.6875rem] top-[67.8125rem] absolute bg-lime-500 rounded-xl overflow-hidden">
-            <div className="left-[1.3125rem] top-[0.5625rem] absolute text-center justify-start text-white text-xs font-semibold font-['Montserrat'] leading-none">Biochar</div>
-          </div>
-          <div className="w-28 h-28 left-[36.625rem] top-[85.6875rem] absolute bg-white rounded-[5.3125rem] outline outline-2 outline-offset-[-0.125rem] outline-zinc-100 overflow-hidden flex items-center justify-center">
-            <img src="/images/timeline-item.svg" alt="Timeline Item" className="w-24 h-24 object-contain" />
-          </div>
-          <div className="w-24 h-8 left-[25.4375rem] top-[88.125rem] absolute bg-lime-500 rounded-xl overflow-hidden">
-            <div className="left-[1.3125rem] top-[0.5625rem] absolute text-center justify-start text-white text-xs font-semibold font-['Montserrat'] leading-none">Biochar</div>
-          </div>
-          <img className="w-8 h-8 left-[62.955rem] top-[67.875rem] absolute" src="/images/ellipse-124.svg" alt="Ellipse" />
         </div>
 
         {/* Mobile Layout - Responsive design */}
