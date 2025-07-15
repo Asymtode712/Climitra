@@ -13,6 +13,11 @@ function ClimitraEngine() {
   const [showBiocharBox, setShowBiocharBox] = useState(false);
   const [biocharPhase, setBiocharPhase] = useState(0);
   const [verticalLineProgress, setVerticalLineProgress] = useState(0);
+  const [showBiocharSplit, setShowBiocharSplit] = useState(false);
+  const [biocharSplitPhase, setBiocharSplitPhase] = useState(0);
+  const [firstSplitPhase, setFirstSplitPhase] = useState(0); // Independent state for first split box
+  const [secondSplitPhase, setSecondSplitPhase] = useState(0); // Independent state for second split box
+  const [showFourthElement, setShowFourthElement] = useState(false);
   const timelineRef = useRef(null);
 
   // Intersection Observer for timeline animation trigger
@@ -43,37 +48,59 @@ function ClimitraEngine() {
     setShowBiocharBox(false);
     setBiocharPhase(0);
     setVerticalLineProgress(0);
+    setShowBiocharSplit(false);
+    setBiocharSplitPhase(0);
+    setFirstSplitPhase(0);
+    setSecondSplitPhase(0);
+    setShowFourthElement(false);
     
-    setTimeout(() => setAnimationPhase(1), 1000);
-    setTimeout(() => setAnimationPhase(2), 4000);
-    setTimeout(() => setAnimationPhase(3), 6000);
-    setTimeout(() => setAnimationPhase(4), 8000);
-    setTimeout(() => setAnimationPhase(4.5), 9000);
+    setTimeout(() => setAnimationPhase(1), 700);
+    setTimeout(() => setAnimationPhase(2), 2800);
+    setTimeout(() => setAnimationPhase(3), 4200);
+    setTimeout(() => setAnimationPhase(4), 5600);
+    setTimeout(() => setAnimationPhase(4.5), 6300);
     
     setTimeout(() => {
       setStartShrinking(true);
       setShowBiomassText(false);
-    }, 14000);
+    }, 10000);
     
-    setTimeout(() => setAnimationPhase(5), 16000);
+    setTimeout(() => setAnimationPhase(5), 11400);
     
     // Start biochar animation after biomass disappears
     setTimeout(() => {
       setShowBiocharBox(true);
       setBiocharPhase(1); // Emerge as sphere
-    }, 16500);
+    }, 11750);
     
-    setTimeout(() => setBiocharPhase(2), 17000); // Unmould to box
-    setTimeout(() => setBiocharPhase(3), 17500); // Start translation to second circular
-    setTimeout(() => setBiocharPhase(4), 19500); // Reach second circular, start vertical line
+    setTimeout(() => setBiocharPhase(2), 12100); // Unmould to box
+    setTimeout(() => setBiocharPhase(3), 12450); // Start translation to second circular
+    setTimeout(() => setBiocharPhase(4), 13900); // Reach second circular, start vertical line
     
     // Vertical line animation and third element appearance
-    setTimeout(() => setVerticalLineProgress(1), 20000); // Start vertical line translation
-    setTimeout(() => setBiocharPhase(5), 22000); // Third element and card appear
+    setTimeout(() => setVerticalLineProgress(1), 14300); // Start continuous vertical line translation
+    setTimeout(() => setBiocharPhase(5), 15700); // Third element and card appear
     
-    // Continue vertical line to fourth element
-    setTimeout(() => setVerticalLineProgress(2), 22500); // Continue line to fourth
-    setTimeout(() => setBiocharPhase(6), 24500); // Fourth element and card appear
+    // New biochar movement to third circular element
+    setTimeout(() => setBiocharPhase(6), 16050); // Move biochar down to third circular
+    setTimeout(() => setBiocharPhase(7), 17100); // Reach third circular, prepare for split
+    
+    // Fourth element appears when vertical line reaches it
+    setTimeout(() => setShowFourthElement(true), 17100); // Fourth element and card appear when line reaches
+    
+    // Split biochar into two
+    setTimeout(() => {
+      setShowBiocharSplit(true);
+    }, 17450);
+    
+    // Split movements with independent timing for natural speed
+    setTimeout(() => setFirstSplitPhase(1), 18500); // First box: start moving (same time as second box)
+    setTimeout(() => setSecondSplitPhase(1), 18200); // Second box: start moving down
+    setTimeout(() => setSecondSplitPhase(2), 21500); // Second box reaches fourth circular
+    setTimeout(() => setFirstSplitPhase(2), 19500); // First box reaches third card dot (same timing as second box reaching fourth circular)
+    setTimeout(() => setSecondSplitPhase(3), 21800); // Second box: fourth circular → fourth card dot
+    setTimeout(() => setFirstSplitPhase(3), 21500); // First box fades (matching transition timing)
+    setTimeout(() => setSecondSplitPhase(4), 25000); // Second box reaches fourth card dot and fades
   };
 
   return (
@@ -210,7 +237,7 @@ function ClimitraEngine() {
                        animationPhase >= 4.5 && !startShrinking ? 1 :
                        startShrinking ? 0 : 1,
               transition: startShrinking ? 'all 2s cubic-bezier(0.4, 0, 0.2, 1)' : 
-                         animationPhase === 4 ? 'left 6s cubic-bezier(0.4, 0, 0.2, 1), top 6s cubic-bezier(0.4, 0, 0.2, 1), opacity 1s ease-out' : 
+                         animationPhase === 4 ? 'left 5s cubic-bezier(0.4, 0, 0.2, 1), top 6s cubic-bezier(0.4, 0, 0.2, 1), opacity 1s ease-out' : 
                          'all 2.5s cubic-bezier(0.4, 0, 0.2, 1)'
             }}
           >
@@ -260,15 +287,20 @@ function ClimitraEngine() {
               className={`absolute bg-lime-500 rounded-xl outline outline-2 outline-offset-[-0.125rem] outline-lime-500 overflow-hidden z-15`}
               style={{
                 left: biocharPhase === 1 || biocharPhase === 2 ? '15.0625rem' : 
-                      biocharPhase >= 3 ? '36.625rem' : '15.0625rem',
+                      biocharPhase === 3 || biocharPhase === 4 || biocharPhase === 5 ? '36.625rem' :
+                      biocharPhase >= 6 ? '36.625rem' : '15.0625rem',
                 top: biocharPhase === 1 || biocharPhase === 2 ? '46.375rem' :
-                     biocharPhase >= 3 ? '46.375rem' : '46.375rem',
+                     biocharPhase === 3 || biocharPhase === 4 || biocharPhase === 5 ? '46.375rem' :
+                     biocharPhase >= 6 ? '67.8125rem' : '46.375rem',
                 width: biocharPhase === 1 ? '0.5rem' : '6rem',
                 height: biocharPhase === 1 ? '0.5rem' : '2rem',
                 borderRadius: biocharPhase === 1 ? '50%' : '0.75rem',
+                opacity: (biocharPhase >= 7 && !showBiocharSplit) || (showBiocharSplit && (firstSplitPhase >= 3 || secondSplitPhase >= 4)) ? 0 : 1,
                 transition: biocharPhase === 1 ? 'all 0.5s ease-out' :
                            biocharPhase === 2 ? 'all 0.5s ease-out' :
                            biocharPhase === 3 ? 'left 2s cubic-bezier(0.4, 0, 0.2, 1), top 2s cubic-bezier(0.4, 0, 0.2, 1)' :
+                           biocharPhase === 6 ? 'top 1.5s cubic-bezier(0.4, 0, 0.2, 1)' :
+                           biocharPhase === 7 ? 'opacity 0.5s ease-out' :
                            'all 0.3s ease-out'
               }}
             >
@@ -276,6 +308,56 @@ function ClimitraEngine() {
                 {biocharPhase >= 2 ? 'Biochar' : ''}
               </div>
             </div>
+          )}
+
+          {/* SPLIT BIOCHAR BOXES - Independent State Management */}
+          {showBiocharSplit && (
+            <>
+              {/* First split box - third circular to third card dot with matching timing */}
+              <div 
+                className={`absolute bg-lime-500 rounded-xl outline outline-2 outline-offset-[-0.125rem] outline-lime-500 overflow-hidden z-20`}
+                style={{
+                  left: firstSplitPhase === 0 ? '36.625rem' :
+                        firstSplitPhase === 1 ? '36.625rem' :
+                        firstSplitPhase >= 2 ? '62.955rem' : '36.625rem',
+                  top: '67.8125rem',
+                  width: firstSplitPhase >= 3 ? '0.5rem' : '6rem',
+                  height: firstSplitPhase >= 3 ? '0.5rem' : '2rem',
+                  borderRadius: firstSplitPhase >= 3 ? '50%' : '0.75rem',
+                  opacity: firstSplitPhase >= 3 ? 0 : (firstSplitPhase >= 1) ? 1 : 0,
+                  transition: firstSplitPhase === 1 ? 'left 3.3s cubic-bezier(0.4, 0, 0.2, 1)' :
+                             firstSplitPhase === 3 ? 'all 2s cubic-bezier(0.4, 0, 0.2, 1)' :
+                             'all 0.3s ease-out'
+                }}
+              >
+                <div className="left-[1.3125rem] top-[0.5625rem] absolute text-center justify-start text-white text-xs font-semibold font-['Montserrat'] leading-none">
+                  Biochar
+                </div>
+              </div>
+
+              {/* Second split box - moves down to fourth circular then to fourth card */}
+              <div 
+                className={`absolute bg-lime-500 rounded-xl outline outline-2 outline-offset-[-0.125rem] outline-lime-500 overflow-hidden z-20`}
+                style={{
+                  left: secondSplitPhase >= 3 ? '15.375rem' : '36.625rem',
+                  top: secondSplitPhase === 0 ? '67.8125rem' :
+                       secondSplitPhase === 1 ? '88.125rem' :
+                       secondSplitPhase >= 2 ? '88.125rem' : '67.8125rem',
+                  width: secondSplitPhase >= 4 ? '0.5rem' : '6rem',
+                  height: secondSplitPhase >= 4 ? '0.5rem' : '2rem',
+                  borderRadius: secondSplitPhase >= 4 ? '50%' : '0.75rem',
+                  opacity: secondSplitPhase >= 4 ? 0 : (secondSplitPhase >= 1) ? 1 : 0,
+                  transition: secondSplitPhase === 1 ? 'top 3.3s cubic-bezier(0.4, 0, 0.2, 1)' :
+                             secondSplitPhase === 3 ? 'left 3.2s cubic-bezier(0.4, 0, 0.2, 1)' :
+                             secondSplitPhase === 4 ? 'all 2s cubic-bezier(0.4, 0, 0.2, 1)' :
+                             'all 0.3s ease-out'
+                }}
+              >
+                <div className="left-[1.3125rem] top-[0.5625rem] absolute text-center justify-start text-white text-xs font-semibold font-['Montserrat'] leading-none">
+                  Biochar
+                </div>
+              </div>
+            </>
           )}
 
           {/* REMAINING TIMELINE ITEMS */}
@@ -287,23 +369,10 @@ function ClimitraEngine() {
                 left: '40.0rem',
                 top: '47.1875rem',
                 width: '0',
-                height: '21.6875rem',
+                height: '39.375rem', // Combined height of both segments (21.6875 + 17.6875)
                 transformOrigin: 'top',
                 transform: `scaleY(${verticalLineProgress >= 1 ? 1 : 0})`,
-                transition: verticalLineProgress >= 1 ? 'transform 2s ease-out' : 'none'
-              }}
-            ></div>
-            
-            <div 
-              className="absolute outline outline-2 outline-offset-[-0.0625rem] outline-lime-500 z-1"
-              style={{
-                left: '40.0rem',
-                top: '68.875rem',
-                width: '0',
-                height: '17.6875rem',
-                transformOrigin: 'top',
-                transform: `scaleY(${verticalLineProgress >= 2 ? 1 : 0})`,
-                transition: verticalLineProgress >= 2 ? 'transform 2s ease-out' : 'none'
+                transition: verticalLineProgress >= 1 ? 'transform 2.8s ease-out' : 'none' // Compressed duration for continuous line
               }}
             ></div>
 
@@ -330,30 +399,24 @@ function ClimitraEngine() {
               </button>
             </div>
 
-            {/* Biochar box for third item */}
-            <div className={`w-24 h-8 left-[50.6875rem] top-[67.8125rem] absolute bg-lime-500 rounded-xl overflow-hidden z-20 transition-opacity duration-1000 ${
-              biocharPhase >= 5 ? 'opacity-100' : 'opacity-0'
-            }`}>
-              <div className="left-[1.3125rem] top-[0.5625rem] absolute text-center justify-start text-white text-xs font-semibold font-['Montserrat'] leading-none">Biochar</div>
-            </div>
 
             {/* Connecting line for third item */}
             <div className={`w-80 h-0 left-[43.4375rem] top-[68.875rem] absolute outline outline-2 outline-offset-[-0.0625rem] outline-zinc-100 z-1 transition-opacity duration-1000 ${
-              biocharPhase >= 5 ? 'opacity-100' : 'opacity-0'
+              firstSplitPhase >= 1 ? 'opacity-100' : 'opacity-0'
             }`}></div>
             <img className={`w-8 h-8 left-[62.955rem] top-[67.875rem] absolute z-15 transition-opacity duration-1000 ${
-              biocharPhase >= 5 ? 'opacity-100' : 'opacity-0'
+              firstSplitPhase >= 1 ? 'opacity-100' : 'opacity-0'
             }`} src="/images/ellipse-124.svg" alt="Ellipse" />
 
             {/* Fourth circular element - appears when vertical line reaches it */}
             <div className={`w-28 h-28 left-[36.625rem] top-[85.6875rem] absolute bg-white rounded-[5.3125rem] outline outline-2 outline-offset-[-0.125rem] outline-zinc-100 overflow-hidden flex items-center justify-center z-50 transition-opacity duration-1000 ${
-              biocharPhase >= 6 ? 'opacity-100' : 'opacity-0'
+              showFourthElement ? 'opacity-100' : 'opacity-0'
             }`}>
               <img src="/images/timeline-item.svg" alt="Timeline Item" className="w-24 h-24 object-contain" />
             </div>
 
             {/* Fourth card - Carbon Market Integration */}
-            <div className={`transition-opacity duration-1000 ${biocharPhase >= 6 ? 'opacity-100' : 'opacity-0'}`}>
+            <div className={`transition-opacity duration-1000 ${showFourthElement ? 'opacity-100' : 'opacity-0'}`}>
               <img className="w-24 h-24 left-[5.875rem] top-[86.3125rem] absolute z-5" src="images/tree.png" alt="" />
               <div className="px-4 py-[0.3125rem] left-[5.875rem] top-[93.8125rem] absolute bg-teal-50 inline-flex justify-center items-center gap-2.5 overflow-hidden z-5">
                 <div className="justify-start text-teal-800 text-2xl font-semibold font-['Montserrat'] leading-7">Carbon Market Integration</div>
@@ -368,20 +431,14 @@ function ClimitraEngine() {
               </button>
             </div>
 
-            {/* Biochar box for fourth item */}
-            <div className={`w-24 h-8 left-[25.4375rem] top-[88.125rem] absolute bg-lime-500 rounded-xl overflow-hidden z-20 transition-opacity duration-1000 ${
-              biocharPhase >= 6 ? 'opacity-100' : 'opacity-0'
-            }`}>
-              <div className="left-[1.3125rem] top-[0.5625rem] absolute text-center justify-start text-white text-xs font-semibold font-['Montserrat'] leading-none">Biochar</div>
-            </div>
 
             {/* Connecting line for fourth item */}
             <div className={`w-96 h-0 left-[16.75rem] top-[89.125rem] absolute outline outline-2 outline-offset-[-0.0625rem] outline-zinc-100 z-1 transition-opacity duration-1000 ${
-              biocharPhase >= 6 ? 'opacity-100' : 'opacity-0'
+              secondSplitPhase >= 3 ? 'opacity-100' : 'opacity-0'
             }`}></div>
             <img className={`w-8 h-8 left-[15.375rem] top-[88.125rem] absolute z-15 transition-opacity duration-1000 ${
-              biocharPhase >= 6 ? 'opacity-100' : 'opacity-0'
-            }`} src="/images/ellipse-124.svg" alt="Ellipse" />
+              secondSplitPhase >= 3 ? 'opacity-100' : 'opacity-0'
+            }`} src="/images/ellipse-125.svg" alt="Ellipse" />
           </div>
         </div>
 
